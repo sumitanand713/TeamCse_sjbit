@@ -1,8 +1,6 @@
 document.getElementById("login-form").addEventListener("submit", async function(event){
     event.preventDefault();
 
-    console.log("Login form submitted ✅");
-
     const loginData = {
         email: document.getElementById("email").value,
         password: document.getElementById("password").value
@@ -14,16 +12,14 @@ document.getElementById("login-form").addEventListener("submit", async function(
         body: JSON.stringify(loginData)
     });
 
-    // The backend now returns the user's name string (or "FAIL").
-    const result = await response.text();
-    console.log("Response from backend:", result);
+    const result = await response.json(); // <-- CHANGE: Expecting user object
 
-    if(result && result !== "FAIL"){
-        // CRITICAL FIX: Store the returned user name and ID
-        localStorage.setItem('userName', result); 
-        localStorage.setItem('userId', '1'); 
+    if(result && result.id){ // Login success
+        localStorage.setItem("userId", result.id);
+        localStorage.setItem("userName", result.name); // ✅ SAVE NAME
         window.location.href = "dashboard.html";
-    } else {
+    } 
+    else {
         document.getElementById("error-message").innerText = "Invalid email or password!";
     }
 });
