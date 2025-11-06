@@ -74,10 +74,9 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2025, papers: [  { subject: "JEE Mains (Jan)", url: "#" }, { subject: "JEE Mains (Apr)", url: "#" } ] },
-            { year: 2024, papers: [  { subject: "JEE Mains (Jan)", url: "#" }, { subject: "JEE Mains (Apr)", url: "#" } ] },
-            { year: 2023, papers: [  { subject: "JEE Mains (Jan)", url: "#" }, { subject: "JEE Mains (Apr)", url: "#" } ] },
-            { year: 2022, papers: [  { subject: "JEE Mains (Jan)", url: "#" }, { subject: "JEE Mains (Apr)", url: "#" } ] }
+            { year: 2023, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/Shift%202%20April%20with%20sol%20Maths.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/nov/JEE%20Mains%20Physics%202023%2025-Jan-Shift%201.pdf" }, { subject: "JEE Mains (Chemistry)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Chemistry/Shift%202%20April%20with%20sol%20Chemistry.pdf" } ] },
+            { year: 2022, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/JEE%20main%20Maths%2029th%20June%20Shift%202%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/JEE%20main%20physics%2029th%20June%20Shift%202%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Chemistry)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Chemistry/JEE%20main%20Chemistry%2029th%20July%20Shift%202%20paper%20with%20solution.pdf" } ] },
+            { year: 2021, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/JEE%20main%20Maths%2020th%20July%20Shift%201%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/JEE%20main%20physics%2024th%20Feb%20Shift%201%20paper%20with%20solution.pdf" }, ] },
         ]
     },
     "neet": {
@@ -100,10 +99,10 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2025, papers: [ { subject: "NEET Paper", url: "#" } ] },
-            { year: 2024, papers: [ { subject: "NEET Paper", url: "#" } ] },
-            { year: 2023, papers: [ { subject: "NEET Paper", url: "#" } ] },
-            { year: 2022, papers: [ { subject: "NEET Paper", url: "#" } ] }
+            { year: 2025, papers: [ { subject: "NEET Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/NEET/NEET%202025/NEET%202025.pdf" } ] },
+            { year: 2024, papers: [ { subject: "NEET Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/NEET/NEET%202024/2_Book%20%28NEET%2019%20Years%20Solved%20Papers%202025%29%20Page%201-664.pdf" } ] },
+            { year: 2023, papers: [ { subject: "NEET Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp24/neet_yearwise/NEET%20UG%202023%2007th%20May.pdf" } ] },
+            { year: 2022, papers: [ { subject: "NEET Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp24/neet_yearwise/NEET%20PYQ%202022.pdf" } ] }
         ]
     },
     "clat": {
@@ -126,10 +125,10 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2025, papers: [ { subject: "CLAT Paper", url: "#" } ] },
-            { year: 2024, papers: [ { subject: "CLAT Paper", url: "#" } ] },
-            { year: 2023, papers: [ { subject: "CLAT Paper", url: "#" } ] },
-            { year: 2022, papers: [ { subject: "CLAT Paper", url: "#" } ] }
+            { year: 2025, papers: [ { subject: "CLAT Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/clat_and_ailet/CLAT%202025.pdf" } ] },
+            { year: 2024, papers: [ { subject: "CLAT Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/clat_and_ailet/CLAT%202024.pdf" } ] },
+            { year: 2023, papers: [ { subject: "CLAT Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/clat_and_ailet/CLAT%20and%20AILET%202023.pdf" } ] },
+            { year: 2022, papers: [ { subject: "CLAT Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/clat_and_ailet/CLAT%20and%20AILET%202022.pdf" } ] }
         ]
     },
 
@@ -154,9 +153,11 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2024, papers: [ { subject: "CAT Slot 1", url: "#" }, { subject: "CAT Slot 2", url: "#" }, { subject: "CAT Slot 3", url: "#" } ] },
-            { year: 2023, papers: [ { subject: "CAT Slot 1", url: "#" }, { subject: "CAT Slot 2", url: "#" }, { subject: "CAT Slot 3", url: "#" } ] },
-            { year: 2022, papers: [ { subject: "CAT Slot 1", url: "#" }, { subject: "CAT Slot 2", url: "#" }, { subject: "CAT Slot 3", url: "#" } ] }
+            { year: 2024, papers: [ { subject: "CAT", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/CAT/1-Inner%2BPaper%20%28CAT%2025%20Yrs%20CW%20%20TW%20SP%29%20Pg%201-64.pdf" } ] },
+            { year: 2023, papers: [ { subject: "CAT", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp23/cat/CAT%2025%20years%20Chapter%20wise%202023.pdf" } ] },
+            { year: 2022, papers: [ { subject: "CAT", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/CAT/CAT%202022%20-%20Shift%20III%20Paper%203%20with%20solutions.pdf" } ] },
+            { year: 2022, papers: [ { subject: "CAT", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/CAT/CAT%202021%20Shift%201%20Paper%20with%20Solutions.pdf" } ] }
+
         ]
     },
     "gate": {
@@ -174,31 +175,12 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2025, papers: [ { subject: "CS Paper", url: "#" }, { subject: "ME Paper", url: "#" }, { subject: "EE Paper", url: "#" } ] },
-            { year: 2024, papers: [ { subject: "CS Paper", url: "#" }, { subject: "ME Paper", url: "#" }, { subject: "EE Paper", url: "#" } ] },
-            { year: 2023, papers: [ { subject: "CS Paper", url: "#" }, { subject: "ME Paper", url: "#" }, { subject: "EE Paper", url: "#" } ] }
+            { year: 2025, papers: [ { subject: "Gate", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/GATE/GATE%202025/Engineering%20Math%202025.pdf" }] },
+            { year: 2024, papers: [ { subject: "Gate", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp24/gate/2024%20GATE%20Engineering%20Maths.pdf" }] },
+            { year: 2023, papers: [ { subject: "Gate", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp24/gate/GATE%20PYQ%202023.pdf" }] },
+            { year: 2023, papers: [ { subject: "Gate", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp24/gate/2022%20GATE%20Engineering%20Maths.pdf" }] }
         ]
     },
-    "gre": {
-        title: "GRE (International)",
-        subjects: {
-            "Quant": [
-                { title: "GRE Quant - Full Course", channel: "Magoosh", duration: "4:30:00", difficulty: "Medium", url: "#" },
-                { title: "Data Interpretation Strategies", channel: "GregMat", duration: "1:15:00", difficulty: "Medium", url: "#" },
-                { title: "Permutations & Combinations", channel: "The Organic Chemistry Tutor", duration: "1:10:00", difficulty: "Hard", url: "#" }
-            ],
-            "Verbal": [
-                { title: "Reading Comprehension - Strategy", channel: "GregMat", duration: "1:00:00", difficulty: "Hard", url: "#" },
-                { title: "Text Completion - 5 Tips", channel: "Magoosh", duration: "0:25:00", difficulty: "Medium", url: "#" },
-                { title: "AWA Essay Writing Guide", channel: "GregMat", duration: "0:50:00", difficulty: "Medium", url: "#" }
-            ]
-        },
-        pyqs: [
-            { year: 2025, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] },
-            { year: 2024, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] }
-        ]
-    },
-
     // --- Post Graduate / Professional ---
     "upsc": {
         title: "UPSC (Civil Services)",
@@ -220,10 +202,10 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2025, papers: [ { subject: "Prelims GS", url: "#" }, { subject: "Prelims CSAT", url: "#" }, { subject: "Mains GS I", url: "#" } ] },
-            { year: 2024, papers: [ { subject: "Prelims GS", url: "#" }, { subject: "Prelims CSAT", url: "#" }, { subject: "Mains GS I", url: "#" } ] },
-            { year: 2023, papers: [ { subject: "Prelims GS", url: "#" }, { subject: "Prelims CSAT", url: "#" }, { subject: "Mains GS I", url: "#" } ] },
-            { year: 2022, papers: [ { subject: "Prelims GS", url: "#" }, { subject: "Prelims CSAT", url: "#" }, { subject: "Mains GS I", url: "#" } ] }
+            { year: 2015, papers: [ { subject: "Prelims GS", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/UPSC/Paper%201/Paper%201%202015.pdf" } ] },
+            { year: 2016, papers: [ { subject: "Prelims GS", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/UPSC/Paper%201/Paper%201%202016.pdf" } ] },
+            { year: 2017, papers: [ { subject: "Prelims GS", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/UPSC/Paper%201/Paper%201%202016.pdf" } ] },
+            { year: 2018, papers: [ { subject: "Prelims GS", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/UPSC/Paper%201/Paper%201%202018.pdf" } ] }
         ]
     },
     "net": {
@@ -246,10 +228,10 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2025, papers: [ { subject: "Paper 1 (June)", url: "#" }, { subject: "Paper 1 (Dec)", url: "#" } ] },
-            { year: 2024, papers: [ { subject: "Paper 1 (June)", url: "#" }, { subject: "Paper 1 (Dec)", url: "#" } ] },
-            { year: 2023, papers: [ { subject: "Paper 1 (June)", url: "#" }, { subject: "Paper 1 (Dec)", url: "#" } ] },
-            { year: 2022, papers: [ { subject: "Paper 1 (June)", url: "#" }, { subject: "Paper 1 (Dec)", url: "#" } ] }
+            { year: 2025, papers: [ { subject: "Paper (January)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/UGC/UGC%20NET%20PYQ%202025.pdf" } ] },
+            { year: 2024, papers: [ { subject: "Paper (June)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/UGC/UGC%20NET%20PYQ%20June%202024.pdf" } ] },
+            { year: 2023, papers: [ { subject: "Paper (March)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp23/ugc_net/March%202023.pdf" } ] },
+            { year: 2022, papers: [ { subject: "Paper (September)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/UGC/UGC%20net.pdf" } ] }
         ]
     }
 };
