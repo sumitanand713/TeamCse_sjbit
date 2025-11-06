@@ -1,12 +1,22 @@
 document.getElementById("registerForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    
+    // --- ADDED PASSWORD CHECK ---
+    if (password !== confirmPassword) {
+        alert("❌ Passwords do not match!");
+        return; 
+    }
+    // --- END ADDED PASSWORD CHECK ---
+
     const user = {
         name: document.getElementById("fullname").value,
         username: document.getElementById("username").value,
         phone: document.getElementById("phone").value,
         email: document.getElementById("email").value,
-        password: document.getElementById("password").value
+        password: password 
     };
 
     const response = await fetch("http://localhost:8080/api/auth/register", {

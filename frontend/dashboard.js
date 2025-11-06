@@ -1,5 +1,8 @@
+// =========================================================
+// 1. GLOBAL CONSTANTS (MUST be in global scope)
+// =========================================================
+
 /* --- NEW: WEIGHTAGE DATABASE --- */
-/* (Add this below your resourcesByExam object) */
 const weightageByExam = {
     "10th_boards": {
         title: "Class 10 Boards",
@@ -60,9 +63,17 @@ const weightageByExam = {
             { name: "Environment", percentage: 20, color: "#17a2b8" },
             { name: "Science/Other", percentage: 27, color: "#dc3545" }
         ]
+    },
+    "net": {
+        title: "UGC-NET (Professor)",
+        subjects: [
+            { name: "Paper 1 - Teaching Aptitude", percentage: 33, color: "#007bff" },
+            { name: "Paper 1 - Research Aptitude", percentage: 33, color: "#28a745" },
+            { name: "Paper 1 - Communication", percentage: 34, color: "#ffc107" }
+        ]
     }
-    // Add other exams (gate, gre, net) as needed
 };
+
 /* --- 1. YOUR NEW RESOURCE DATABASE (with Video URLs + PYQs) --- */
 const resourcesByExam = {
 
@@ -73,7 +84,7 @@ const resourcesByExam = {
             "Science": [
                 { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", url: "https://www.youtube.com/watch?v=a3klf9QIUg8" },
                 { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", url: "https://www.youtube.com/watch?v=UTwnriP1Npk" },
-                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "#https://www.youtube.com/watch?v=7k2rs5yGOFM" }
+                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "https://www.youtube.com/watch?v=7k2rs5yGOFM" } // <-- FIXED URL
             ],
             "Maths": [
                 { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", url: "https://www.youtube.com/watch?v=-UdHmSTmQtw" },
@@ -203,8 +214,8 @@ const resourcesByExam = {
         subjects: {
             "Quantitative Aptitude": [
                 { title: "Arithmetic - One Shot Marathon", channel: "Unacademy CAT", duration: "6:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=tP4bU-oTbQM" },
-                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", query: "https://www.youtube.com/watch?v=TV9rQm15sWo" },
-                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", query: "https://www.youtube.com/watch?v=utY-EIvE2Dg" }
+                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=TV9rQm15sWo" },
+                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=utY-EIvE2Dg" }
             ],
             "LRDI": [
                 { title: "Arrangements - Complete Set", channel: "Elites Grid", duration: "2:45:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=GYe98jwCn7g" },
@@ -246,7 +257,6 @@ const resourcesByExam = {
             { year: 2023, papers: [ { subject: "Gate", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp24/gate/2022%20GATE%20Engineering%20Maths.pdf" }] }
         ]
     },
-    // --- Post Graduate / Professional ---
     "upsc": {
         title: "UPSC (Civil Services)",
         subjects: {
@@ -258,7 +268,7 @@ const resourcesByExam = {
             "History": [
                 { title: "Modern History - Spectrum One Shot", channel: "Study IQ", duration: "9:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=IIR3FRCyO-s" },
                 { title: "Ancient History - Full", channel: "Drishti IAS", duration: "6:15:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=eHEv5aF5td8" },
-                { title: "Art & Culture - Nitin Singhania", channel: "Unacademy", duration: "4:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=VxG4MgN7P7k" }
+                { title: "Art & Culture - Nitin Singhania", duration: "4:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=VxG4MgN7P7k" }
             ],
             "Economy": [
                 { title: "Indian Economy - Full Syllabus", channel: "Mrunal Patel", duration: "15:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=IRMepGlN3so" },
@@ -302,9 +312,32 @@ const resourcesByExam = {
 };
 
 
-/* --- 2. DYNAMIC RESOURCE LOADING FUNCTION (Reads Video URLs + PYQs) --- */
-/* (This goes *after* the database object, in the global scope) */
+// =========================================================
+// 2. GLOBAL HELPER FUNCTIONS (MUST be in global scope)
+// =========================================================
 
+/* --- NEW: HELPER FUNCTION TO UPDATE VIDEO PROGRESS --- */
+function updateVideoProgress(videoLink) {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+        // Ping the backend to increment the video watched count
+        fetch(`http://localhost:8080/api/progress/update/${userId}?type=video`, {
+            method: 'POST'
+        }).then(response => {
+            if (response.ok) {
+                // After successful update, refresh the progress stats on the dashboard
+                loadProgress();
+            }
+        }).catch(error => console.error('Error updating video progress:', error));
+    }
+    // Always open the video link
+    window.open(videoLink, '_blank');
+}
+// Make the function globally available for onclick
+window.updateVideoProgress = updateVideoProgress;
+
+
+/* --- 2. DYNAMIC RESOURCE LOADING FUNCTION (Reads Video URLs + PYQs) --- */
 function loadDynamicResources() {
     // 1. Find the resources tab
     const resourcesTab = document.getElementById('resources');
@@ -314,6 +347,8 @@ function loadDynamicResources() {
     
     // 3. Find the resources for that exam from our new database
     const examData = resourcesByExam[userExam];
+    
+    let totalVideos = 0; // Initialize video count
 
     // 4. Check if we have resources for this user's exam
     if (examData) {
@@ -329,11 +364,11 @@ function loadDynamicResources() {
             const videos = examData.subjects[subjectName];
             
             videos.forEach(video => {
+                totalVideos++; // Increment total video count
                 let difficultyClass = `difficulty-${video.difficulty.toLowerCase()}`;
-                
-                // This is the logic to read the 'url'
                 let videoLink = video.url;
-                
+
+                // Use onclick to call the new updateVideoProgress function
                 html += `
                     <div class="video-card">
                         <h3 class="video-title">${video.title}</h3>
@@ -344,7 +379,7 @@ function loadDynamicResources() {
                                 ${video.difficulty}
                             </span>
                         </div>
-                        <a href="${videoLink}" class="video-link" target="_blank">Watch Now</a>
+                        <a href="#" onclick="updateVideoProgress('${videoLink}'); return false;" class="video-link">Watch Now</a>
                     </div>
                 `;
             });
@@ -354,27 +389,33 @@ function loadDynamicResources() {
         // --- (B) Build NEW PYQ Section ---
         if (examData.pyqs && examData.pyqs.length > 0) {
             html += `<h2 class="subject-header">Previous Year Questions (PYQs)</h2>`;
-            html += '<div class="pyq-container">'; // A container for all year blocks
+            html += '<div class="pyq-container">'; 
 
-            // Loop over each year object (e.g., { year: 2025, ... })
             examData.pyqs.forEach(yearData => {
                 html += `<div class="pyq-year-block">`;
                 html += `<h3>${yearData.year} Papers</h3>`;
                 html += `<ul class="pyq-paper-list">`;
                 
-                // Loop over each paper in that year
                 yearData.papers.forEach(paper => {
                     html += `<li><a href="${paper.url}" target="_blank">${paper.subject}</a></li>`;
                 });
                 
-                html += `</ul></div>`; // Close pyq-year-block
+                html += `</ul></div>`;
             });
 
-            html += `</div>`; // Close pyq-container
+            html += `</div>`;
         }
         
         // --- (End of HTML Building) ---
         resourcesTab.innerHTML = html;
+
+        // NEW LOGIC: Update the total video count in the database
+        const userId = localStorage.getItem('userId');
+        if (userId && totalVideos > 0) {
+            fetch(`http://localhost:8080/api/progress/update/${userId}?totalVideos=${totalVideos}`, {
+                method: 'POST'
+            }).catch(error => console.error('Error setting total videos:', error));
+        }
 
     } else {
         // We don't have data for this user's exam.
@@ -385,9 +426,8 @@ function loadDynamicResources() {
     }
 }
 
-/* --- 4. DYNAMIC WEIGHTAGE CHART FUNCTION --- */
-/* (Add this after your loadDynamicResources function) */
 
+/* --- 4. DYNAMIC WEIGHTAGE CHART FUNCTION --- */
 function loadDynamicWeightage() {
     // 1. Find the weightage tab
     const weightageTab = document.getElementById('weightage');
@@ -454,7 +494,57 @@ function loadDynamicWeightage() {
         `;
     }
 }
-/* --- 3. MAIN SCRIPT LOGIC (Runs after page loads) --- */
+
+/* --- NEW: PROGRESS TRACKER FUNCTIONALITY --- */
+async function loadProgress() {
+    const userId = localStorage.getItem('userId');
+    if (!userId) return;
+
+    try {
+        // Fetch the progress data from the backend
+        const response = await fetch(`http://localhost:8080/api/progress/${userId}`);
+        if (!response.ok) throw new Error('Failed to fetch progress');
+
+        const progressData = await response.json();
+        
+        const videosWatched = progressData.videosWatched || 0;
+        const quizzesTaken = progressData.quizzesTaken || 0;
+        const totalVideos = progressData.totalVideosAvailable || 1; // Avoid division by zero
+        
+        // --- 1. Update Progress Pie Chart (Videos Watched) ---
+        const progressPercentage = Math.min(100, Math.round((videosWatched / totalVideos) * 100));
+        
+        const progressValueElement = document.getElementById('progressValue');
+        const progressPieElement = progressValueElement ? progressValueElement.parentElement : null;
+
+        if (progressPieElement && progressValueElement) {
+            progressPieElement.style.setProperty('--progress', progressPercentage);
+            progressValueElement.innerText = `${progressPercentage}%`;
+        }
+
+        // --- 2. Update Quiz Bar ---
+        const totalQuizzesGoal = 5; // Fixed goal for progress bar display
+        const quizBarPercentage = Math.min(100, Math.round((quizzesTaken / totalQuizzesGoal) * 100));
+
+        const quizBarElement = document.getElementById('quizBar');
+        const quizStatsElement = document.getElementById('quizStats');
+
+        if (quizBarElement && quizStatsElement) {
+            // Note: The fill element should read the variable for animation in CSS
+            quizBarElement.style.setProperty('--progress', quizBarPercentage); 
+            quizStatsElement.innerText = `${quizzesTaken} / ${totalQuizzesGoal} Quizzes`;
+        }
+
+
+    } catch (error) {
+        console.error('Progress loading error:', error);
+    }
+}
+
+
+// =========================================================
+// 3. MAIN SCRIPT LOGIC (MUST remain inside DOMContentLoaded)
+// =========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -465,7 +555,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileIsSet = localStorage.getItem('profileSetupComplete');
 
     if (!profileIsSet) {
+        // Ensure modal is visible if profile isn't set
         modal.style.display = 'flex';
+    } else {
+        // If profile is set, ensure modal is hidden
+        modal.style.display = 'none';
     }
 
     // Add listener for when the setup form is submitted
@@ -485,13 +579,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hide the modal
         modal.style.display = 'none';
 
-        // Load resources *immediately* after user saves profile
+        // Load content immediately after user saves profile
         loadDynamicResources();
         loadDynamicWeightage(); 
+        loadProgress(); 
     });
 
 
-    // --- 2. DASHBOARD TAB NAVIGATION LOGIC ---
+    // --- 2. DASHBOARD TAB NAVIGATION LOGIC (Unchanged) ---
 
     const navLinks = document.querySelectorAll('.dashboard-nav a');
     const tabPanes = document.querySelectorAll('.dashboard-tab-content .tab-pane');
@@ -514,11 +609,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Load resources for the user *as soon as the page loads*
+    // Load content for the user *as soon as the page loads*
     loadDynamicResources();
+    loadDynamicWeightage(); 
+    loadProgress(); 
+
     
-    
-    // --- 3. AI STUDY PLAN LOGIC ---
+    // --- 3. AI STUDY PLAN LOGIC (Unchanged) ---
     const generateBtn = document.getElementById('generate-plan-btn');
     const planContent = document.getElementById('plan-content');
     const planLoading = document.getElementById('plan-loading');
@@ -563,7 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-    // --- 4. AI QUIZ GENERATION LOGIC ---
+    // --- 4. AI QUIZ GENERATION LOGIC (Modified checkAnswers to update progress) ---
 
     const quizForm = document.getElementById('quiz-setup-form');
     const quizContent = document.getElementById('quiz-content');
@@ -615,7 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // This function builds the HTML for the quiz
+    // This function builds the HTML for the quiz (unchanged)
     function buildQuiz(quizData) {
         quizData.forEach((questionData, index) => {
             const questionElement = document.createElement('div');
@@ -669,6 +766,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 score++;
             }
         });
+
+        // NEW LOGIC: Ping backend to increment quizzesTaken counter
+        const userId = localStorage.getItem('userId');
+        if (userId) {
+            fetch(`http://localhost:8080/api/progress/update/${userId}?type=quiz`, {
+                method: 'POST'
+            }).then(() => {
+                // After successful update, refresh the progress stats
+                loadProgress();
+            }).catch(error => console.error('Error updating quiz progress:', error));
+        }
 
         // Display the results
         quizResults.innerHTML = `
