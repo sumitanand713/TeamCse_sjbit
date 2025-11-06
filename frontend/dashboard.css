@@ -687,3 +687,55 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
+
+/* --- 10. PYQ (Previous Year Questions) STYLES --- */
+
+.pyq-container {
+    display: grid;
+    /* Responsive grid, 2, 3, or 4 cards per row */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.pyq-year-block {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.pyq-year-block h3 {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.pyq-paper-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.pyq-paper-list li a {
+    display: block;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-color);
+    background-color: #f8f9fa;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.pyq-paper-list li a:hover {
+    background-color: #e6f2ff;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateX(3px);
+}

@@ -1,6 +1,4 @@
-/* --- 1. YOUR NEW RESOURCE DATABASE --- */
-/* (This stays at the top, in the global scope) */
-    /* --- 1. YOUR NEW RESOURCE DATABASE (Converted to Search Queries) --- */
+/* --- 1. YOUR NEW RESOURCE DATABASE (with Video URLs + PYQs) --- */
 const resourcesByExam = {
 
     // --- School ---
@@ -8,41 +6,51 @@ const resourcesByExam = {
         title: "Class 10 Boards",
         subjects: {
             "Science": [
-                { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", query: "Physics Wallah Life Processes One Shot" },
-                { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", query: "Vedantu Light Reflection & Refraction Full Chapter" },
-                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", query: "Dear Sir Acids Bases & Salts 20 Min Revision" }
+                { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", url: "#" },
+                { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", url: "#" },
+                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "#" }
             ],
             "Maths": [
-                { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", query: "Dear Sir Real Numbers Full Chapter" },
-                { title: "Trigonometry - All Concepts", channel: "Magnet Brains", duration: "2:50:00", difficulty: "Medium", query: "Magnet Brains Trigonometry All Concepts" },
-                { title: "Circles - All Theorems", channel: "Vedantu", duration: "1:05:10", difficulty: "Hard", query: "Vedantu Circles All Theorems" }
+                { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", url: "#" },
+                { title: "Trigonometry - All Concepts", channel: "Magnet Brains", duration: "2:50:00", difficulty: "Medium", url: "#" },
+                { title: "Circles - All Theorems", channel: "Vedantu", duration: "1:05:10", difficulty: "Hard", url: "#" }
             ],
             "Social Science": [
-                { title: "Nationalism in India - One Shot", channel: "Digraj Singh Rajput", duration: "1:30:00", difficulty: "Medium", query: "Digraj Singh Rajput Nationalism in India One Shot" },
-                { title: "Power Sharing - Full Chapter", channel: "Magnet Brains", duration: "0:45:10", difficulty: "Easy", query: "Magnet Brains Power Sharing Full Chapter" },
-                { title: "Sectors of Indian Economy - One Shot", channel: "Padhle", duration: "1:12:00", difficulty: "Medium", query: "Padhle Sectors of Indian Economy One Shot" }
+                { title: "Nationalism in India - One Shot", channel: "Digraj Singh Rajput", duration: "1:30:00", difficulty: "Medium", url: "#" },
+                { title: "Power Sharing - Full Chapter", channel: "Magnet Brains", duration: "0:45:10", difficulty: "Easy", url: "#" },
+                { title: "Sectors of Indian Economy - One Shot", channel: "Padhle", duration: "1:12:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "Science", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202025/ICSE%2010/Physics%202025.pdf" }, { subject: "Maths", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202025/ICSE%2010/ICSE-10%20Board%20Paper%20Mathematics.pdf" }, { subject: "Computer Application", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202025/ICSE%2010/Computer%20App%202025.pdf" } ] },
+            { year: 2024, papers: [ { subject: "Science", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202024/ICSE%20Class%2010/ICSE%20-%20X%20Physics%20Board%20Paper%202024.pdf" }, { subject: "Maths", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202024/ICSE%20Class%2010/ICSE%20Math-10%20Solved%20Paper-2024.pdf" }, { subject: "Computer Application", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Papers%20Files/CISCE%20Class%2010/ICSE%20X%20Computer%20Paper-2023.pdf" } ] },
+            { year: 2023, papers: [ { subject: "Science", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class10/physics/Solved%20Paper%202023.pdf" }, { subject: "Maths", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class10/mathematics/Solved%20Paper%202023.pdf" }, { subject: "English", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class10/english1/Solved%20Paper%202023.pdf" } ] },
+        ]
     },
     "12th_boards": {
         title: "Class 12 Boards",
         subjects: {
             "Physics": [
-                { title: "Electric Charges & Fields - One Shot", channel: "Physics Wallah", duration: "4:30:10", difficulty: "Medium", query: "Physics Wallah Electric Charges & Fields One Shot" },
-                { title: "Ray Optics - Full Chapter", channel: "Vedantu", duration: "3:15:00", difficulty: "Medium", query: "Vedantu Ray Optics Full Chapter" },
-                { title: "Semiconductors - 1 Hour Revision", channel: "Apni Kaksha", duration: "1:05:00", difficulty: "Hard", query: "Apni Kaksha Semiconductors 1 Hour Revision" }
+                { title: "Electric Charges & Fields - One Shot", channel: "Physics Wallah", duration: "4:30:10", difficulty: "Medium", url: "#" },
+                { title: "Ray Optics - Full Chapter", channel: "Vedantu", duration: "3:15:00", difficulty: "Medium", url: "#" },
+                { title: "Semiconductors - 1 Hour Revision", channel: "Apni Kaksha", duration: "1:05:00", difficulty: "Hard", url: "#" }
             ],
             "Chemistry": [
-                { title: "Solutions - One Shot", channel: "Unacademy", duration: "2:40:00", difficulty: "Medium", query: "Unacademy Solutions One Shot" },
-                { title: "Electrochemistry - Full Chapter", channel: "Physics Wallah", duration: "3:10:20", difficulty: "Medium", query: "Physics Wallah Electrochemistry Full Chapter" },
-                { title: "Haloalkanes & Haloarenes - One Shot", channel: "Vedantu", duration: "2:55:00", difficulty: "Hard", query: "Vedantu Haloalkanes & Haloarenes One Shot" }
+                { title: "Solutions - One Shot", channel: "Unacademy", duration: "2:40:00", difficulty: "Medium", url: "#" },
+                { title: "Electrochemistry - Full Chapter", channel: "Physics Wallah", duration: "3:10:20", difficulty: "Medium", url: "#" },
+                { title: "Haloalkanes & Haloarenes - One Shot", channel: "Vedantu", duration: "2:55:00", difficulty: "Hard", url: "#" }
             ],
             "Maths": [
-                { title: "Matrices & Determinants - One Shot", channel: "Neha Agrawal", duration: "2:18:00", difficulty: "Easy", query: "Neha Agrawal Matrices & Determinants One Shot" },
-                { title: "Integration - Full Chapter", channel: "Apni Kaksha", duration: "5:30:00", difficulty: "Hard", query: "Apni Kaksha Integration Full Chapter" },
-                { title: "3D Geometry - Complete Chapter", channel: "Vedantu", duration: "2:45:00", difficulty: "Medium", query: "Vedantu 3D Geometry Complete Chapter" }
+                { title: "Matrices & Determinants - One Shot", channel: "Neha Agrawal", duration: "2:18:00", difficulty: "Easy", url: "#" },
+                { title: "Integration - Full Chapter", channel: "Apni Kaksha", duration: "5:30:00", difficulty: "Hard", url: "#" },
+                { title: "3D Geometry - Complete Chapter", channel: "Vedantu", duration: "2:45:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "English", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202025/ISC%2012/English%20Paper%201.pdf" }, { subject: "Chemistry", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202025/ISC%2012/Che%202025.pdf" }, { subject: "Maths", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202025/ISC%2012/Math%202025.pdf" } ] },
+            { year: 2024, papers: [ { subject: "English", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202024/ISC%20Class%2012/ISC%20XII%20English%20Paper-1%20Paper.pdf" }, { subject: "Chemistry", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202024/ISC%20Class%2012/ISC%20Chemistry%2012th%20Solved%20Paper-2024.pdf" }, { subject: "Maths", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/Latest%20Board%20Paper%202025/ISC%2012/Math%202025.pdf" } ] },
+            { year: 2023, papers: [ { subject: "English", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class12/English-I/English-1%20PY%202023.pdf" }, { subject: "Chemistry", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class12/Chemistry/Chemistry%20FY%202023.pdf" }, { subject: "Maths", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class12/Mathematics/Maths%20PY%202023.pdf" } ] },
+        ]
     },
 
     // --- Undergraduate ---
@@ -50,61 +58,79 @@ const resourcesByExam = {
         title: "IIT-JEE",
         subjects: {
             "Physics": [
-                { title: "Rotation - JEE Advanced", channel: "Physics Galaxy", duration: "5:10:45", difficulty: "Hard", query: "Physics Galaxy Rotation JEE Advanced" },
-                { title: "Modern Physics - JEE Mains One Shot", channel: "Unacademy JEE", duration: "3:20:00", difficulty: "Medium", query: "Unacademy JEE Modern Physics One Shot" },
-                { title: "Units & Dimensions - Full Chapter", channel: "Physics Wallah", duration: "1:30:00", difficulty: "Easy", query: "Physics Wallah JEE Units & Dimensions Full Chapter" }
+                { title: "Rotation - JEE Advanced", channel: "Physics Galaxy", duration: "5:10:45", difficulty: "Hard", url: "#" },
+                { title: "Modern Physics - JEE Mains One Shot", channel: "Unacademy JEE", duration: "3:20:00", difficulty: "Medium", url: "#" },
+                { title: "Units & Dimensions - Full Chapter", channel: "Physics Wallah", duration: "1:30:00", difficulty: "Easy", url: "#" }
             ],
             "Chemistry": [
-                { title: "Chemical Bonding - One Shot", channel: "Physics Wallah", duration: "4:05:10", difficulty: "Medium", query: "Physics Wallah JEE Chemical Bonding One Shot" },
-                { title: "GOC - General Organic Chemistry", channel: "Unacademy JEE", duration: "6:15:00", difficulty: "Hard", query: "Unacademy JEE GOC General Organic Chemistry" },
-                { title: "Mole Concept - Basic to Advanced", channel: "Apni Kaksha", duration: "3:00:00", difficulty: "Easy", query: "Apni Kaksha JEE Mole Concept" }
+                { title: "Chemical Bonding - One Shot", channel: "Physics Wallah", duration: "4:05:10", difficulty: "Medium", url: "#" },
+                { title: "GOC - General Organic Chemistry", channel: "Unacademy JEE", duration: "6:15:00", difficulty: "Hard", url: "#" },
+                { title: "Mole Concept - Basic to Advanced", channel: "Apni Kaksha", duration: "3:00:00", difficulty: "Easy", url: "#" }
             ],
             "Maths": [
-                { title: "Calculus - Full Marathon", channel: "Vedantu JEE", duration: "8:30:00", difficulty: "Hard", query: "Vedantu JEE Calculus Marathon" },
-                { title: "Conic Sections - One Shot", channel: "Unacademy JEE", duration: "4:12:00", difficulty: "Medium", query: "Unacademy JEE Conic Sections One Shot" },
-                { title: "Permutations & Combinations", channel: "Apni Kaksha", duration: "2:45:00", difficulty: "Medium", query: "Apni Kaksha JEE Permutations & Combinations" }
+                { title: "Calculus - Full Marathon", channel: "Vedantu JEE", duration: "8:30:00", difficulty: "Hard", url: "#" },
+                { title: "Conic Sections - One Shot", channel: "Unacademy JEE", duration: "4:12:00", difficulty: "Medium", url: "#" },
+                { title: "Permutations & Combinations", channel: "Apni Kaksha", duration: "2:45:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [  { subject: "JEE Mains (Jan)", url: "#" }, { subject: "JEE Mains (Apr)", url: "#" } ] },
+            { year: 2024, papers: [  { subject: "JEE Mains (Jan)", url: "#" }, { subject: "JEE Mains (Apr)", url: "#" } ] },
+            { year: 2023, papers: [  { subject: "JEE Mains (Jan)", url: "#" }, { subject: "JEE Mains (Apr)", url: "#" } ] },
+            { year: 2022, papers: [  { subject: "JEE Mains (Jan)", url: "#" }, { subject: "JEE Mains (Apr)", url: "#" } ] }
+        ]
     },
     "neet": {
         title: "NEET (Medical)",
         subjects: {
             "Biology": [
-                { title: "Human Physiology - One Shot", channel: "Unacademy NEET", duration: "10:15:30", difficulty: "Hard", query: "Unacademy NEET Human Physiology One Shot" },
-                { title: "Genetics & Evolution - Full Unit", channel: "Physics Wallah", duration: "7:45:00", difficulty: "Medium", query: "Physics Wallah NEET Genetics & Evolution" },
-                { title: "Plant Kingdom - 30 Min Revision", channel: "Vedantu", duration: "0:30:00", difficulty: "Easy", query: "Vedantu NEET Plant Kingdom 30 Min Revision" }
+                { title: "Human Physiology - One Shot", channel: "Unacademy NEET", duration: "10:15:30", difficulty: "Hard", url: "#" },
+                { title: "Genetics & Evolution - Full Unit", channel: "Physics Wallah", duration: "7:45:00", difficulty: "Medium", url: "#" },
+                { title: "Plant Kingdom - 30 Min Revision", channel: "Vedantu", duration: "0:30:00", difficulty: "Easy", url: "#" }
             ],
             "Physics": [
-                { title: "NEET Physics - Full Syllabus Marathon", channel: "Physics Wallah", duration: "12:00:00", difficulty: "Medium", query: "Physics Wallah NEET Physics Full Syllabus Marathon" },
-                { title: "Current Electricity - NEET", channel: "Unacademy NEET", duration: "3:10:00", difficulty: "Medium", query: "Unacademy NEET Current Electricity" },
-                { title: "Laws of Motion - Concepts", channel: "Physics Galaxy", duration: "2:20:00", difficulty: "Easy", query: "Physics Galaxy NEET Laws of Motion" }
+                { title: "NEET Physics - Full Syllabus Marathon", channel: "Physics Wallah", duration: "12:00:00", difficulty: "Medium", url: "#" },
+                { title: "Current Electricity - NEET", channel: "Unacademy NEET", duration: "3:10:00", difficulty: "Medium", url: "#" },
+                { title: "Laws of Motion - Concepts", channel: "Physics Galaxy", duration: "2:20:00", difficulty: "Easy", url: "#" }
             ],
             "Chemistry": [
-                { title: "Organic Chemistry - Name Reactions", channel: "Physics Wallah", duration: "4:00:00", difficulty: "Hard", query: "Physics Wallah NEET Organic Chemistry Name Reactions" },
-                { title: "p-Block Elements - One Shot", channel: "Unacademy NEET", duration: "3:30:00", difficulty: "Medium", query: "Unacademy NEET p-Block Elements One Shot" },
-                { title: "Atomic Structure - Full Chapter", channel: "Vedantu NEET", duration: "2:40:00", difficulty: "Easy", query: "Vedantu NEET Atomic Structure Full Chapter" }
+                { title: "Organic Chemistry - Name Reactions", channel: "Physics Wallah", duration: "4:00:00", difficulty: "Hard", url: "#" },
+                { title: "p-Block Elements - One Shot", channel: "Unacademy NEET", duration: "3:30:00", difficulty: "Medium", url: "#" },
+                { title: "Atomic Structure - Full Chapter", channel: "Vedantu NEET", duration: "2:40:00", difficulty: "Easy", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "NEET Paper", url: "#" } ] },
+            { year: 2024, papers: [ { subject: "NEET Paper", url: "#" } ] },
+            { year: 2023, papers: [ { subject: "NEET Paper", url: "#" } ] },
+            { year: 2022, papers: [ { subject: "NEET Paper", url: "#" } ] }
+        ]
     },
     "clat": {
         title: "CLAT (Law)",
         subjects: {
             "Legal Reasoning": [
-                { title: "Introduction to Legal Reasoning", channel: "LegalEdge", duration: "1:05:00", difficulty: "Easy", query: "LegalEdge Introduction to Legal Reasoning" },
-                { title: "Law of Torts - Full Basics", channel: "Unacademy Law", duration: "2:15:00", difficulty: "Medium", query: "Unacademy Law Law of Torts" },
-                { title: "How to Read Legal Passages", channel: "LegalEdge", duration: "0:45:00", difficulty: "Medium", query: "LegalEdge How to Read Legal Passages" }
+                { title: "Introduction to Legal Reasoning", channel: "LegalEdge", duration: "1:05:00", difficulty: "Easy", url: "#" },
+                { title: "Law of Torts - Full Basics", channel: "Unacademy Law", duration: "2:15:00", difficulty: "Medium", url: "#" },
+                { title: "How to Read Legal Passages", channel: "LegalEdge", duration: "0:45:00", difficulty: "Medium", url: "#" }
             ],
             "Logical Reasoning": [
-                { title: "Critical Reasoning - Assumptions", channel: "Unacademy Law", duration: "1:30:00", difficulty: "Medium", query: "Unacademy Law Critical Reasoning Assumptions" },
-                { title: "Syllogisms - Tricks", channel: "LegalEdge", duration: "0:50:00", difficulty: "Easy", query: "LegalEdge CLAT Syllogisms Tricks" },
-                { title: "Para-Jumbles - Full Strategy", channel: "CLAT Gurukul", duration: "1:10:00", difficulty: "Hard", query: "CLAT Gurukul Para-Jumbles Strategy" }
+                { title: "Critical Reasoning - Assumptions", channel: "Unacademy Law", duration: "1:30:00", difficulty: "Medium", url: "#" },
+                { title: "Syllogisms - Tricks", channel: "LegalEdge", duration: "0:50:00", difficulty: "Easy", url: "#" },
+                { title: "Para-Jumbles - Full Strategy", channel: "CLAT Gurukul", duration: "1:10:00", difficulty: "Hard", url: "#" }
             ],
             "Quantitative Techniques": [
-                { title: "Data Interpretation for CLAT", channel: "LegalEdge", duration: "1:25:00", difficulty: "Medium", query: "LegalEdge Data Interpretation for CLAT" },
-                { title: "Percentage & Ratios", channel: "Unacademy Law", duration: "2:00:00", difficulty: "Easy", query: "Unacademy Law CLAT Percentage & Ratios" },
-                { title: "Averages & Mixtures", channel: "CLAT Gurukul", duration: "1:15:00", difficulty: "Medium", query: "CLAT Gurukul Averages & Mixtures" }
+                { title: "Data Interpretation for CLAT", channel: "LegalEdge", duration: "1:25:00", difficulty: "Medium", url: "#" },
+                { title: "Percentage & Ratios", channel: "Unacademy Law", duration: "2:00:00", difficulty: "Easy", url: "#" },
+                { title: "Averages & Mixtures", channel: "CLAT Gurukul", duration: "1:15:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "CLAT Paper", url: "#" } ] },
+            { year: 2024, papers: [ { subject: "CLAT Paper", url: "#" } ] },
+            { year: 2023, papers: [ { subject: "CLAT Paper", url: "#" } ] },
+            { year: 2022, papers: [ { subject: "CLAT Paper", url: "#" } ] }
+        ]
     },
 
     // --- Graduate ---
@@ -112,51 +138,65 @@ const resourcesByExam = {
         title: "CAT (MBA)",
         subjects: {
             "Quantitative Aptitude": [
-                { title: "Arithmetic - One Shot Marathon", channel: "Unacademy CAT", duration: "6:30:00", difficulty: "Medium", query: "Unacademy CAT Arithmetic Marathon" },
-                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", query: "Rodha CAT Algebra Basics" },
-                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", query: "Elites Grid CAT Geometry & Mensuration" }
+                { title: "Arithmetic - One Shot Marathon", channel: "Unacademy CAT", duration: "6:30:00", difficulty: "Medium", url: "#" },
+                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", url: "#" },
+                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", url: "#" }
             ],
             "LRDI": [
-                { title: "Arrangements - Complete Set", channel: "Elites Grid", duration: "2:45:00", difficulty: "Hard", query: "Elites Grid LRDI Arrangements" },
-                { title: "Games & Tournaments", channel: "Rodha", duration: "1:50:00", difficulty: "Hard", query: "Rodha LRDI Games & Tournaments" },
-                { title: "Venn Diagrams - 3 Sets", channel: "Unacademy CAT", duration: "1:30:00", difficulty: "Easy", query: "Unacademy CAT LRDI Venn Diagrams 3 Sets" }
+                { title: "Arrangements - Complete Set", channel: "Elites Grid", duration: "2:45:00", difficulty: "Hard", url: "#" },
+                { title: "Games & Tournaments", channel: "Rodha", duration: "1:50:00", difficulty: "Hard", url: "#" },
+                { title: "Venn Diagrams - 3 Sets", channel: "Unacademy CAT", duration: "1:30:00", difficulty: "Easy", url: "#" }
             ],
             "VARC": [
-                { title: "Reading Comprehension Strategy", channel: "VARC 100", duration: "0:55:00", difficulty: "Medium", query: "VARC 100 Reading Comprehension Strategy" },
-                { title: "Para Jumbles - 5 Easy Tricks", channel: "Elites Grid", duration: "1:10:00", difficulty: "Easy", query: "Elites Grid VARC Para Jumbles Tricks" },
-                { title: "Summary of Passages", channel: "Unacademy CAT", duration: "1:20:00", difficulty: "Medium", query: "Unacademy CAT VARC Summary of Passages" }
+                { title: "Reading Comprehension Strategy", channel: "VARC 100", duration: "0:55:00", difficulty: "Medium", url: "#" },
+                { title: "Para Jumbles - 5 Easy Tricks", channel: "Elites Grid", duration: "1:10:00", difficulty: "Easy", url: "#" },
+                { title: "Summary of Passages", channel: "Unacademy CAT", duration: "1:20:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2024, papers: [ { subject: "CAT Slot 1", url: "#" }, { subject: "CAT Slot 2", url: "#" }, { subject: "CAT Slot 3", url: "#" } ] },
+            { year: 2023, papers: [ { subject: "CAT Slot 1", url: "#" }, { subject: "CAT Slot 2", url: "#" }, { subject: "CAT Slot 3", url: "#" } ] },
+            { year: 2022, papers: [ { subject: "CAT Slot 1", url: "#" }, { subject: "CAT Slot 2", url: "#" }, { subject: "CAT Slot 3", url: "#" } ] }
+        ]
     },
     "gate": {
         title: "GATE (M.Tech)",
         subjects: {
             "Computer Science": [
-                { title: "Theory of Computation - Full Course", channel: "Unacademy", duration: "10:30:00", difficulty: "Hard", query: "Unacademy GATE Theory of Computation" },
-                { title: "Database Management (DBMS) - One Shot", channel: "Gate Smashers", duration: "5:15:00", difficulty: "Medium", query: "Gate Smashers DBMS One Shot" },
-                { title: "Data Structures - Full Course", channel: "Jenny's Lectures", duration: "8:00:00", difficulty: "Medium", query: "Jenny's Lectures Data Structures Full Course" }
+                { title: "Theory of Computation - Full Course", channel: "Unacademy", duration: "10:30:00", difficulty: "Hard", url: "#" },
+                { title: "Database Management (DBMS) - One Shot", channel: "Gate Smashers", duration: "5:15:00", difficulty: "Medium", url: "#" },
+                { title: "Data Structures - Full Course", channel: "Jenny's Lectures", duration: "8:00:00", difficulty: "Medium", url: "#" }
             ],
             "General Aptitude": [
-                { title: "Quantitative Aptitude - Full Course", channel: "Unacademy", duration: "6:45:00", difficulty: "Easy", query: "Unacademy GATE General Aptitude Quantitative" },
-                { title: "Verbal Ability for GATE", channel: "Gate Smashers", duration: "2:10:00", difficulty: "Easy", query: "Gate Smashers GATE Verbal Ability" },
-                { title: "Logical Reasoning - Full", channel: "Jenny's Lectures", duration: "3:00:00", difficulty: "Medium", query: "Jenny's Lectures GATE Logical Reasoning" }
+                { title: "Quantitative Aptitude - Full Course", channel: "Unacademy", duration: "6:45:00", difficulty: "Easy", url: "#" },
+                { title: "Verbal Ability for GATE", channel: "Gate Smashers", duration: "2:10:00", difficulty: "Easy", url: "#" },
+                { title: "Logical Reasoning - Full", channel: "Jenny's Lectures", duration: "3:00:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "CS Paper", url: "#" }, { subject: "ME Paper", url: "#" }, { subject: "EE Paper", url: "#" } ] },
+            { year: 2024, papers: [ { subject: "CS Paper", url: "#" }, { subject: "ME Paper", url: "#" }, { subject: "EE Paper", url: "#" } ] },
+            { year: 2023, papers: [ { subject: "CS Paper", url: "#" }, { subject: "ME Paper", url: "#" }, { subject: "EE Paper", url: "#" } ] }
+        ]
     },
     "gre": {
         title: "GRE (International)",
         subjects: {
             "Quant": [
-                { title: "GRE Quant - Full Course", channel: "Magoosh", duration: "4:30:00", difficulty: "Medium", query: "Magoosh GRE Quant Full Course" },
-                { title: "Data Interpretation Strategies", channel: "GregMat", duration: "1:15:00", difficulty: "Medium", query: "GregMat GRE Data Interpretation" },
-                { title: "Permutations & Combinations", channel: "The Organic Chemistry Tutor", duration: "1:10:00", difficulty: "Hard", query: "The Organic Chemistry Tutor GRE Permutations & Combinations" }
+                { title: "GRE Quant - Full Course", channel: "Magoosh", duration: "4:30:00", difficulty: "Medium", url: "#" },
+                { title: "Data Interpretation Strategies", channel: "GregMat", duration: "1:15:00", difficulty: "Medium", url: "#" },
+                { title: "Permutations & Combinations", channel: "The Organic Chemistry Tutor", duration: "1:10:00", difficulty: "Hard", url: "#" }
             ],
             "Verbal": [
-                { title: "Reading Comprehension - Strategy", channel: "GregMat", duration: "1:00:00", difficulty: "Hard", query: "GregMat GRE Reading Comprehension Strategy" },
-                { title: "Text Completion - 5 Tips", channel: "Magoosh", duration: "0:25:00", difficulty: "Medium", query: "Magoosh GRE Text Completion Tips" },
-                { title: "AWA Essay Writing Guide", channel: "GregMat", duration: "0:50:00", difficulty: "Medium", query: "GregMat GRE AWA Essay Guide" }
+                { title: "Reading Comprehension - Strategy", channel: "GregMat", duration: "1:00:00", difficulty: "Hard", url: "#" },
+                { title: "Text Completion - 5 Tips", channel: "Magoosh", duration: "0:25:00", difficulty: "Medium", url: "#" },
+                { title: "AWA Essay Writing Guide", channel: "GregMat", duration: "0:50:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] },
+            { year: 2024, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] }
+        ]
     },
 
     // --- Post Graduate / Professional ---
@@ -164,74 +204,89 @@ const resourcesByExam = {
         title: "UPSC (Civil Services)",
         subjects: {
             "Polity": [
-                { title: "Laxmikanth - Full Marathon", channel: "Study IQ", duration: "11:00:00", difficulty: "Medium", query: "Study IQ Laxmikanth Marathon" },
-                { title: "Parliament of India - All Details", channel: "Drishti IAS", duration: "1:45:00", difficulty: "Medium", query: "Drishti IAS Parliament of India" },
-                { title: "Fundamental Rights - In-Depth", channel: "Unacademy", duration: "2:10:00", difficulty: "Easy", query: "Unacademy UPSC Fundamental Rights" }
+                { title: "Laxmikanth - Full Marathon", channel: "Study IQ", duration: "11:00:00", difficulty: "Medium", url: "#" },
+                { title: "Parliament of India - All Details", channel: "Drishti IAS", duration: "1:45:00", difficulty: "Medium", url: "#" },
+                { title: "Fundamental Rights - In-Depth", channel: "Unacademy", duration: "2:10:00", difficulty: "Easy", url: "#" }
             ],
             "History": [
-                { title: "Modern History - Spectrum One Shot", channel: "Study IQ", duration: "9:30:00", difficulty: "Medium", query: "Study IQ Spectrum One Shot" },
-                { title: "Ancient History - Full", channel: "Drishti IAS", duration: "6:15:00", difficulty: "Medium", query: "Drishti IAS Ancient History" },
-                { title: "Art & Culture - Nitin Singhania", channel: "Unacademy", duration: "4:00:00", difficulty: "Hard", query: "Unacademy UPSC Art & Culture Nitin Singhania" }
+                { title: "Modern History - Spectrum One Shot", channel: "Study IQ", duration: "9:30:00", difficulty: "Medium", url: "#" },
+                { title: "Ancient History - Full", channel: "Drishti IAS", duration: "6:15:00", difficulty: "Medium", url: "#" },
+                { title: "Art & Culture - Nitin Singhania", channel: "Unacademy", duration: "4:00:00", difficulty: "Hard", url: "#" }
             ],
             "Economy": [
-                { title: "Indian Economy - Full Syllabus", channel: "Mrunal Patel", duration: "15:00:00", difficulty: "Hard", query: "Mrunal Patel UPSC Indian Economy" },
-                { title: "Budget 2025 Analysis", channel: "Drishti IAS", duration: "1:30:00", difficulty: "Easy", query: "Drishti IAS Budget Analysis" },
-                { title: "Banking & Monetary Policy", channel: "Study IQ", duration: "2:20:00", difficulty: "Medium", query: "Study IQ Banking & Monetary Policy" }
+                { title: "Indian Economy - Full Syllabus", channel: "Mrunal Patel", duration: "15:00:00", difficulty: "Hard", url: "#" },
+                { title: "Budget 2025 Analysis", channel: "Drishti IAS", duration: "1:30:00", difficulty: "Easy", url: "#" },
+                { title: "Banking & Monetary Policy", channel: "Study IQ", duration: "2:20:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "Prelims GS", url: "#" }, { subject: "Prelims CSAT", url: "#" }, { subject: "Mains GS I", url: "#" } ] },
+            { year: 2024, papers: [ { subject: "Prelims GS", url: "#" }, { subject: "Prelims CSAT", url: "#" }, { subject: "Mains GS I", url: "#" } ] },
+            { year: 2023, papers: [ { subject: "Prelims GS", url: "#" }, { subject: "Prelims CSAT", url: "#" }, { subject: "Mains GS I", url: "#" } ] },
+            { year: 2022, papers: [ { subject: "Prelims GS", url: "#" }, { subject: "Prelims CSAT", url: "#" }, { subject: "Mains GS I", url: "#" } ] }
+        ]
     },
     "net": {
         title: "UGC-NET (Professor)",
         subjects: {
             "Paper 1 - Teaching Aptitude": [
-                { title: "Teaching Aptitude - Full Course", channel: "Unacademy", duration: "5:30:00", difficulty: "Medium", query: "Unacademy UGC NET Teaching Aptitude Full Course" },
-                { title: "Methods of Teaching", channel: "BYJU's", duration: "1:10:00", difficulty: "Easy", query: "BYJU's UGC NET Methods of Teaching" },
-                { title: "Evaluation Systems", channel: "GradeUp", duration: "0:45:00", difficulty: "Medium", query: "GradeUp UGC NET Evaluation Systems" }
+                { title: "Teaching Aptitude - Full Course", channel: "Unacademy", duration: "5:30:00", difficulty: "Medium", url: "#" },
+                { title: "Methods of Teaching", channel: "BYJU's", duration: "1:10:00", difficulty: "Easy", url: "#" },
+                { title: "Evaluation Systems", channel: "GradeUp", duration: "0:45:00", difficulty: "Medium", url: "#" }
             ],
             "Paper 1 - Research Aptitude": [
-                { title: "Research Aptitude - One Shot", channel: "Unacademy", duration: "3:15:00", difficulty: "Medium", query: "Unacademy UGC NET Research Aptitude One Shot" },
-                { title: "Types of Research", channel: "BYJU's", duration: "1:00:00", difficulty: "Easy", query: "BYJU's UGC NET Types of Research" },
-                { title: "Hypothesis Testing", channel: "GradeUp", duration: "0:50:00", difficulty: "Hard", query: "GradeUp UGC NET Hypothesis Testing" }
+                { title: "Research Aptitude - One Shot", channel: "Unacademy", duration: "3:15:00", difficulty: "Medium", url: "#" },
+                { title: "Types of Research", channel: "BYJU's", duration: "1:00:00", difficulty: "Easy", url: "#" },
+                { title: "Hypothesis Testing", channel: "GradeUp", duration: "0:50:00", difficulty: "Hard", url: "#" }
             ],
             "Paper 1 - Communication": [
-                { title: "Communication - Full Unit", channel: "Unacademy", duration: "2:40:00", difficulty: "Medium", query: "Unacademy UGC NET Communication Full Unit" },
-                { title: "Barriers to Communication", channel: "BYJU's", duration: "0:40:00", difficulty: "Easy", query: "BYJU's UGC NET Barriers to Communication" },
-                { title: "Mass Media & Society", channel: "GradeUp", duration: "1:05:00", difficulty: "Medium", query: "GradeUp UGC NET Mass Media & Society" }
+                { title: "Communication - Full Unit", channel: "Unacademy", duration: "2:40:00", difficulty: "Medium", url: "#" },
+                { title: "Barriers to Communication", channel: "BYJU's", duration: "0:40:00", difficulty: "Easy", url: "#" },
+                { title: "Mass Media & Society", channel: "GradeUp", duration: "1:05:00", difficulty: "Medium", url: "#" }
             ]
-        }
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "Paper 1 (June)", url: "#" }, { subject: "Paper 1 (Dec)", url: "#" } ] },
+            { year: 2024, papers: [ { subject: "Paper 1 (June)", url: "#" }, { subject: "Paper 1 (Dec)", url: "#" } ] },
+            { year: 2023, papers: [ { subject: "Paper 1 (June)", url: "#" }, { subject: "Paper 1 (Dec)", url: "#" } ] },
+            { year: 2022, papers: [ { subject: "Paper 1 (June)", url: "#" }, { subject: "Paper 1 (Dec)", url: "#" } ] }
+        ]
     }
 };
 
 
-/* --- 2. DYNAMIC RESOURCE LOADING FUNCTION --- */
-/* (This also stays in the global scope) */
+/* --- 2. DYNAMIC RESOURCE LOADING FUNCTION (Reads Video URLs + PYQs) --- */
+/* (This goes *after* the database object, in the global scope) */
 
 function loadDynamicResources() {
     // 1. Find the resources tab
     const resourcesTab = document.getElementById('resources');
     
     // 2. Get the user's SELECTED EXAM
-    const userExam = localStorage.getItem('userExam'); // <-- The NEW key
+    const userExam = localStorage.getItem('userExam');
     
     // 3. Find the resources for that exam from our new database
     const examData = resourcesByExam[userExam];
 
     // 4. Check if we have resources for this user's exam
     if (examData) {
-        // We have data! Build the new card-based HTML
+        // --- (Start of HTML Building) ---
         let html = `<h1>Resources for ${examData.title}</h1>`;
-        html += '<p>Curated video resources to help you prepare.</p>';
+        html += '<p>Curated materials to help you prepare.</p>';
 
-        // Loop over each SUBJECT
+        // --- (A) Build Video Section ---
+        html += `<h2 class="subject-header">Video Lessons</h2>`;
+        html += '<div class="video-card-container">';
+        
         for (const subjectName in examData.subjects) {
-            html += `<h2 class="subject-header">${subjectName}</h2>`;
-            html += '<div class="video-card-container">'; // Container for the cards
-
             const videos = examData.subjects[subjectName];
-
-            // Loop over each VIDEO
+            
             videos.forEach(video => {
                 let difficultyClass = `difficulty-${video.difficulty.toLowerCase()}`;
+                
+                // This is the logic to read the 'url'
+                let videoLink = video.url;
+                
                 html += `
                     <div class="video-card">
                         <h3 class="video-title">${video.title}</h3>
@@ -242,12 +297,36 @@ function loadDynamicResources() {
                                 ${video.difficulty}
                             </span>
                         </div>
-                        <a href="${video.url}" class="video-link" target="_blank">Watch Now</a>
+                        <a href="${videoLink}" class="video-link" target="_blank">Watch Now</a>
                     </div>
                 `;
             });
-            html += '</div>'; // Close video-card-container
         }
+        html += '</div>'; // Close video-card-container
+        
+        // --- (B) Build NEW PYQ Section ---
+        if (examData.pyqs && examData.pyqs.length > 0) {
+            html += `<h2 class="subject-header">Previous Year Questions (PYQs)</h2>`;
+            html += '<div class="pyq-container">'; // A container for all year blocks
+
+            // Loop over each year object (e.g., { year: 2025, ... })
+            examData.pyqs.forEach(yearData => {
+                html += `<div class="pyq-year-block">`;
+                html += `<h3>${yearData.year} Papers</h3>`;
+                html += `<ul class="pyq-paper-list">`;
+                
+                // Loop over each paper in that year
+                yearData.papers.forEach(paper => {
+                    html += `<li><a href="${paper.url}" target="_blank">${paper.subject}</a></li>`;
+                });
+                
+                html += `</ul></div>`; // Close pyq-year-block
+            });
+
+            html += `</div>`; // Close pyq-container
+        }
+        
+        // --- (End of HTML Building) ---
         resourcesTab.innerHTML = html;
 
     } else {
