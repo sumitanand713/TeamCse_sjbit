@@ -109,6 +109,8 @@ function loadDynamicResources() {
     });
 }
 
+/* --- 4. DYNAMIC WEIGHTAGE CHART FUNCTION --- */
+/* (Add this after your loadDynamicResources function) */
 
 /* ---- DASHBOARD STATS LOADER ---- */
 function loadDashboardStats() {
