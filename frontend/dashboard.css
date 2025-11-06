@@ -1,502 +1,689 @@
-/* ======================================== */
-/* 7. NEW: DASHBOARD TAB LAYOUT STYLES      */
-/* ======================================== */
-
-.dashboard-main-content {
-    display: flex;
-    gap: 1.5rem; /* Space between nav and content */
-    padding: 1.5rem;
-    max-width: 1400px; /* Wider for a full dashboard */
-    margin: 8rem auto 2rem auto; /* Clear fixed header */
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --light-bg: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-color: #333;
+    --text-light: #666;
+    --header-height: 60px;
 }
 
-/* 7a. Left-Side Tab Navigation */
-.dashboard-nav {
-    flex: 0 0 240px; /* Nav width: Don't grow, don't shrink, base 240px */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+}
+
+/* --- 1. POP-UP MODAL STYLES --- */
+.modal-overlay {
+    /* Hidden by default, JavaScript will show it */
+    display: none; 
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
     
-    /* REUSE "GLASS CARD" STYLE */
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-    height: fit-content; /* Make it only as tall as its content */
-}
-
-.dashboard-nav ul {
-    list-style: none;
+    /* Flexbox to center the modal content */
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
 }
 
-.dashboard-nav li a {
-    display: block;
-    padding: 1rem;
-    text-decoration: none;
-    color: #3a3a3c;
-    font-weight: 500;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-}
-
-/* Tab Hover Effect */
-.dashboard-nav li a:hover {
-    background: rgba(0, 122, 255, 0.1); /* Light blue */
-    color: #007aff;
-}
-
-/* Active Tab Style */
-.dashboard-nav li a.active {
-    background: #007aff; /* Primary blue */
-    color: white;
-    font-weight: 600;
-}
-
-/* 7b. Right-Side Tab Content Area */
-.dashboard-tab-content {
-    flex: 1; /* Take up all remaining space */
-
-    /* REUSE "GLASS CARD" STYLE */
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.modal-content {
+    background-color: #fff;
     padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
 }
 
-/* 7c. Tab Pane Display Logic */
-.tab-pane {
-    display: none; /* Hide all panes by default */
-    animation: fadeIn 0.5s ease-out forwards; /* Add fade-in */
+.modal-icon {
+    background-color: #e6f2ff;
+    color: var(--primary-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.tab-pane.active {
-    display: block; /* Show only the active one */
+.modal-icon svg {
+    width: 32px;
+    height: 32px;
 }
 
-/* 7d. Content inside tabs */
-.dashboard-tab-content h1 {
-    text-align: left;
-    color: #1c1c1e;
+.modal-content h2 {
     margin-bottom: 0.5rem;
 }
-.dashboard-tab-content p {
-    text-align: left;
-    font-size: 1.1rem;
-    color: #3a3a3c;
+
+.modal-content p {
+    color: var(--text-light);
     margin-bottom: 2rem;
 }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
-}
-
-.stat-card {
-    background: #f0f2f5;
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-}
-.stat-card h3 {
-    color: #6a6a6f;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-.stat-card span {
-    color: #007aff;
-    font-size: 2rem;
-    font-weight: 600;
-}
-
-.subject-list {
-    list-style: none;
-    margin-top: 1rem;
-}
-.subject-list li {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    padding: 1rem;
-    border-radius: 6px;
-}
-.subject-list li:nth-child(odd) {
-    background: #f0f2f5;
-}
-.subject-list li span {
-    color: #3a3a3c;
-}
-
-.resource-section {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e0e0e0;
-}
-.resource-section:first-of-type {
-    border-top: none;
-    margin-top: 0;
-    padding-top: 0;
-}
-.resource-section h2 {
-    text-align: left;
-    color: #007aff;
-    margin-bottom: 0.5rem;
-}
-.resource-section p {
-    font-size: 1rem;
-    margin-bottom: 0;
-}
-
-/* Responsive adjustment for dashboard */
-@media (max-width: 900px) {
-    .dashboard-main-content {
-        flex-direction: column;
-        margin-top: 6rem;
-    }
-    .dashboard-nav {
-        flex: 1; /* Full width */
-        width: 100%;
-    }
-    .dashboard-nav ul {
-        flex-direction: row;
-        overflow-x: auto;
-    }
-    .dashboard-nav li {
-        flex-shrink: 0; /* Prevent tabs from shrinking */
-    }
-}
-/* ======================================== */
-/* 1. GLOBAL & FONT STYLES (FOR ALL PAGES)  */
-/* ======================================== */
-
-/* Apply consistent font and box-sizing to everything */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body, html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    height: 100%;
-    width: 100%;
-    /* This ensures body always has the background */
-    overflow-x: hidden; 
-}
-
-/* Base styles for h2 and p to match login form */
-h2 {
-    text-align: center;
-    color: #1c1c1e;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
-
-p {
-    text-align: center;
-    color: #6a6a6f;
-    margin-bottom: 1.5rem;
-}
-
-/* Base styles for all form groups */
 .input-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .input-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: #3a3a3c;
 }
 
-/* Style for ALL inputs AND selects to match */
-.input-group input[type="email"],
-.input-group input[type="password"],
 .input-group select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #c7c7cc;
-    border-radius: 6px;
-    box-sizing: border-box;
     font-size: 1rem;
-    background-color: #ffffff;
-    
-    /* Custom Dropdown Arrow */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%208l5%205%205-5z%22%20fill%3D%22%236a6a6f%22%2F%3E%3C%2Fsvg%3E');
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 1.2em;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fff;
 }
 
-/* Remove arrow from inputs */
-.input-group input[type="email"],
-.input-group input[type="password"] {
-    background-image: none;
-}
-
-
-/* Style for ALL primary buttons */
-.login-button {
+/* --- Common Button Style --- */
+.login-button { /* Re-using this class from your form */
+    display: inline-block;
     width: 100%;
     padding: 0.85rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #007aff;
-    color: white;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    text-decoration: none;
+    text-align: center;
     transition: background-color 0.2s ease;
 }
 
 .login-button:hover {
-    background-color: #005bb5;
-}
-
-/* ======================================== */
-/* 2. SHARED BACKGROUND (FOR ALL PAGES)     */
-/* ======================================== */
-body {
-    background-image: url('your-background-image.jpg'); /* THE SAME IMAGE */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
+    background-color: var(--primary-hover);
 }
 
 
-/* ======================================== */
-/* 3. LOGIN PAGE STYLES (login.html)        */
-/* ======================================== */
-
-/* Specific layout for the login page */
-.login-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.main-content-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    padding: 20px;
-    max-width: 1200px;
-    width: 90%;
-}
-
-.intro-text-container {
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    flex: 1;
-    padding-right: 2rem;
-    max-width: 500px;
-    transform: translateX(-100%);
-    animation: slideInFromLeft 1.5s ease-out 0.5s forwards;
-}
-.intro-text-container h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
-}
-.intro-text-container p {
-    font-size: 1.5rem;
-    text-align: left;
-    margin-bottom: 0;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* This is the "Glass Card" style we will REUSE */
-.login-container {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    width: 100%;
-    max-width: 400px;
-    
-    /* Animation */
-    opacity: 0;
-    animation: fadeIn 1s ease-out 1.5s forwards;
-}
-
-.login-container .links {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-}
-.login-container .links a {
-    color: #007aff;
-    text-decoration: none;
-}
-.login-container .links a:hover {
-    text-decoration: underline;
-}
-
-.error-message {
-    color: #d93025;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    display: none;
-}
-
-
-/* ======================================== */
-/* 4. DASHBOARD STYLES (dashboard.html)     */
-/* ======================================== */
-
+/* --- 2. STICKY HEADER --- */
 .dashboard-header {
-    width: 100%;
-    padding: 1rem 2rem;
-    /* "Glassmorphism" Header */
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
     z-index: 900;
 }
 
 .header-logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #007aff; /* Primary blue */
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 .logout-button {
     font-size: 0.9rem;
-    color: #007aff;
-    text-decoration: none;
-    font-weight: 500;
-    background: rgba(0, 122, 255, 0.1);
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: #e6f2ff;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
+    border-radius: 20px;
+    text-decoration: none;
     transition: all 0.2s ease;
 }
 
 .logout-button:hover {
-    background: #007aff;
-    color: white;
+    background-color: #d1e7ff;
 }
 
-/* Dashboard content card uses THE SAME STYLE as .login-container */
-.dashboard-container {
-    padding: 2.5rem;
-    max-width: 1200px;
-    margin: 8rem auto 2rem auto; /* Margin-top clears the fixed header */
-    background: rgba(255, 255, 255, 0.95); /* MATCHING! */
-    border-radius: 8px; /* MATCHING! */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* MATCHING! */
 
-    /* Animation */
-    opacity: 0;
-    animation: fadeIn 1s ease-out 0.5s forwards;
+/* --- 3. DASHBOARD MAIN CONTENT --- */
+.dashboard-main-content {
+    display: flex;
+    /* Account for the fixed header */
+    padding-top: var(--header-height); 
 }
 
-.dashboard-container h1 {
-    color: #1c1c1e;
-    text-align: left;
-    margin-bottom: 1rem;
-}
-.dashboard-container p {
-    color: #3a3a3c;
-    text-align: left;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-/* ======================================== */
-/* 5. MODAL STYLES (dashboard.html)         */
-/* ======================================== */
-
-.modal-overlay {
-    display: none; 
+/* --- 3a. Vertical Tab Navigation --- */
+.dashboard-nav {
+    width: 240px;
+    flex-shrink: 0; /* Prevents nav from shrinking */
+    background-color: #fff;
+    border-right: 1px solid var(--border-color);
+    height: calc(100vh - var(--header-height)); /* Full height minus header */
     position: fixed;
-    top: 0;
+    top: var(--header-height);
     left: 0;
-    width: 100%;
-    height: 100%;
-    /* New "Glass" background overlay */
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
+    padding: 1.5rem 0;
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-nav li a {
+    display: block;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    border-left: 3px solid transparent;
+}
+
+.dashboard-nav li a:hover {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+}
+
+.dashboard-nav li a.active {
+    /* This is the active state! */
+    color: var(--primary-color);
+    font-weight: 700;
+    border-left-color: var(--primary-color);
+    background-color: #e6f2ff;
+}
+
+
+/* --- 3b. Tab Content Area --- */
+.dashboard-tab-content {
+    flex-grow: 1; /* Takes up remaining space */
+    /* Account for the fixed nav */
+    margin-left: 240px; 
+    padding: 2rem;
+}
+
+/*
+ * THE MOST IMPORTANT CSS FOR TABS
+ * We hide all panes by default...
+ */
+.tab-pane {
+    display: none;
+}
+/* ...and we only show the one with the 'active' class.
+ * The JavaScript is responsible for adding/removing this class.
+ */
+.tab-pane.active {
+    display: block;
+}
+
+
+/* --- 4. STYLES FOR CONTENT CARDS (Homepage, etc.) --- */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.stat-card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.stat-card h3 {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.stat-card span {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Styles for "Weightage" tab */
+.subject-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+.subject-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.subject-list li:first-child {
+    border-top: 1px solid var(--border-color);
+}
+.subject-list li span {
+    font-weight: 500;
+}
+.subject-list li strong {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+/* Styles for "Resources" tab */
+.resource-section {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.resource-section h2 {
+    margin-bottom: 0.25rem;
+}
+.resource-section p {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* --- 5. NEW CHART & VISUAL STYLES (Add to end of dashboard.css) --- */
+
+/* --- Progress Pie Chart (for Progress Card) --- */
+.progress-pie {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 1rem auto 0;
+    position: relative;
     
-    z-index: 1000;
+    /* The gradient is created from CSS variables.
+     '--progress' is set in the HTML (e.g., style="--progress: 42")
+     '--progress-angle' is calculated here. (42 * 3.6 = 151.2deg)
+    */
+    --progress-angle: calc(var(--progress, 0) * 3.6deg);
+    
+    background: conic-gradient(
+        var(--primary-color) var(--progress-angle),
+        var(--border-color) var(--progress-angle) 360deg
+    );
+    
+    /* This creates the inner "donut" hole */
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Modal content box uses THE SAME STYLE as .login-container */
-.modal-content {
-    background-color: rgba(255, 255, 255, 0.95); /* MATCHING! */
-    padding: 2.5rem;
-    border-radius: 8px; /* MATCHING! */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* MATCHING! */
-    width: 90%;
-    max-width: 500px;
-
-    /* Animation */
-    transform: scale(0.9);
-    opacity: 0;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+.progress-pie::before {
+    content: "";
+    position: absolute;
+    /* Create a hole 10px smaller on all sides */
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: #fff;
+    border-radius: 50%;
 }
 
-/* JS-controlled "show" class */
-.modal-overlay.show {
-    display: flex; 
+.progress-pie-value {
+    position: relative; /* Sits on top of the ::before element */
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
-.modal-overlay.show .modal-content {
-    transform: scale(1);
-    opacity: 1;
+/* --- Progress Bar (for Quiz Card) --- */
+.progress-bar-container {
+    width: 100%;
+    height: 16px;
+    background-color: #f1f1f1; /* Lighter than border-color for background */
+    border-radius: 20px;
+    margin: 2.2rem 0 0.75rem;
+    overflow: hidden; /* Clips the inner bar's corners */
 }
 
-/* ======================================== */
-/* 6. ANIMATIONS & RESPONSIVE (LOGIN PAGE)  */
-/* ======================================== */
-
-@keyframes slideInFromLeft {
-    0% { transform: translateX(-100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+.progress-bar-fill {
+    height: 100%;
+    width: calc(var(--progress, 0) * 1%); /* Reads '--progress' from HTML */
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    transition: width 0.4s ease-out;
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+.progress-bar-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-light);
+    display: block; /* Ensures it's on its own line */
+    text-align: center;
 }
 
-@media (max-width: 768px) {
-    .main-content-wrapper {
-        flex-direction: column;
-        gap: 2rem;
-        padding: 15px;
-        text-align: center;
-    }
 
-    .intro-text-container {
-        padding-right: 0;
-        max-width: 100%;
-        text-align: center;
-        transform: translateX(0);
-        animation: fadeIn 1s ease-out forwards;
-        animation-delay: 0.5s;
-    }
-    .intro-text-container h1 { font-size: 2.5rem; }
-    .intro-text-container p { font-size: 1.2rem; text-align: center; }
-    .login-container { padding: 1.5rem; }
-    .dashboard-header { padding: 1rem; }
-    .dashboard-container { margin-top: 6rem; padding: 1.5rem; }
-    .modal-content { padding: 1.5rem; }
+/* --- TWEAKS to existing stat-card styles for better alignment --- */
+/* (This replaces your old .stat-card and .stat-card span rules) */
+
+.stat-card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    /* New rules for alignment */
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card h3 {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    text-align: center; /* Center all card titles */
+}
+
+/* This targets the "Week 2" text in the 3rd card */
+.stat-card > span {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    /* Center the text and give it space */
+    text-align: center;
+    margin: auto 0; /* Vertically centers the text */
+    padding: 1rem 0;
+}
+
+/* --- 6. NEW DOUGHNUT CHART STYLES (Add to end of dashboard.css) --- */
+
+/* * Define the colors and percentages for the chart.
+ * We set the percentages here, which the gradient will use.
+ * * Physics: 30%
+ * Chemistry: 30% (starts at 30%)
+ * Math: 40% (starts at 30% + 30% = 60%)
+*/
+:root {
+    --color-physics: #007bff;
+    --color-chemistry: #28a745;
+    --color-math: #ffc107;
+    
+    --percent-physics: 30%;
+    --percent-chemistry: 60%; /* 30% + 30% */
+    --percent-math: 100%;     /* 60% + 40% */
+}
+
+/* Container to hold the chart and legend */
+.weightage-chart-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows stacking on small screens */
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+/* The chart itself */
+.doughnut-chart {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+
+    /* * This creates the chart! 
+     * It reads the color and percentage variables.
+    */
+    background: conic-gradient(
+        var(--color-physics) 0% var(--percent-physics),
+        var(--color-chemistry) var(--percent-physics) var(--percent-chemistry),
+        var(--color-math) var(--percent-chemistry) var(--percent-math)
+    );
+    
+    /* Flexbox to center the inner text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This creates the "doughnut" hole in the middle */
+.doughnut-chart::before {
+    content: "";
+    position: absolute;
+    /* This hole is 60% of the total size */
+    width: 60%;
+    height: 60%;
+    background: #fff;
+    border-radius: 50%;
+}
+
+/* The text inside the hole */
+.doughnut-center-text {
+    position: relative; /* Sits on top of the ::before hole */
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+.doughnut-center-text br {
+    line-height: 0.5rem;
+}
+
+/* The legend list on the side */
+.chart-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Takes up remaining space */
+    min-width: 200px;
+}
+
+.chart-legend li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+/* This creates the colored square (dot) */
+.chart-legend li::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin-right: 0.75rem;
+    /* Uses the color set in the HTML style attribute */
+    background-color: var(--subject-color); 
+}
+
+.chart-legend li span {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.chart-legend li strong {
+    margin-left: auto; /* Pushes the percentage to the right */
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+/* This removes the old list style, just in case */
+.subject-list {
+    display: none;
+}
+
+/* --- 9. NEW VIDEO CARD UI STYLES (Add to end of dashboard.css) --- */
+
+.subject-header {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.video-card-container {
+    display: grid;
+    /* Creates a responsive grid of cards */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.video-card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease-in-out;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.video-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+    /* Handles long titles */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limits to 2 lines */
+    -webkit-box-orient: vertical;
+    min-height: 2.5em; /* Ensures consistent height */
+}
+
+.video-channel {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.video-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Pushes meta to bottom */
+    padding-top: 1rem;
+    border-top: 1px solid #f1f1f1;
+}
+
+.meta-duration {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.meta-difficulty {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    color: #fff;
+}
+
+/* Color-coded difficulty tags */
+.difficulty-easy { background-color: #28a745; }
+.difficulty-medium { background-color: #ffc107; color: #333; }
+.difficulty-hard { background-color: #dc3545; }
+
+.video-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: #e6f2ff;
+    padding: 0.6rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.video-link:hover {
+    background-color: #d1e7ff;
+}
+/* --- 7. QUIZ STYLES (Add to end of dashboard.css) --- */
+
+.quiz-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-form .input-group {
+    flex-grow: 1; /* Make input take available space */
+    margin-bottom: 0;
+}
+
+.quiz-form .login-button {
+    width: auto; /* Allow button to shrink */
+    flex-shrink: 0;
+}
+
+.question-block {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.question-block h3 {
+    margin-bottom: 1rem;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.option-label {
+    display: block;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.option-label:hover {
+    background-color: #f8f9fa;
+}
+
+.option-label input[type="radio"] {
+    margin-right: 0.75rem;
+}
+
+.quiz-results {
+    background-color: #e6f2ff;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.quiz-results h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
 }
