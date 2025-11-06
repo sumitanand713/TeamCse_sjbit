@@ -1,4 +1,4 @@
-package com.plrepa.controller;
+package com.example.plrepa.controller; 
 import com.example.plrepa.model.Exam;
 import com.example.plrepa.repository.ExamRepository;
 
