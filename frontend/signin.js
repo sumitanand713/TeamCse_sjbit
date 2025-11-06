@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // For example: check if email and password fields are filled
             
             // 3. Redirect the user to home.html
-            window.location.href = "home.html";
+            window.location.href = "dashboard.html";
         });
     }
 
