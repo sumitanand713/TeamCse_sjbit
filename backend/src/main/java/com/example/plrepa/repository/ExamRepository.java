@@ -1,7 +1,6 @@
-package main.java.com.example.plrepa.repository;
+package com.example.plrepa.repository;
 
+import com.example.plrepa.model.Exam;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.plrepa.model.Exam;
 
-public interface ExamRepository extends JpaRepository<Exam, Long> {
-}
+public interface ExamRepository extends JpaRepository<Exam, Long> {}
