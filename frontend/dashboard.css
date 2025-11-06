@@ -1,4 +1,171 @@
 /* ======================================== */
+/* 7. NEW: DASHBOARD TAB LAYOUT STYLES      */
+/* ======================================== */
+
+.dashboard-main-content {
+    display: flex;
+    gap: 1.5rem; /* Space between nav and content */
+    padding: 1.5rem;
+    max-width: 1400px; /* Wider for a full dashboard */
+    margin: 8rem auto 2rem auto; /* Clear fixed header */
+}
+
+/* 7a. Left-Side Tab Navigation */
+.dashboard-nav {
+    flex: 0 0 240px; /* Nav width: Don't grow, don't shrink, base 240px */
+    
+    /* REUSE "GLASS CARD" STYLE */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    height: fit-content; /* Make it only as tall as its content */
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.dashboard-nav li a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #3a3a3c;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+/* Tab Hover Effect */
+.dashboard-nav li a:hover {
+    background: rgba(0, 122, 255, 0.1); /* Light blue */
+    color: #007aff;
+}
+
+/* Active Tab Style */
+.dashboard-nav li a.active {
+    background: #007aff; /* Primary blue */
+    color: white;
+    font-weight: 600;
+}
+
+/* 7b. Right-Side Tab Content Area */
+.dashboard-tab-content {
+    flex: 1; /* Take up all remaining space */
+
+    /* REUSE "GLASS CARD" STYLE */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+}
+
+/* 7c. Tab Pane Display Logic */
+.tab-pane {
+    display: none; /* Hide all panes by default */
+    animation: fadeIn 0.5s ease-out forwards; /* Add fade-in */
+}
+
+.tab-pane.active {
+    display: block; /* Show only the active one */
+}
+
+/* 7d. Content inside tabs */
+.dashboard-tab-content h1 {
+    text-align: left;
+    color: #1c1c1e;
+    margin-bottom: 0.5rem;
+}
+.dashboard-tab-content p {
+    text-align: left;
+    font-size: 1.1rem;
+    color: #3a3a3c;
+    margin-bottom: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: #f0f2f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+.stat-card h3 {
+    color: #6a6a6f;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+.stat-card span {
+    color: #007aff;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.subject-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+.subject-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 6px;
+}
+.subject-list li:nth-child(odd) {
+    background: #f0f2f5;
+}
+.subject-list li span {
+    color: #3a3a3c;
+}
+
+.resource-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+.resource-section:first-of-type {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+.resource-section h2 {
+    text-align: left;
+    color: #007aff;
+    margin-bottom: 0.5rem;
+}
+.resource-section p {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* Responsive adjustment for dashboard */
+@media (max-width: 900px) {
+    .dashboard-main-content {
+        flex-direction: column;
+        margin-top: 6rem;
+    }
+    .dashboard-nav {
+        flex: 1; /* Full width */
+        width: 100%;
+    }
+    .dashboard-nav ul {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+    .dashboard-nav li {
+        flex-shrink: 0; /* Prevent tabs from shrinking */
+    }
+}
+/* ======================================== */
 /* 1. GLOBAL & FONT STYLES (FOR ALL PAGES)  */
 /* ======================================== */
 

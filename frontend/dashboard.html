@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard - EduPath</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <!-- 1. THE POP-UP MODAL (Same as before, hidden by default) -->
+    <div id="profile-setup-modal" class="modal-overlay">
+        <div class="modal-content">
+            <form id="profile-setup-form">
+                <h2>Set Up Your Profile</h2>
+                <p>Please select your details to personalize your experience.</p>
+                <!-- Grade Selection -->
+                <div class="input-group">
+                    <label for="grade">Select Your Current Grade:</label>
+                    <select id="grade" name="grade" required>
+                        <option value="" disabled selected>-- Select Grade --</option>
+                        <option value="9">9th Grade</option>
+                        <option value="10">10th Grade</option>
+                        <option value="11">11th Grade</option>
+                        <option value="12">12th Grade</option>
+                        <option value="not_applicable">Not Applicable</option>
+                    </select>
+                </div>
+                <!-- Target Exam Selection -->
+                <div class="input-group">
+                    <label for="target-exam">Select Your Target Exam:</label>
+                    <select id="target-exam" name="target-exam" required>
+                        <option value="" disabled selected>-- Select Exam --</option>
+                        <optgroup label="School">
+                            <option value="10th_boards">10th Boards</option>
+                            <option value="12th_boards">12th Boards</option>
+                        </optgroup>
+                        <optgroup label="Undergraduate">
+                            <option value="jee">IIT-JEE (Engineering)</option>
+                            <option value="neet">NEET (Medical)</option>
+                            <option value="clat">CLAT (Law)</option>
+                        </optgroup>
+                        <optgroup label="Graduate">
+                            <option value="cat">CAT (MBA)</option>
+                            <option value="gate">GATE (M.Tech)</option>
+                            <option value="gre">GRE (International)</option>
+                        </optgroup>
+                        <optgroup label="Post Graduate / Professional">
+                            <option value="upsc">UPSC (Civil Services)</option>
+                            <option value="net">UGC-NET (Professor)</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" class="login-button">Save & Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. THE STICKY HEADER (Same as before) -->
+    <header class="dashboard-header">
+        <a href="/dashboard.html" class="header-logo">EduPath</a>
+        <a href="signin.html" class="logout-button">Logout</a>
+    </header>
+
+    <!-- 3. NEW: DASHBOARD MAIN CONTENT (Tabs + Content Area) -->
+    <main class="dashboard-main-content">
+
+        <!-- 3a. Vertical Tab Navigation -->
+        <nav class="dashboard-nav">
+            <ul>
+                <!-- data-tab attribute links to the id of the content pane -->
+                <li><a href="#" class="active" data-tab="home">Student Homepage</a></li>
+                <li><a href="#" data-tab="weightage">Exam Weightage</a></li>
+                <li><a href="#" data-tab="resources">Learning Resources</a></li>
+                <li><a href="#" data-tab="ai-plan">AI Study Plan</a></li>
+                <li><a href="#" data-tab="quiz">Quiz</a></li>
+                <li><a href="#" data-tab="settings">Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- 3b. Tab Content Area -->
+        <section class="dashboard-tab-content">
+
+            <!-- "Home" Tab Pane -->
+            <div id="home" class="tab-pane active">
+                <h1>Welcome, Student!</h1>
+                <p>This is your homepage. Your quick stats and reminders will appear here.</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Progress</h3>
+                        <span>42%</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Quizzes Taken</h3>
+                        <span>8</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Study Plan</h3>
+                        <span>Week 2</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- "Exam Weightage" Tab Pane -->
+            <div id="weightage" class="tab-pane">
+                <h1>Exam Subject Weightage</h1>
+                <p>Subject-wise breakdown for your selected exam.</p>
+                <!-- This content would be loaded dynamically -->
+                <ul class="subject-list">
+                    <li><span>Physics</span> <strong>30%</strong></li>
+                    <li><span>Chemistry</span> <strong>30%</strong></li>
+                    <li><span>Mathematics</span> <strong>40%</strong></li>
+                </ul>
+            </div>
+
+            <!-- "Learning Resources" Tab Pane -->
+            <div id="resources" class="tab-pane">
+                <h1>Learning Resources</h1>
+                <p>Curated materials for your study plan.</p>
+                
+                <div class="resource-section">
+                    <h2>YouTube Lessons</h2>
+                    <p>Recommended video lectures on your weak topics.</p>
+                    <!-- Links would go here -->
+                </div>
+                
+                <div class="resource-section">
+                    <h2>Previous Year Questions (PYQs)</h2>
+                    <p>Practice with past exam papers.</p>
+                    <!-- Links would go here -->
+                </div>
+
+                <div class="resource-section">
+                    <h2>PDF Notes & Books</h2>
+                    <p>Downloadable notes and textbook chapters.</p>
+                    <!-- Links would go here -->
+                </div>
+            </div>
+
+            <!-- "AI Study Plan" Tab Pane -->
+            <div id="ai-plan" class="tab-pane">
+                <h1>AI Personalized Study Plan</h1>
+                <p>Your week-by-week plan generated by our AI.</p>
+                <!-- Plan content would go here -->
+            </div>
+
+            <!-- "Quiz" Tab Pane -->
+            <div id="quiz" class="tab-pane">
+                <h1>Practice Quiz</h1>
+                <p>Take a short quiz on a topic of your choice.</p>
+                <!-- Quiz interface would go here -->
+            </div>
+
+            <!-- "Settings" Tab Pane -->
+            <div id="settings" class="tab-pane">
+                <h1>Settings</h1>
+                <p>Manage your account and preferences.</p>
+                <!-- Settings form would go here -->
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Link the new JS file -->
+    <script src="dashboard.js"></script>
+</body>
+</html>
