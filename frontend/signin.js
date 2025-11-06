@@ -18,7 +18,7 @@ document.getElementById("login-form").addEventListener("submit", async function(
     console.log("Response from backend:", result);
 
     if(result === "SUCCESS"){
-        window.location.href = "/frontend/dashboard.html";
+        window.location.href = "dashboard.html";
   // ✅ redirect in same folder
     } else {
         document.getElementById("error-message").innerText = "Invalid email or password!";
