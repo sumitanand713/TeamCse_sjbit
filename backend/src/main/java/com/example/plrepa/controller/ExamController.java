@@ -1,7 +1,8 @@
 package com.plrepa.controller;
+import com.example.plrepa.model.Exam;
+import com.example.plrepa.repository.ExamRepository;
 
-import com.plrepa.model.Exam;
-import com.plrepa.repository.ExamRepository;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
