@@ -1,0 +1,335 @@
+/* ======================================== */
+/* 1. GLOBAL & FONT STYLES (FOR ALL PAGES)  */
+/* ======================================== */
+
+/* Apply consistent font and box-sizing to everything */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    height: 100%;
+    width: 100%;
+    /* This ensures body always has the background */
+    overflow-x: hidden; 
+}
+
+/* Base styles for h2 and p to match login form */
+h2 {
+    text-align: center;
+    color: #1c1c1e;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    text-align: center;
+    color: #6a6a6f;
+    margin-bottom: 1.5rem;
+}
+
+/* Base styles for all form groups */
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #3a3a3c;
+}
+
+/* Style for ALL inputs AND selects to match */
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #c7c7cc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: #ffffff;
+    
+    /* Custom Dropdown Arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%208l5%205%205-5z%22%20fill%3D%22%236a6a6f%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.2em;
+}
+
+/* Remove arrow from inputs */
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    background-image: none;
+}
+
+
+/* Style for ALL primary buttons */
+.login-button {
+    width: 100%;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #007aff;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-button:hover {
+    background-color: #005bb5;
+}
+
+/* ======================================== */
+/* 2. SHARED BACKGROUND (FOR ALL PAGES)     */
+/* ======================================== */
+body {
+    background-image: url('your-background-image.jpg'); /* THE SAME IMAGE */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+
+/* ======================================== */
+/* 3. LOGIN PAGE STYLES (login.html)        */
+/* ======================================== */
+
+/* Specific layout for the login page */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.main-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 20px;
+    max-width: 1200px;
+    width: 90%;
+}
+
+.intro-text-container {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    flex: 1;
+    padding-right: 2rem;
+    max-width: 500px;
+    transform: translateX(-100%);
+    animation: slideInFromLeft 1.5s ease-out 0.5s forwards;
+}
+.intro-text-container h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+.intro-text-container p {
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* This is the "Glass Card" style we will REUSE */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    
+    /* Animation */
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.5s forwards;
+}
+
+.login-container .links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+.login-container .links a {
+    color: #007aff;
+    text-decoration: none;
+}
+.login-container .links a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #d93025;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+
+/* ======================================== */
+/* 4. DASHBOARD STYLES (dashboard.html)     */
+/* ======================================== */
+
+.dashboard-header {
+    width: 100%;
+    padding: 1rem 2rem;
+    /* "Glassmorphism" Header */
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+}
+
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #007aff; /* Primary blue */
+    text-decoration: none;
+}
+
+.logout-button {
+    font-size: 0.9rem;
+    color: #007aff;
+    text-decoration: none;
+    font-weight: 500;
+    background: rgba(0, 122, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+    background: #007aff;
+    color: white;
+}
+
+/* Dashboard content card uses THE SAME STYLE as .login-container */
+.dashboard-container {
+    padding: 2.5rem;
+    max-width: 1200px;
+    margin: 8rem auto 2rem auto; /* Margin-top clears the fixed header */
+    background: rgba(255, 255, 255, 0.95); /* MATCHING! */
+    border-radius: 8px; /* MATCHING! */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* MATCHING! */
+
+    /* Animation */
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+}
+
+.dashboard-container h1 {
+    color: #1c1c1e;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+.dashboard-container p {
+    color: #3a3a3c;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* ======================================== */
+/* 5. MODAL STYLES (dashboard.html)         */
+/* ======================================== */
+
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* New "Glass" background overlay */
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content box uses THE SAME STYLE as .login-container */
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.95); /* MATCHING! */
+    padding: 2.5rem;
+    border-radius: 8px; /* MATCHING! */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* MATCHING! */
+    width: 90%;
+    max-width: 500px;
+
+    /* Animation */
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* JS-controlled "show" class */
+.modal-overlay.show {
+    display: flex; 
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* ======================================== */
+/* 6. ANIMATIONS & RESPONSIVE (LOGIN PAGE)  */
+/* ======================================== */
+
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .intro-text-container {
+        padding-right: 0;
+        max-width: 100%;
+        text-align: center;
+        transform: translateX(0);
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 0.5s;
+    }
+    .intro-text-container h1 { font-size: 2.5rem; }
+    .intro-text-container p { font-size: 1.2rem; text-align: center; }
+    .login-container { padding: 1.5rem; }
+    .dashboard-header { padding: 1rem; }
+    .dashboard-container { margin-top: 6rem; padding: 1.5rem; }
+    .modal-content { padding: 1.5rem; }
+}

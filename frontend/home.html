@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard - EduPath</title>
+    <link rel="stylesheet" href="home.css"> </head>
+<body>
+
+    <header class="dashboard-header">
+        <a href="/dashboard" class="header-logo">EduPath</a>
+        <a href="signin.html" class="logout-button">Logout</a>
+    </header>
+
+    <div id="profile-setup-modal" class="modal-overlay">
+        <div class="modal-content">
+            
+            <form id="profile-setup-form">
+                <h2>Set Up Your Profile</h2>
+                <p>Please select your details to personalize your experience.</p>
+
+                <div class="input-group">
+                    <label for="grade">Select Your Current Grade:</label>
+                    <select id="grade" name="grade" required>
+                        <option value="" disabled selected>-- Select Grade --</option>
+                        <option value="9">9th Grade</option>
+                        <option value="10">10th Grade</option>
+                        <option value="11">11th Grade</option>
+                        <option value="12">12th Grade</option>
+                        <option value="not_applicable">Not Applicable</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="target-exam">Select Your Target Exam:</label>
+                    <select id="target-exam" name="target-exam" required>
+                        <option value="" disabled selected>-- Select Exam --</option>
+                        
+                        <optgroup label="School">
+                            <option value="10th_boards">10th Boards</option>
+                            <option value="12th_boards">12th Boards</option>
+                        </optgroup>
+
+                        <optgroup label="Undergraduate (e.g., after 12th)">
+                            <option value="jee">IIT-JEE (Engineering)</option>
+                            <option value="neet">NEET (Medical)</option>
+                            <option value="clat">CLAT (Law)</option>
+                        </optgroup>
+                        
+                        <optgroup label="Graduate (e.g., for Master's)">
+                            <option value="cat">CAT (MBA)</option>
+                            <option value="gate">GATE (M.Tech)</option>
+                            <option value="gre">GRE (International)</option>
+                        </optgroup>
+
+                        <optgroup label="Post Graduate / Professional">
+                            <option value="upsc">UPSC (Civil Services)</option>
+                            <option value="net">UGC-NET (Professor)</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <button type="submit" class="login-button">Save & Continue</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <h1>Welcome, Student!</h1>
+        <p>Your personalized content for **[Selected Exam]** will appear here.</p>
+        <p>We will prioritize topics from **[High-Weightage Subject]** and **[Weak Topic]** to help you prepare.</p>
+        }
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>
