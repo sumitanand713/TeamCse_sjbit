@@ -1,4 +1,4 @@
-package com.example.plrepa.service;
+package main.java.com.example.plrepa.service;
 
 import com.example.plrepa.model.Subject;
 import com.example.plrepa.repository.SubjectRepository;
