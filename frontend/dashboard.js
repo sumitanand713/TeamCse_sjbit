@@ -84,7 +84,7 @@ const resourcesByExam = {
             "Science": [
                 { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", url: "https://www.youtube.com/watch?v=a3klf9QIUg8" },
                 { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", url: "https://www.youtube.com/watch?v=UTwnriP1Npk" },
-                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "https://www.youtube.com/watch?v=7k2rs5yGOFM" } // <-- FIXED URL
+                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "https://www.youtube.com/watch?v=7k2rs5yGOFM" }
             ],
             "Maths": [
                 { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", url: "https://www.youtube.com/watch?v=-UdHmSTmQtw" },
@@ -257,6 +257,7 @@ const resourcesByExam = {
             { year: 2023, papers: [ { subject: "Gate", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp24/gate/2022%20GATE%20Engineering%20Maths.pdf" }] }
         ]
     },
+    // --- Post Graduate / Professional ---
     "upsc": {
         title: "UPSC (Civil Services)",
         subjects: {
@@ -268,7 +269,7 @@ const resourcesByExam = {
             "History": [
                 { title: "Modern History - Spectrum One Shot", channel: "Study IQ", duration: "9:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=IIR3FRCyO-s" },
                 { title: "Ancient History - Full", channel: "Drishti IAS", duration: "6:15:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=eHEv5aF5td8" },
-                { title: "Art & Culture - Nitin Singhania", duration: "4:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=VxG4MgN7P7k" }
+                { title: "Art & Culture - Nitin Singhania", channel: "Unacademy", duration: "4:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=VxG4MgN7P7k" }
             ],
             "Economy": [
                 { title: "Indian Economy - Full Syllabus", channel: "Mrunal Patel", duration: "15:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=IRMepGlN3so" },
@@ -310,7 +311,6 @@ const resourcesByExam = {
         ]
     }
 };
-
 
 // =========================================================
 // 2. GLOBAL HELPER FUNCTIONS (MUST be in global scope)
@@ -368,7 +368,7 @@ function loadDynamicResources() {
                 let difficultyClass = `difficulty-${video.difficulty.toLowerCase()}`;
                 let videoLink = video.url;
 
-                // Use onclick to call the new updateVideoProgress function
+                // CRITICAL FIX: Use onclick to call the new updateVideoProgress function
                 html += `
                     <div class="video-card">
                         <h3 class="video-title">${video.title}</h3>
@@ -515,7 +515,7 @@ async function loadProgress() {
         const progressPercentage = Math.min(100, Math.round((videosWatched / totalVideos) * 100));
         
         const progressValueElement = document.getElementById('progressValue');
-        const progressPieElement = progressValueElement ? progressValueElement.parentElement : null;
+        const progressPieElement = progressValueElement ? document.querySelector('.progress-pie') : null;
 
         if (progressPieElement && progressValueElement) {
             progressPieElement.style.setProperty('--progress', progressPercentage);
@@ -530,14 +530,27 @@ async function loadProgress() {
         const quizStatsElement = document.getElementById('quizStats');
 
         if (quizBarElement && quizStatsElement) {
-            // Note: The fill element should read the variable for animation in CSS
-            quizBarElement.style.setProperty('--progress', quizBarPercentage); 
+            const progressBarFill = document.querySelector('#quizBar'); 
+            if (progressBarFill) {
+                progressBarFill.style.setProperty('--progress', quizBarPercentage);
+            }
             quizStatsElement.innerText = `${quizzesTaken} / ${totalQuizzesGoal} Quizzes`;
         }
 
 
     } catch (error) {
         console.error('Progress loading error:', error);
+    }
+}
+
+/* --- NEW: GREETING FUNCTIONALITY --- */
+function loadGreeting() {
+    const userName = localStorage.getItem('userName');
+    const greetingElement = document.getElementById('greeting-name');
+    
+    if (greetingElement && userName) {
+        // CRITICAL FIX: Update the H1 element text to show the name
+        greetingElement.textContent = `Welcome Back, ${userName}!`;
     }
 }
 
@@ -583,6 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadDynamicResources();
         loadDynamicWeightage(); 
         loadProgress(); 
+        loadGreeting(); // Load greeting after setup
     });
 
 
@@ -612,7 +626,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load content for the user *as soon as the page loads*
     loadDynamicResources();
     loadDynamicWeightage(); 
-    loadProgress(); 
+    loadProgress(); // Load progress on page load
+    loadGreeting(); // Load greeting on page load
 
     
     // --- 3. AI STUDY PLAN LOGIC (Unchanged) ---
@@ -660,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-    // --- 4. AI QUIZ GENERATION LOGIC (Modified checkAnswers to update progress) ---
+    // --- 4. AI QUIZ GENERATION LOGIC ---
 
     const quizForm = document.getElementById('quiz-setup-form');
     const quizContent = document.getElementById('quiz-content');
@@ -712,7 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // This function builds the HTML for the quiz (unchanged)
+    // This function builds the HTML for the quiz
     function buildQuiz(quizData) {
         quizData.forEach((questionData, index) => {
             const questionElement = document.createElement('div');
@@ -777,6 +792,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadProgress();
             }).catch(error => console.error('Error updating quiz progress:', error));
         }
+
 
         // Display the results
         quizResults.innerHTML = `
