@@ -301,6 +301,12 @@ const resourcesByExam = {
     }
 };
 
+function loadGreeting() {
+    const name = localStorage.getItem("userName") || "Student";
+    document.getElementById("greeting-name").innerText = `Welcome, ${name}!`;
+}
+
+
 // =========================================================
 // 2. GLOBAL HELPER FUNCTIONS (MUST be in global scope)
 // =========================================================
@@ -605,6 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Load resources for the user *as soon as the page loads*
+    loadGreeting();
     loadDynamicResources();
     loadDynamicWeightage(); 
     loadProgress(); // Load progress on page load

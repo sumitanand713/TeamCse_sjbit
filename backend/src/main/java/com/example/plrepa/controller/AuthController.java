@@ -21,14 +21,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody User user) {
-        User u = userRepository.findByEmail(user.getEmail());
-        if (u != null && u.getPassword().equals(user.getPassword())) {
-            // CRITICAL FIX: Return the user's full name (u.getName())
-            // The frontend uses this string to set the greeting.
-            return u.getName();
-        } else {
-            return "FAIL";
-        }
+public User login(@RequestBody User user) {
+    User u = userRepository.findByEmail(user.getEmail());
+    if (u != null && u.getPassword().equals(user.getPassword())) {
+        return u; // ✅ RETURN USER FULL OBJECT
+    } else {
+        return null;
     }
+}
+
 }
