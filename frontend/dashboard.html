@@ -8,18 +8,28 @@
 </head>
 <body>
 
-    <!-- 1. THE POP-UP MODAL (Same as before, hidden by default) -->
+    <!-- 1. THE POP-UP MODAL (Hidden by default) -->
     <div id="profile-setup-modal" class="modal-overlay">
         <div class="modal-content">
+            
+            <!-- Attractive SVG icon -->
+            <div class="modal-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7" r="4"></circle>
+                    <polyline points="17 11 19 13 23 9"></polyline>
+                </svg>
+            </div>
+
             <form id="profile-setup-form">
                 <h2>Set Up Your Profile</h2>
-                <p>Please select your details to personalize your experience.</p>
+                <!-- Friendly text -->
+                <p>Just a few details to personalize your learning journey.</p>
                 <!-- Grade Selection -->
                 <div class="input-group">
                     <label for="grade">Select Your Current Grade:</label>
                     <select id="grade" name="grade" required>
                         <option value="" disabled selected>-- Select Grade --</option>
-                        <option value="9">9th Grade</option>
                         <option value="10">10th Grade</option>
                         <option value="11">11th Grade</option>
                         <option value="12">12th Grade</option>
@@ -43,7 +53,6 @@
                         <optgroup label="Graduate">
                             <option value="cat">CAT (MBA)</option>
                             <option value="gate">GATE (M.Tech)</option>
-                            <option value="gre">GRE (International)</option>
                         </optgroup>
                         <optgroup label="Post Graduate / Professional">
                             <option value="upsc">UPSC (Civil Services)</option>
@@ -56,13 +65,13 @@
         </div>
     </div>
 
-    <!-- 2. THE STICKY HEADER (Same as before) -->
+    <!-- 2. THE STICKY HEADER -->
     <header class="dashboard-header">
         <a href="/dashboard.html" class="header-logo">EduPath</a>
         <a href="signin.html" class="logout-button">Logout</a>
     </header>
 
-    <!-- 3. NEW: DASHBOARD MAIN CONTENT (Tabs + Content Area) -->
+    <!-- 3. DASHBOARD MAIN CONTENT (Tabs + Content Area) -->
     <main class="dashboard-main-content">
 
         <!-- 3a. Vertical Tab Navigation -->
@@ -86,18 +95,27 @@
                 <h1>Welcome, Student!</h1>
                 <p>This is your homepage. Your quick stats and reminders will appear here.</p>
                 <div class="stats-grid">
+                    
                     <div class="stat-card">
                         <h3>Progress</h3>
-                        <span>42%</span>
+                        <div class="progress-pie" style="--progress: 42">
+                            <span class="progress-pie-value">42%</span>
+                        </div>
                     </div>
+                    
                     <div class="stat-card">
                         <h3>Quizzes Taken</h3>
-                        <span>8</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="--progress: 80"></div>
+                        </div>
+                        <span class="progress-bar-label">8 / 10 Quizzes</span>
                     </div>
+                    
                     <div class="stat-card">
                         <h3>Study Plan</h3>
                         <span>Week 2</span>
                     </div>
+
                 </div>
             </div>
 
@@ -105,50 +123,70 @@
             <div id="weightage" class="tab-pane">
                 <h1>Exam Subject Weightage</h1>
                 <p>Subject-wise breakdown for your selected exam.</p>
-                <!-- This content would be loaded dynamically -->
-                <ul class="subject-list">
-                    <li><span>Physics</span> <strong>30%</strong></li>
-                    <li><span>Chemistry</span> <strong>30%</strong></li>
-                    <li><span>Mathematics</span> <strong>40%</strong></li>
-                </ul>
+
+                <div class="weightage-chart-container">
+                    
+                    <div class="doughnut-chart">
+                        <div class="doughnut-center-text">
+                            Total<br>100%
+                        </div>
+                    </div>
+
+                    <ul class="chart-legend">
+                        <li style="--subject-color: var(--color-physics);">
+                            <span>Physics</span>
+                            <strong>30%</strong>
+                        </li>
+                        <li style="--subject-color: var(--color-chemistry);">
+                            <span>Chemistry</span>
+                            <strong>30%</strong>
+                        </li>
+                        <li style="--subject-color: var(--color-math);">
+                            <span>Mathematics</span>
+                            <strong>40%</strong>
+                        </li>
+                    </ul>
+
+                </div>
             </div>
 
             <!-- "Learning Resources" Tab Pane -->
             <div id="resources" class="tab-pane">
-                <h1>Learning Resources</h1>
-                <p>Curated materials for your study plan.</p>
-                
-                <div class="resource-section">
-                    <h2>YouTube Lessons</h2>
-                    <p>Recommended video lectures on your weak topics.</p>
-                    <!-- Links would go here -->
-                </div>
-                
-                <div class="resource-section">
-                    <h2>Previous Year Questions (PYQs)</h2>
-                    <p>Practice with past exam papers.</p>
-                    <!-- Links would go here -->
-                </div>
-
-                <div class="resource-section">
-                    <h2>PDF Notes & Books</h2>
-                    <p>Downloadable notes and textbook chapters.</p>
-                    <!-- Links would go here -->
-                </div>
+            
             </div>
 
             <!-- "AI Study Plan" Tab Pane -->
             <div id="ai-plan" class="tab-pane">
                 <h1>AI Personalized Study Plan</h1>
                 <p>Your week-by-week plan generated by our AI.</p>
-                <!-- Plan content would go here -->
+                <button id="generate-plan-btn" class="login-button">Generate My 1-Week Plan</button>
+                <div id="plan-loading" style="display: none; margin-top: 1rem;">
+                    Generating your plan, please wait...
+                </div>
+                <div id="plan-content">
+                    </div>
             </div>
 
             <!-- "Quiz" Tab Pane -->
             <div id="quiz" class="tab-pane">
                 <h1>Practice Quiz</h1>
-                <p>Take a short quiz on a topic of your choice.</p>
-                <!-- Quiz interface would go here -->
+                <p>Test your knowledge on a specific topic.</p>
+                
+                <form id="quiz-setup-form" class="quiz-form">
+                    <div class="input-group">
+                        <label for="quiz-topic">Enter a Topic:</label>
+                        <input type="text" id="quiz-topic" name="quiz-topic" placeholder="e.g., Physics - Thermodynamics" required>
+                    </div>
+                    <button type="submit" class="login-button">Generate Quiz</button>
+                </form>
+
+                <div id="quiz-loading" style="display: none; margin-top: 1rem;">
+                    Generating your quiz...
+                </div>
+
+                <div id="quiz-content" class="quiz-content"></div>
+
+                <div id="quiz-results" class="quiz-results"></div>
             </div>
 
             <!-- "Settings" Tab Pane -->
@@ -161,7 +199,7 @@
         </section>
     </main>
 
-    <!-- Link the new JS file -->
+    <!-- Link the dashboard script -->
     <script src="dashboard.js"></script>
 </body>
 </html>

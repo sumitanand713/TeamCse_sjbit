@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.example.plrepa.model;
 
 import jakarta.persistence.*;
@@ -44,4 +45,18 @@ public class User {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+=======
+package com.plrepa.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+@Data
+@Entity
+public class User {
+    @Id
+    private String email;     // Primary key
+    private String password;  // Plaintext for demo only (use BCrypt for production)
+>>>>>>> d7d32daad66a1de5cf65050f6af8b9bb712a46d9
 }

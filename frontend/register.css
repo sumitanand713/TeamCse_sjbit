@@ -11,17 +11,6 @@
   position: relative;
 }
 
-/* Top-left title */
-.upskill-title {
-  position: absolute;
-  top: 2rem;
-  left: 2.5rem;
-  font-size: 3rem;
-  font-weight: 800;
-  background: linear-gradient(to right, #3b82f6, #9333ea, #ec4899);
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-}
 
 /* Register card */
 .register-card {
