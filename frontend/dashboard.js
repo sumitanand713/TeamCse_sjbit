@@ -1,3 +1,68 @@
+/* --- NEW: WEIGHTAGE DATABASE --- */
+/* (Add this below your resourcesByExam object) */
+const weightageByExam = {
+    "10th_boards": {
+        title: "Class 10 Boards",
+        subjects: [
+            { name: "Science", percentage: 33, color: "#007bff" },
+            { name: "Maths", percentage: 33, color: "#28a745" },
+            { name: "Social Science", percentage: 34, color: "#ffc107" }
+        ]
+    },
+    "12th_boards": {
+        title: "Class 12 (Science)",
+        subjects: [
+            { name: "Physics", percentage: 30, color: "#007bff" },
+            { name: "Chemistry", percentage: 30, color: "#28a745" },
+            { name: "Maths/Bio", percentage: 40, color: "#ffc107" }
+        ]
+    },
+    "jee": {
+        title: "IIT-JEE",
+        subjects: [
+            { name: "Physics", percentage: 33, color: "#007bff" },
+            { name: "Chemistry", percentage: 33, color: "#28a745" },
+            { name: "Maths", percentage: 34, color: "#ffc107" }
+        ]
+    },
+    "neet": {
+        title: "NEET",
+        subjects: [
+            { name: "Biology", percentage: 50, color: "#28a745" },
+            { name: "Physics", percentage: 25, color: "#007bff" },
+            { name: "Chemistry", percentage: 25, color: "#ffc107" }
+        ]
+    },
+    "clat": {
+        title: "CLAT",
+        subjects: [
+            { name: "English", percentage: 20, color: "#007bff" },
+            { name: "Current Affairs", percentage: 25, color: "#17a2b8" },
+            { name: "Legal Reasoning", percentage: 25, color: "#ffc107" },
+            { name: "Logical Reasoning", percentage: 20, color: "#dc3545" },
+            { name: "Quantitative", percentage: 10, color: "#6c757d" }
+        ]
+    },
+    "cat": {
+        title: "CAT",
+        subjects: [
+            { name: "VARC", percentage: 34, color: "#007bff" },
+            { name: "LRDI", percentage: 32, color: "#ffc107" },
+            { name: "Quant", percentage: 34, color: "#28a745" }
+        ]
+    },
+    "upsc": {
+        title: "UPSC (Prelims GS 1)",
+        subjects: [
+            { name: "History", percentage: 20, color: "#ffc107" },
+            { name: "Polity", percentage: 15, color: "#007bff" },
+            { name: "Economy", percentage: 18, color: "#28a745" },
+            { name: "Environment", percentage: 20, color: "#17a2b8" },
+            { name: "Science/Other", percentage: 27, color: "#dc3545" }
+        ]
+    }
+    // Add other exams (gate, gre, net) as needed
+};
 /* --- 1. YOUR NEW RESOURCE DATABASE (with Video URLs + PYQs) --- */
 const resourcesByExam = {
 
@@ -320,7 +385,75 @@ function loadDynamicResources() {
     }
 }
 
+/* --- 4. DYNAMIC WEIGHTAGE CHART FUNCTION --- */
+/* (Add this after your loadDynamicResources function) */
 
+function loadDynamicWeightage() {
+    // 1. Find the weightage tab
+    const weightageTab = document.getElementById('weightage');
+    
+    // 2. Get the user's SELECTED EXAM
+    const userExam = localStorage.getItem('userExam');
+    
+    // 3. Find the data for that exam
+    const examData = weightageByExam[userExam];
+
+    // 4. Check if we have data for this exam
+    if (examData && examData.subjects) {
+        
+        let legendHtml = '';
+        let gradientString = 'conic-gradient(';
+        let currentPercent = 0;
+
+        // Build the legend and gradient string
+        examData.subjects.forEach(subject => {
+            // 1. Build Legend HTML
+            legendHtml += `
+                <li style="--subject-color: ${subject.color};">
+                    <span>${subject.name}</span>
+                    <strong>${subject.percentage}%</strong>
+                </li>
+            `;
+
+            // 2. Build Gradient String
+            const startPercent = currentPercent;
+            const endPercent = currentPercent + subject.percentage;
+            gradientString += `${subject.color} ${startPercent}% ${endPercent}%, `;
+            currentPercent = endPercent;
+        });
+
+        // Finalize gradient string
+        gradientString = gradientString.slice(0, -2) + ')'; // Remove last ", " and add ")"
+
+        // 5. Build the final HTML for the tab
+        const html = `
+            <h1>Exam Subject Weightage for ${examData.title}</h1>
+            <p>Subject-wise breakdown for your selected exam.</p>
+            <div class="weightage-chart-container">
+                
+                <div class="doughnut-chart" style="background: ${gradientString};">
+                    <div class="doughnut-center-text">
+                        Total<br>100%
+                    </div>
+                </div>
+
+                <ul class="chart-legend">
+                    ${legendHtml}
+                </ul>
+
+            </div>
+        `;
+        
+        weightageTab.innerHTML = html;
+
+    } else {
+        // We don't have data for this user's exam.
+        weightageTab.innerHTML = `
+            <h1>Exam Subject Weightage</h1>
+            <p>Please select your <strong>target exam</strong> from your profile settings to see a personalized weightage chart.</p>
+        `;
+    }
+}
 /* --- 3. MAIN SCRIPT LOGIC (Runs after page loads) --- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -353,7 +486,8 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'none';
 
         // Load resources *immediately* after user saves profile
-        loadDynamicResources(); 
+        loadDynamicResources();
+        loadDynamicWeightage(); 
     });
 
 

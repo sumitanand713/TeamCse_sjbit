@@ -405,21 +405,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- 6. NEW DOUGHNUT CHART STYLES (Add to end of dashboard.css) --- */
 
-/* * Define the colors and percentages for the chart.
- * We set the percentages here, which the gradient will use.
- * * Physics: 30%
- * Chemistry: 30% (starts at 30%)
- * Math: 40% (starts at 30% + 30% = 60%)
-*/
-:root {
-    --color-physics: #007bff;
-    --color-chemistry: #28a745;
-    --color-math: #ffc107;
-    
-    --percent-physics: 30%;
-    --percent-chemistry: 60%; /* 30% + 30% */
-    --percent-math: 100%;     /* 60% + 40% */
-}
 
 /* Container to hold the chart and legend */
 .weightage-chart-container {
@@ -441,15 +426,6 @@ h1, h2, h3, h4, h5, h6 {
     height: 200px;
     border-radius: 50%;
     position: relative;
-
-    /* * This creates the chart! 
-     * It reads the color and percentage variables.
-    */
-    background: conic-gradient(
-        var(--color-physics) 0% var(--percent-physics),
-        var(--color-chemistry) var(--percent-physics) var(--percent-chemistry),
-        var(--color-math) var(--percent-chemistry) var(--percent-math)
-    );
     
     /* Flexbox to center the inner text */
     display: flex;
