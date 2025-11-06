@@ -92,32 +92,34 @@
 
             <!-- "Home" Tab Pane -->
             <div id="home" class="tab-pane active">
-                <h1>Welcome, Student!</h1>
-                <p>This is your homepage. Your quick stats and reminders will appear here.</p>
-                <div class="stats-grid">
-                    
-                    <div class="stat-card">
-                        <h3>Progress</h3>
-                        <div class="progress-pie" style="--progress: 42">
-                            <span class="progress-pie-value">42%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <h3>Quizzes Taken</h3>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" style="--progress: 80"></div>
-                        </div>
-                        <span class="progress-bar-label">8 / 10 Quizzes</span>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <h3>Study Plan</h3>
-                        <span>Week 2</span>
-                    </div>
-
-                </div>
+    <h1>Welcome, Student!</h1>
+    <p>This is your homepage. Your quick stats and reminders will appear here.</p>
+    
+    <div class="stats-grid">
+        
+        <div class="stat-card">
+            <h3>Progress</h3>
+            <div class="progress-pie" style="--progress: var(--progressValue)">
+                <span class="progress-pie-value" id="progressValue">0%</span>
             </div>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Quizzes Taken</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="quizBar"></div>
+            </div>
+            <span id="quizStats">0 / 0 Quizzes</span>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Study Plan</h3>
+            <span id="studyWeekDisplay">Week 1</span>
+        </div>
+
+    </div>
+</div>
+
 
             <!-- "Exam Weightage" Tab Pane -->
             <div id="weightage" class="tab-pane">
