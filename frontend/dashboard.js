@@ -1,5 +1,4 @@
-/* --- NEW: WEIGHTAGE DATABASE --- */
-/* (Add this below your resourcesByExam object) */
+/* --- 1. NEW: WEIGHTAGE DATABASE --- */
 const weightageByExam = {
     "10th_boards": {
         title: "Class 10 Boards",
@@ -60,12 +59,32 @@ const weightageByExam = {
             { name: "Environment", percentage: 20, color: "#17a2b8" },
             { name: "Science/Other", percentage: 27, color: "#dc3545" }
         ]
+    },
+    "gate": {
+        title: "GATE (M.Tech)",
+        subjects: [
+            { name: "Computer Science", percentage: 72, color: "#007bff" },
+            { name: "General Aptitude", percentage: 28, color: "#28a745" }
+        ]
+    },
+    "gre": {
+        title: "GRE (International)",
+        subjects: [
+            { name: "Quant", percentage: 50, color: "#007bff" },
+            { name: "Verbal", percentage: 50, color: "#ffc107" }
+        ]
+    },
+    "net": {
+        title: "UGC-NET (Professor)",
+        subjects: [
+            { name: "Paper 1", percentage: 33, color: "#007bff" },
+            { name: "Paper 2 (Subject)", percentage: 67, color: "#28a745" }
+        ]
     }
-    // Add other exams (gate, gre, net) as needed
 };
-/* --- 1. YOUR NEW RESOURCE DATABASE (with Video URLs + PYQs) --- */
-const resourcesByExam = {
 
+/* --- 2. YOUR RESOURCE DATABASE (with Video URLs + PYQs) --- */
+const resourcesByExam = {
     // --- School ---
     "10th_boards": {
         title: "Class 10 Boards",
@@ -73,7 +92,7 @@ const resourcesByExam = {
             "Science": [
                 { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", url: "https://www.youtube.com/watch?v=a3klf9QIUg8" },
                 { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", url: "https://www.youtube.com/watch?v=UTwnriP1Npk" },
-                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "#https://www.youtube.com/watch?v=7k2rs5yGOFM" }
+                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "https://www.youtube.com/watch?v=7k2rs5yGOFM" }
             ],
             "Maths": [
                 { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", url: "https://www.youtube.com/watch?v=-UdHmSTmQtw" },
@@ -117,8 +136,6 @@ const resourcesByExam = {
             { year: 2023, papers: [{ subject: "English", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class12/English-I/English-1%20PY%202023.pdf" }, { subject: "Chemistry", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class12/Chemistry/Chemistry%20FY%202023.pdf" }, { subject: "Maths", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp/cisce/class12/Mathematics/Maths%20PY%202023.pdf" }] },
         ]
     },
-
-    // --- Undergraduate ---
     "jee": {
         title: "IIT-JEE",
         subjects: {
@@ -196,15 +213,13 @@ const resourcesByExam = {
             { year: 2022, papers: [{ subject: "CLAT Paper", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/clat_and_ailet/CLAT%20and%20AILET%202022.pdf" }] }
         ]
     },
-
-    // --- Graduate ---
     "cat": {
         title: "CAT (MBA)",
         subjects: {
             "Quantitative Aptitude": [
                 { title: "Arithmetic - One Shot Marathon", channel: "Unacademy CAT", duration: "6:30:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=tP4bU-oTbQM" },
-                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", query: "https://www.youtube.com/watch?v=TV9rQm15sWo" },
-                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", query: "https://www.youtube.com/watch?v=utY-EIvE2Dg" }
+                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=TV9rQm15sWo" },
+                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=utY-EIvE2Dg" }
             ],
             "LRDI": [
                 { title: "Arrangements - Complete Set", channel: "Elites Grid", duration: "2:45:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=GYe98jwCn7g" },
@@ -222,7 +237,6 @@ const resourcesByExam = {
             { year: 2023, papers: [{ subject: "CAT", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp23/cat/CAT%2025%20years%20Chapter%20wise%202023.pdf" }] },
             { year: 2022, papers: [{ subject: "CAT", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/CAT/CAT%202022%20-%20Shift%20III%20Paper%203%20with%20solutions.pdf" }] },
             { year: 2022, papers: [{ subject: "CAT", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/CAT/CAT%202021%20Shift%201%20Paper%20with%20Solutions.pdf" }] }
-
         ]
     },
     "gate": {
@@ -230,8 +244,8 @@ const resourcesByExam = {
         subjects: {
             "Computer Science": [
                 { title: "Theory of Computation - Full Course", channel: "Unacademy", duration: "10:30:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=9kuynHcM3UA" },
-                { title: "Database Management (DBMS) - One Shot", channel: "Gate Smashers", duration: "5:15:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=9kuynHcM3UA" },
-                { title: "Data Structures - Full Course", channel: "Jenny's Lectures", duration: "8:00:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=9kuynHcM3UA" }
+                { title: "Database Management (DBMS) - One Shot", channel: "Gate Smashers", duration: "5:15:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=e-i-g-n-Sso" },
+                { title: "Data Structures - Full Course", channel: "Jenny's Lectures", duration: "8:00:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=PBr-A3-3szo" }
             ],
             "General Aptitude": [
                 { title: "Quantitative Aptitude - Full Course", channel: "Unacademy", duration: "6:45:00", difficulty: "Easy", url: "https://www.youtube.com/watch?v=XyhGv2ak-CI" },
@@ -246,7 +260,25 @@ const resourcesByExam = {
             { year: 2023, papers: [{ subject: "Gate", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/pyp24/gate/2022%20GATE%20Engineering%20Maths.pdf" }] }
         ]
     },
-    // --- Post Graduate / Professional ---
+    "gre": {
+        title: "GRE (International)",
+        subjects: {
+            "Quant": [
+                { title: "GRE Quant - Full Course", channel: "Magoosh", duration: "4:30:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=l-w-VW-x0k4" },
+                { title: "Data Interpretation Strategies", channel: "GregMat", duration: "1:15:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=mNq3Sj8qHn0" },
+                { title: "Permutations & Combinations", channel: "The Organic Chemistry Tutor", duration: "1:10:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=mNq3Sj8qHn0" }
+            ],
+            "Verbal": [
+                { title: "Reading Comprehension - Strategy", channel: "GregMat", duration: "1:00:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=f-WX-n1uQoM" },
+                { title: "Text Completion - 5 Tips", channel: "Magoosh", duration: "0:25:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=GkIY84E-Ijg" },
+                { title: "AWA Essay Writing Guide", channel: "GregMat", duration: "0:50:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=uOb-k4udXEU" }
+            ]
+        },
+        pyqs: [
+            { year: 2025, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] },
+            { year: 2024, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] }
+        ]
+    },
     "upsc": {
         title: "UPSC (Civil Services)",
         subjects: {
@@ -262,7 +294,7 @@ const resourcesByExam = {
             ],
             "Economy": [
                 { title: "Indian Economy - Full Syllabus", channel: "Mrunal Patel", duration: "15:00:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=IRMepGlN3so" },
-                { title: "Budget 2025 Analysis", channel: "Drishti IAS", duration: "1:30:00", difficulty: "Easy", url: "Drishti IAS Budget Analysis" },
+                { title: "Budget 2025 Analysis", channel: "Drishti IAS", duration: "1:30:00", difficulty: "Easy", url: "https://www.youtube.com/watch?v=l-w-VW-x0k4" }, // Placeholder, update when available
                 { title: "Banking & Monetary Policy", channel: "Study IQ", duration: "2:20:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=GQ5N51lxE88" }
             ]
         },
@@ -301,10 +333,11 @@ const resourcesByExam = {
     }
 };
 
+// =========================================================
+// 2. GLOBAL HELPER FUNCTIONS (MUST be in global scope)
+// =========================================================
 
-/* --- 2. DYNAMIC RESOURCE LOADING FUNCTION (Reads Video URLs + PYQs) --- */
-/* (This goes *after* the database object, in the global scope) */
-
+/* --- DYNAMIC RESOURCE LOADING FUNCTION (Reads Video URLs + PYQs) --- */
 function loadDynamicResources() {
     // 1. Find the resources tab
     const resourcesTab = document.getElementById('resources');
@@ -334,6 +367,7 @@ function loadDynamicResources() {
                 // This is the logic to read the 'url'
                 let videoLink = video.url;
 
+                // CRITICAL FIX: Use onclick to call the new updateVideoProgress function
                 html += `
                     <div class="video-card">
                         <h3 class="video-title">${video.title}</h3>
@@ -385,9 +419,7 @@ function loadDynamicResources() {
     }
 }
 
-/* --- 4. DYNAMIC WEIGHTAGE CHART FUNCTION --- */
-/* (Add this after your loadDynamicResources function) */
-
+/* --- DYNAMIC WEIGHTAGE CHART FUNCTION --- */
 function loadDynamicWeightage() {
     // 1. Find the weightage tab
     const weightageTab = document.getElementById('weightage');
@@ -454,7 +486,11 @@ function loadDynamicWeightage() {
         `;
     }
 }
-/* --- 3. MAIN SCRIPT LOGIC (Runs after page loads) --- */
+
+
+// =========================================================
+// 3. MAIN SCRIPT LOGIC (MUST remain inside DOMContentLoaded)
+// =========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -487,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Load resources *immediately* after user saves profile
         loadDynamicResources();
-        loadDynamicWeightage();
+        loadDynamicWeightage(); 
     });
 
 
@@ -516,6 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load resources for the user *as soon as the page loads*
     loadDynamicResources();
+    loadDynamicWeightage(); 
 
 
     // --- 3. AI STUDY PLAN LOGIC ---
@@ -562,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
+    
     // --- 4. AI QUIZ GENERATION LOGIC ---
 
     const quizForm = document.getElementById('quiz-setup-form');
@@ -636,9 +673,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 radio.type = 'radio';
                 radio.name = `question-${index}`;
                 radio.value = option;
+                
+                const optionText = document.createElement('span');
+                optionText.textContent = option;
 
                 label.appendChild(radio);
-                label.appendChild(document.createTextNode(option));
+                label.appendChild(optionText); // Use the new span
                 optionsContainer.appendChild(label);
             });
 
