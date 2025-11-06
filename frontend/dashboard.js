@@ -73,7 +73,7 @@ const resourcesByExam = {
             "Science": [
                 { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", url: "https://www.youtube.com/watch?v=a3klf9QIUg8" },
                 { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", url: "https://www.youtube.com/watch?v=UTwnriP1Npk" },
-                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "https://www.youtube.com/watch?v=7k2rs5yGOFM" }
+                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "#https://www.youtube.com/watch?v=7k2rs5yGOFM" }
             ],
             "Maths": [
                 { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", url: "https://www.youtube.com/watch?v=-UdHmSTmQtw" },
@@ -256,9 +256,9 @@ const resourcesByExam = {
                 { title: "Fundamental Rights - In-Depth", channel: "Unacademy", duration: "2:10:00", difficulty: "Easy", url: "https://www.youtube.com/watch?v=tRemoWJ1UBw" }
             ],
             "History": [
-                { title: "Modern History - Spectrum One Shot", channel: "Study IQ", duration: "9:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=IIR3FRCyO-s" },
-                { title: "Ancient History - Full", channel: "Drishti IAS", duration: "6:15:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=eHEv5aF5td8" },
-                { title: "Art & Culture - Nitin Singhania", channel: "Unacademy", duration: "4:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=VxG4MgN7P7k" }
+                { title: "Modern History - Spectrum One Shot", channel: "Study IQ", duration: "9:30:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=IIR3FRCyO-s" },
+                { title: "Ancient History - Full", channel: "Drishti IAS", duration: "6:15:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=eHEv5aF5td8" },
+                { title: "Art & Culture - Nitin Singhania", channel: "Unacademy", duration: "4:00:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=VxG4MgN7P7k" }
             ],
             "Economy": [
                 { title: "Indian Economy - Full Syllabus", channel: "Mrunal Patel", duration: "15:00:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=IRMepGlN3so" },
@@ -301,36 +301,6 @@ const resourcesByExam = {
     }
 };
 
-function loadGreeting() {
-    const name = localStorage.getItem("userName") || "Student";
-    document.getElementById("greeting-name").innerText = `Welcome, ${name}!`;
-}
-
-
-// =========================================================
-// 2. GLOBAL HELPER FUNCTIONS (MUST be in global scope)
-// =========================================================
-
-/* --- NEW: HELPER FUNCTION TO UPDATE VIDEO PROGRESS --- */
-function updateVideoProgress(videoLink) {
-    const userId = localStorage.getItem('userId');
-    if (userId) {
-        // Ping the backend to increment the video watched count
-        fetch(`http://localhost:8080/api/progress/update/${userId}?type=video`, {
-            method: 'POST'
-        }).then(response => {
-            if (response.ok) {
-                // After successful update, refresh the progress stats on the dashboard
-                loadProgress();
-            }
-        }).catch(error => console.error('Error updating video progress:', error));
-    }
-    // Always open the video link
-    window.open(videoLink, '_blank');
-}
-// Make the function globally available for onclick
-window.updateVideoProgress = updateVideoProgress;
-
 
 /* --- 2. DYNAMIC RESOURCE LOADING FUNCTION (Reads Video URLs + PYQs) --- */
 /* (This goes *after* the database object, in the global scope) */
@@ -364,7 +334,6 @@ function loadDynamicResources() {
                 // This is the logic to read the 'url'
                 let videoLink = video.url;
 
-                // CRITICAL FIX: Use onclick to call the new updateVideoProgress function
                 html += `
                     <div class="video-card">
                         <h3 class="video-title">${video.title}</h3>
@@ -485,70 +454,7 @@ function loadDynamicWeightage() {
         `;
     }
 }
-
-/* --- NEW: PROGRESS TRACKER FUNCTIONALITY --- */
-async function loadProgress() {
-    const userId = localStorage.getItem('userId');
-    if (!userId) return;
-
-    try {
-        // Fetch the progress data from the backend
-        const response = await fetch(`http://localhost:8080/api/progress/${userId}`);
-        if (!response.ok) throw new Error('Failed to fetch progress');
-
-        const progressData = await response.json();
-        
-        const videosWatched = progressData.videosWatched || 0;
-        const quizzesTaken = progressData.quizzesTaken || 0;
-        const totalVideos = progressData.totalVideosAvailable || 1; // Avoid division by zero
-        
-        // --- 1. Update Progress Pie Chart (Videos Watched) ---
-        const progressPercentage = Math.min(100, Math.round((videosWatched / totalVideos) * 100));
-        
-        const progressValueElement = document.getElementById('progressValue');
-        const progressPieElement = progressValueElement ? document.querySelector('.progress-pie') : null;
-
-        if (progressPieElement && progressValueElement) {
-            progressPieElement.style.setProperty('--progress', progressPercentage);
-            progressValueElement.innerText = `${progressPercentage}%`;
-        }
-
-        // --- 2. Update Quiz Bar ---
-        const totalQuizzesGoal = 5; // Fixed goal for progress bar display
-        const quizBarPercentage = Math.min(100, Math.round((quizzesTaken / totalQuizzesGoal) * 100));
-
-        const quizBarElement = document.getElementById('quizBar');
-        const quizStatsElement = document.getElementById('quizStats');
-
-        if (quizBarElement && quizStatsElement) {
-            const progressBarFill = document.querySelector('#quizBar'); 
-            if (progressBarFill) {
-                progressBarFill.style.setProperty('--progress', quizBarPercentage);
-            }
-            quizStatsElement.innerText = `${quizzesTaken} / ${totalQuizzesGoal} Quizzes`;
-        }
-
-
-    } catch (error) {
-        console.error('Progress loading error:', error);
-    }
-}
-
-/* --- NEW: GREETING FUNCTIONALITY --- */
-function loadGreeting() {
-    const userName = localStorage.getItem('userName');
-    const greetingElement = document.getElementById('greeting-name');
-    
-    if (greetingElement && userName) {
-        // CRITICAL FIX: Update the H1 element text to show the name
-        greetingElement.textContent = `Welcome Back, ${userName}!`;
-    }
-}
-
-
-// =========================================================
-// 3. MAIN SCRIPT LOGIC (MUST remain inside DOMContentLoaded)
-// =========================================================
+/* --- 3. MAIN SCRIPT LOGIC (Runs after page loads) --- */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -581,9 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Load resources *immediately* after user saves profile
         loadDynamicResources();
-        loadDynamicWeightage(); 
-        loadProgress(); 
-        loadGreeting(); // Load greeting after setup
+        loadDynamicWeightage();
     });
 
 
@@ -613,9 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load resources for the user *as soon as the page loads*
     loadGreeting();
     loadDynamicResources();
-    loadDynamicWeightage(); 
-    loadProgress(); // Load progress on page load
-    loadGreeting(); // Load greeting on page load
 
 
     // --- 3. AI STUDY PLAN LOGIC ---
@@ -662,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    
+
     // --- 4. AI QUIZ GENERATION LOGIC ---
 
     const quizForm = document.getElementById('quiz-setup-form');
@@ -769,18 +670,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 score++;
             }
         });
-
-        // NEW LOGIC: Ping backend to increment quizzesTaken counter
-        const userId = localStorage.getItem('userId');
-        if (userId) {
-            fetch(`http://localhost:8080/api/progress/update/${userId}?type=quiz`, {
-                method: 'POST'
-            }).then(() => {
-                // After successful update, refresh the progress stats
-                loadProgress();
-            }).catch(error => console.error('Error updating quiz progress:', error));
-        }
-
 
         // Display the results
         quizResults.innerHTML = `
