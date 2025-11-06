@@ -24,8 +24,10 @@ public class AuthController {
     public String login(@RequestBody User user) {
         User u = userRepository.findByEmail(user.getEmail());
         if (u != null && u.getPassword().equals(user.getPassword())) {
-            return "SUCCESS";
-        } else{
+            // CRITICAL FIX: Return the user's full name (u.getName())
+            // The frontend uses this string to set the greeting.
+            return u.getName();
+        } else {
             return "FAIL";
         }
     }

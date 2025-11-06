@@ -1,4 +1,4 @@
-package com.example.plrepa.controller; 
+package com.example.plrepa.controller; // <-- CRITICAL PACKAGE NAME FIX
 import com.example.plrepa.model.Exam;
 import com.example.plrepa.repository.ExamRepository;
 
