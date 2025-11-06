@@ -715,3 +715,40 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--primary-color);
     transform: translateX(3px);
 }
+/* --- Add this to the end of your dashboard.css --- */
+
+/* This vertically aligns the label and input */
+.quiz-form .input-group {
+    flex-grow: 1; 
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styles for the "Enter a Topic:" label */
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Styles for the text input box */
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fff;
+    box-sizing: border-box; /* Ensures padding works correctly */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Style for when you click *into* the box */
+.input-group input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
