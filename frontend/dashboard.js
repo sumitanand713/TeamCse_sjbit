@@ -1,4 +1,5 @@
 /* --- NEW: WEIGHTAGE DATABASE --- */
+/* (Add this below your resourcesByExam object) */
 const weightageByExam = {
     "10th_boards": {
         title: "Class 10 Boards",
@@ -72,7 +73,7 @@ const resourcesByExam = {
             "Science": [
                 { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", url: "https://www.youtube.com/watch?v=a3klf9QIUg8" },
                 { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", url: "https://www.youtube.com/watch?v=UTwnriP1Npk" },
-                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "https://www.youtube.com/watch?v=7k2rs5yGOFM" } // <-- FIXED URL
+                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "#https://www.youtube.com/watch?v=7k2rs5yGOFM" }
             ],
             "Maths": [
                 { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", url: "https://www.youtube.com/watch?v=-UdHmSTmQtw" },
@@ -138,9 +139,9 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2023, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/Shift%202%20April%20with%20sol%20Maths.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/nov/JEE%20Mains%20Physics%202023%2025-Jan-Shift%201.pdf" }, { subject: "JEE Mains (Chemistry)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Chemistry/Shift%202%20April%20with%20sol%20Chemistry.pdf" } ] },
-            { year: 2022, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/JEE%20main%20Maths%2029th%20June%20Shift%202%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/JEE%20main%20physics%2029th%20June%20Shift%202%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Chemistry)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Chemistry/JEE%20main%20Chemistry%2029th%20July%20Shift%202%20paper%20with%20solution.pdf" } ] },
-            { year: 2021, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/JEE%20main%20Maths%2020th%20July%20Shift%201%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/JEE%20main%20physics%2024th%20Feb%20Shift%201%20paper%20with%20solution.pdf" }, ] },
+            { year: 2023, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/Shift%202%20April%20with%20sol%20Maths.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/nov/JEE%20Mains%20Physics%202023%2025-Jan-Shift%201.pdf" }, { subject: "JEE Mains (Chemistry)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Chemistry/Shift%202%20April%20with%20sol%20Chemistry.pdf" } ] },
+            { year: 2022, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/JEE%20main%20Maths%2029th%20June%20Shift%202%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/JEE%20main%20physics%2029th%20June%20Shift%202%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Chemistry)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Chemistry/JEE%20main%20Chemistry%2029th%20July%20Shift%202%20paper%20with%20solution.pdf" } ] },
+            { year: 2021, papers: [  { subject: "JEE Mains (Maths)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Maths/JEE%20main%20Maths%2020th%20July%20Shift%201%20paper%20with%20solution.pdf" }, { subject: "JEE Mains (Physics)", url: "https://www.oswaal360.com/pluginfile.php/10939/mod_folder/content/0/JEE/JEE%20Main/Physics/JEE%20main%20physics%2024th%20Feb%20Shift%201%20paper%20with%20solution.pdf" }, ] },
         ]
     },
     "neet": {
@@ -202,8 +203,8 @@ const resourcesByExam = {
         subjects: {
             "Quantitative Aptitude": [
                 { title: "Arithmetic - One Shot Marathon", channel: "Unacademy CAT", duration: "6:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=tP4bU-oTbQM" },
-                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=TV9rQm15sWo" }, // <-- FIXED: Changed 'query' to 'url'
-                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=utY-EIvE2Dg" } // <-- FIXED: Changed 'query' to 'url'
+                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", query: "https://www.youtube.com/watch?v=TV9rQm15sWo" },
+                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", query: "https://www.youtube.com/watch?v=utY-EIvE2Dg" }
             ],
             "LRDI": [
                 { title: "Arrangements - Complete Set", channel: "Elites Grid", duration: "2:45:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=GYe98jwCn7g" },
@@ -302,7 +303,7 @@ const resourcesByExam = {
 
 
 /* --- 2. DYNAMIC RESOURCE LOADING FUNCTION (Reads Video URLs + PYQs) --- */
-/* (This goes after the database object, in the global scope) */
+/* (This goes *after* the database object, in the global scope) */
 
 function loadDynamicResources() {
     // 1. Find the resources tab
@@ -317,12 +318,10 @@ function loadDynamicResources() {
     // 4. Check if we have resources for this user's exam
     if (examData) {
         // --- (Start of HTML Building) ---
-        // FIXED: Added backticks for template literal
         let html = `<h1>Resources for ${examData.title}</h1>`;
         html += '<p>Curated materials to help you prepare.</p>';
 
         // --- (A) Build Video Section ---
-        // FIXED: Added backticks for template literal
         html += `<h2 class="subject-header">Video Lessons</h2>`;
         html += '<div class="video-card-container">';
         
@@ -354,17 +353,13 @@ function loadDynamicResources() {
         
         // --- (B) Build NEW PYQ Section ---
         if (examData.pyqs && examData.pyqs.length > 0) {
-            // FIXED: Added backticks for template literal
             html += `<h2 class="subject-header">Previous Year Questions (PYQs)</h2>`;
             html += '<div class="pyq-container">'; // A container for all year blocks
 
             // Loop over each year object (e.g., { year: 2025, ... })
             examData.pyqs.forEach(yearData => {
-                // FIXED: Added backticks for template literal
                 html += `<div class="pyq-year-block">`;
-                // FIXED: Added backticks for template literal
                 html += `<h3>${yearData.year} Papers</h3>`;
-                // FIXED: Added backticks for template literal
                 html += `<ul class="pyq-paper-list">`;
                 
                 // Loop over each paper in that year
@@ -372,11 +367,10 @@ function loadDynamicResources() {
                     html += `<li><a href="${paper.url}" target="_blank">${paper.subject}</a></li>`;
                 });
                 
-                // FIXED: Added backticks for template literal
                 html += `</ul></div>`; // Close pyq-year-block
             });
 
-            html += '</div>'; // Close pyq-container
+            html += `</div>`; // Close pyq-container
         }
         
         // --- (End of HTML Building) ---
@@ -491,7 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hide the modal
         modal.style.display = 'none';
 
-        // Load resources immediately after user saves profile
+        // Load resources *immediately* after user saves profile
         loadDynamicResources();
         loadDynamicWeightage(); 
     });
@@ -520,11 +514,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Load resources for the user as soon as the page loads
+    // Load resources for the user *as soon as the page loads*
     loadDynamicResources();
-    // FIXED: Added this call to ensure the weightage chart loads immediately on page load 
-    // if the profile has already been set.
-    loadDynamicWeightage();
     
     
     // --- 3. AI STUDY PLAN LOGIC ---
@@ -673,7 +664,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalQuestions = currentQuizData.length;
 
         currentQuizData.forEach((questionData, index) => {
-            // FIXED: Added backticks to the query selector string
             const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
             if (selectedOption && selectedOption.value === questionData.answer) {
                 score++;
