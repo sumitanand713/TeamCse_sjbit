@@ -367,7 +367,7 @@ function loadDynamicResources() {
                 // This is the logic to read the 'url'
                 let videoLink = video.url;
 
-                // CRITICAL FIX: Use onclick to call the new updateVideoProgress function
+                // Use a simple anchor tag for now
                 html += `
                     <div class="video-card">
                         <h3 class="video-title">${video.title}</h3>
@@ -488,8 +488,33 @@ function loadDynamicWeightage() {
 }
 
 
+/* --- GREETING FUNCTIONALITY --- */
+function loadGreeting() {
+    const userName = localStorage.getItem('userName');
+    const greetingElement = document.getElementById('greeting-message');
+    
+    if (greetingElement && userName) {
+        greetingElement.textContent = `Welcome, ${userName}!`;
+    } else if (greetingElement) {
+        // Fallback if name isn't set
+        greetingElement.textContent = 'Welcome, Student!';
+    }
+}
+
+/* --- THEME-SETTING FUNCTION --- */
+// This runs immediately to prevent the page from "flashing"
+(function applyTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+    } else {
+        document.documentElement.classList.remove('dark-mode');
+    }
+})();
+
+
 // =========================================================
-// 3. MAIN SCRIPT LOGIC (MUST remain inside DOMContentLoaded)
+// 3. MAIN SCRIPT LOGIC (Runs after page loads)
 // =========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -497,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. PROFILE SETUP MODAL LOGIC ---
 
     const modal = document.getElementById('profile-setup-modal');
-    const form = document.getElementById('profile-setup-form');
+    const setupForm = document.getElementById('profile-setup-form');
     const profileIsSet = localStorage.getItem('profileSetupComplete');
 
     if (!profileIsSet) {
@@ -505,18 +530,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add listener for when the setup form is submitted
-    form.addEventListener('submit', (e) => {
+    setupForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         const grade = document.getElementById('grade').value;
         const exam = document.getElementById('target-exam').value;
+        const userName = document.getElementById('user-name').value;
+
 
         // Save data
         localStorage.setItem('userGrade', grade);
         localStorage.setItem('userExam', exam);
+        localStorage.setItem('userName', userName);
         localStorage.setItem('profileSetupComplete', 'true');
 
-        console.log('Profile Saved:', { grade, exam });
+        console.log('Profile Saved:', { grade, exam, userName });
 
         // Hide the modal
         modal.style.display = 'none';
@@ -524,6 +552,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Load resources *immediately* after user saves profile
         loadDynamicResources();
         loadDynamicWeightage(); 
+        loadGreeting(); // Load greeting after setup
+        populateSettingsForm(); // Populate settings tab
     });
 
 
@@ -550,12 +580,87 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Load resources for the user *as soon as the page loads*
+    // --- 3. SETTINGS PAGE LOGIC ---
+    const updateForm = document.getElementById('update-profile-form');
+    const themeToggle = document.getElementById('theme-toggle');
+    const resetBtn = document.getElementById('reset-profile-btn');
+    const saveSuccessMsg = document.getElementById('save-success-message');
+
+    // Function to fill in the settings form with saved data
+    function populateSettingsForm() {
+        if (document.getElementById('settings-name')) {
+            document.getElementById('settings-name').value = localStorage.getItem('userName') || '';
+            document.getElementById('settings-grade').value = localStorage.getItem('userGrade') || '10';
+            document.getElementById('settings-exam').value = localStorage.getItem('userExam') || '10th_boards';
+        }
+    }
+
+    // Listener for the "Update Profile" form
+    if (updateForm) {
+        updateForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get values from settings form
+            const userName = document.getElementById('settings-name').value;
+            const grade = document.getElementById('settings-grade').value;
+            const exam = document.getElementById('settings-exam').value;
+
+            // Save new data
+            localStorage.setItem('userName', userName);
+            localStorage.setItem('userGrade', grade);
+            localStorage.setItem('userExam', exam);
+
+            console.log('Profile Updated:', { userName, grade, exam });
+
+            // Refresh all dynamic content
+            loadDynamicResources();
+            loadDynamicWeightage();
+            loadGreeting();
+
+            // Show "Saved!" message
+            if (saveSuccessMsg) {
+                saveSuccessMsg.style.display = 'block';
+                setTimeout(() => {
+                    saveSuccessMsg.style.display = 'none';
+                }, 2000);
+            }
+        });
+    }
+
+    // Listener for the "Reset Profile" button
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            // No confirm() modal as per instructions, just reset
+            localStorage.clear();
+            location.reload();
+        });
+    }
+
+    // Listener for the "Dark Mode" toggle
+    if (themeToggle) {
+        // Set toggle to correct initial state
+        themeToggle.checked = (localStorage.getItem('theme') === 'dark');
+
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                document.documentElement.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
+    // --- 4. INITIAL PAGE LOAD ---
+    // Load all dynamic content
     loadDynamicResources();
     loadDynamicWeightage(); 
+    loadGreeting(); // Load greeting on page load
+    populateSettingsForm(); // Populate settings tab on load
 
 
-    // --- 3. AI STUDY PLAN LOGIC ---
+    // --- 5. AI STUDY PLAN LOGIC ---
     const generateBtn = document.getElementById('generate-plan-btn');
     const planContent = document.getElementById('plan-content');
     const planLoading = document.getElementById('plan-loading');
@@ -600,7 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-    // --- 4. AI QUIZ GENERATION LOGIC ---
+    // --- 6. AI QUIZ GENERATION LOGIC ---
 
     const quizForm = document.getElementById('quiz-setup-form');
     const quizContent = document.getElementById('quiz-content');
@@ -674,6 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 radio.name = `question-${index}`;
                 radio.value = option;
                 
+                // (THIS IS THE FIX for the UI)
                 const optionText = document.createElement('span');
                 optionText.textContent = option;
 

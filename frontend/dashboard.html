@@ -25,6 +25,13 @@
                 <h2>Set Up Your Profile</h2>
                 <!-- Friendly text -->
                 <p>Just a few details to personalize your learning journey.</p>
+                
+                <!-- (NEW) Name Input -->
+                <div class="input-group">
+                    <label for="user-name">Your Name:</label>
+                    <input type="text" id="user-name" name="user-name" placeholder="Enter your name" required>
+                </div>
+
                 <!-- Grade Selection -->
                 <div class="input-group">
                     <label for="grade">Select Your Current Grade:</label>
@@ -53,6 +60,7 @@
                         <optgroup label="Graduate">
                             <option value="cat">CAT (MBA)</option>
                             <option value="gate">GATE (M.Tech)</option>
+                            <option value="gre">GRE (International)</option>
                         </optgroup>
                         <optgroup label="Post Graduate / Professional">
                             <option value="upsc">UPSC (Civil Services)</option>
@@ -92,43 +100,47 @@
 
             <!-- "Home" Tab Pane -->
             <div id="home" class="tab-pane active">
-    <h1 id="greeting-name">Welcome!</h1>
+                <!-- (MODIFIED) Added ID for greeting -->
+                <h1 id="greeting-message">Welcome, Student!</h1>
+                <p>This is your homepage. Your quick stats and reminders will appear here.</p>
+                <div class="stats-grid">
+                    
+                    <div class="stat-card">
+                        <h3>Progress</h3>
+                        <!-- (MODIFIED) Added ID for progress value -->
+                        <div class="progress-pie" style="--progress: 0">
+                            <span class="progress-pie-value" id="progressValue">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Quizzes Taken</h3>
+                        <!-- (MODIFIED) Added ID for progress bar -->
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="quizBar" style="--progress: 0"></div>
+                        </div>
+                        <!-- (MODIFIED) Added ID for quiz stats -->
+                        <span class="progress-bar-label" id="quizStats">0 / 5 Quizzes</span>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Study Plan</h3>
+                        <span>Week 2</span>
+                    </div>
 
-    <p>This is your homepage. Your quick stats and reminders will appear here.</p>
-    
-    <div class="stats-grid">
-        
-        <div class="stat-card">
-            <h3>Progress</h3>
-            <div class="progress-pie" style="--progress: var(--progressValue)">
-                <span class="progress-pie-value" id="progressValue">0%</span>
+                </div>
             </div>
-        </div>
-        
-        <div class="stat-card">
-            <h3>Quizzes Taken</h3>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill" id="quizBar"></div>
-            </div>
-            <span id="quizStats">0 / 0 Quizzes</span>
-        </div>
-        
-        <div class="stat-card">
-            <h3>Study Plan</h3>
-            <span id="studyWeekDisplay">Week 1</span>
-        </div>
-
-    </div>
-</div>
-
 
             <!-- "Exam Weightage" Tab Pane -->
+            <!-- This is left empty on purpose. -->
+            <!-- JavaScript will build the chart here. -->
             <div id="weightage" class="tab-pane">
             </div>
 
             <!-- "Learning Resources" Tab Pane -->
+            <!-- This is left empty on purpose. -->
+            <!-- Our JavaScript (loadDynamicResources) will fill this. -->
             <div id="resources" class="tab-pane">
-            
             </div>
 
             <!-- "AI Study Plan" Tab Pane -->
@@ -140,36 +152,107 @@
                     Generating your plan, please wait...
                 </div>
                 <div id="plan-content">
-                    </div>
+                    <!-- The AI's plan will be inserted here -->
+                </div>
             </div>
 
             <!-- "Quiz" Tab Pane -->
             <div id="quiz" class="tab-pane">
-                <h1>Practice Quiz</h1>
-                <p>Test your knowledge on a specific topic.</p>
-                
-                <form id="quiz-setup-form" class="quiz-form">
-                    <div class="input-group">
-                        <label for="quiz-topic">Enter a Topic:</label>
-                        <input type="text" id="quiz-topic" name="quiz-topic" placeholder="e.g., Physics - Thermodynamics" required>
+                <!-- Wrapper container for better centering -->
+                <div class="quiz-container">
+                    <h1>Practice Quiz</h1>
+                    <p>Test your knowledge on a specific topic.</p>
+                    
+                    <!-- 1. The Quiz Setup Form -->
+                    <form id="quiz-setup-form" class="quiz-form">
+                        <div class="input-group">
+                            <label for="quiz-topic">Enter a Topic:</label>
+                            <input type="text" id="quiz-topic" name="quiz-topic" placeholder="e.g., Physics - Thermodynamics" required>
+                        </div>
+                        <button type="submit" class="login-button">Generate Quiz</button>
+                    </form>
+
+                    <!-- 2. The Loading Message -->
+                    <div id="quiz-loading" style="display: none; margin-top: 1rem;">
+                        Generating your quiz...
                     </div>
-                    <button type="submit" class="login-button">Generate Quiz</button>
-                </form>
 
-                <div id="quiz-loading" style="display: none; margin-top: 1rem;">
-                    Generating your quiz...
+                    <!-- 3. The Quiz Questions Will Be Injected Here -->
+                    <div id="quiz-content" class="quiz-content"></div>
+
+                    <!-- 4. The Results Will Be Shown Here -->
+                    <div id="quiz-results" class.="quiz-results"></div>
                 </div>
-
-                <div id="quiz-content" class="quiz-content"></div>
-
-                <div id="quiz-results" class="quiz-results"></div>
             </div>
 
-            <!-- "Settings" Tab Pane -->
+            <!-- (REPLACED) "Settings" Tab Pane -->
             <div id="settings" class="tab-pane">
                 <h1>Settings</h1>
                 <p>Manage your account and preferences.</p>
-                <!-- Settings form would go here -->
+
+                <!-- Section 1: Update Profile -->
+                <section class="settings-section">
+                    <h2>Update Profile</h2>
+                    <form id="update-profile-form">
+                        <div class="input-group">
+                            <label for="settings-name">Your Name:</label>
+                            <input type="text" id="settings-name" name="settings-name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="settings-grade">Your Grade:</label>
+                            <select id="settings-grade" name="settings-grade" required>
+                                <option value="10">10th Grade</option>
+                                <option value="11">11th Grade</option>
+                                <option value="12">12th Grade</option>
+                                <option value="not_applicable">Not Applicable</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="settings-exam">Target Exam:</label>
+                            <select id="settings-exam" name="settings-exam" required>
+                                <optgroup label="School">
+                                    <option value="10th_boards">10th Boards</option>
+                                    <option value="12th_boards">12th Boards</option>
+                                </optgroup>
+                                <optgroup label="Undergraduate">
+                                    <option value="jee">IIT-JEE (Engineering)</option>
+                                    <option value="neet">NEET (Medical)</option>
+                                    <option value-="clat">CLAT (Law)</option>
+                                </optgroup>
+                                <optgroup label="Graduate">
+                                    <option value="cat">CAT (MBA)</option>
+                                    <option value="gate">GATE (M.Tech)</option>
+                                    <option value="gre">GRE (International)</option>
+                                </optgroup>
+                                <optgroup label="Post Graduate / Professional">
+                                    <option value="upsc">UPSC (Civil Services)</option>
+                                    <option value="net">UGC-NET (Professor)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <button type="submit" class="login-button">Save Changes</button>
+                        <p id="save-success-message" class="success-message">Profile saved!</p>
+                    </form>
+                </section>
+
+                <!-- Section 2: Appearance -->
+                <section class="settings-section">
+                    <h2>Appearance</h2>
+                    <div class="toggle-switch-container">
+                        <label class="toggle-label" for="theme-toggle">Dark Mode</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Section 3: Danger Zone -->
+                <section class="settings-section danger-zone">
+                    <h2>Danger Zone</h2>
+                    <p>This action cannot be undone. This will clear all your profile data and preferences.</p>
+                    <button id="reset-profile-btn" class="danger-button">Reset Profile</button>
+                </section>
             </div>
 
         </section>
