@@ -1,4 +1,4 @@
-package com.plrepa.repository;
+package main.java.com.example.plrepa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.plrepa.model.Exam;
