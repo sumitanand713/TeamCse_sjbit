@@ -1,21 +1,26 @@
-document.getElementById("login-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+document.getElementById("login-form").addEventListener("submit", async function(event){
+    event.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    console.log("Login form submitted ✅");
 
-    const response = await fetch("http://localhost:8080/auth/login", {
+    const loginData = {
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+    };
+
+    const response = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(loginData)
     });
 
     const result = await response.text();
+    console.log("Response from backend:", result);
 
-    if (result === "success") {
-        localStorage.setItem("loggedInUser", email);
-        window.location.href = "home.html";
+    if(result === "SUCCESS"){
+        window.location.href = "/frontend/dashboard.html";
+  // ✅ redirect in same folder
     } else {
-        document.getElementById("error-message").textContent = result;
+        document.getElementById("error-message").innerText = "Invalid email or password!";
     }
 });
