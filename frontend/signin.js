@@ -1,23 +1,21 @@
-// Wait for the entire page content to load
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // Find the login form by its ID
-    const loginForm = document.getElementById("login-form");
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    // Check if the form actually exists on this page
-    if (loginForm) {
-        // Add an event listener for the "submit" event
-        loginForm.addEventListener("submit", (event) => {
-            
-            // 1. IMPORTANT: Stop the form from its default action (reloading the page)
-            event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-            // 2. (Optional) You can add validation logic here
-            // For example: check if email and password fields are filled
-            
-            // 3. Redirect the user to home.html
-            window.location.href = "dashboard.html";
-        });
+    const response = await fetch("http://localhost:8080/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    });
+
+    const result = await response.text();
+
+    if (result === "success") {
+        localStorage.setItem("loggedInUser", email);
+        window.location.href = "home.html";
+    } else {
+        document.getElementById("error-message").textContent = result;
     }
-
 });
