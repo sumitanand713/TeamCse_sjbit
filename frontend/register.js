@@ -6,7 +6,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     
     // --- ADDED PASSWORD CHECK ---
     if (password !== confirmPassword) {
-        alert("❌ Passwords do not match!");
+        alert("❌ Passwords do not match! Please confirm your password.");
         return; 
     }
     // --- END ADDED PASSWORD CHECK ---
@@ -29,6 +29,6 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         alert("✅ Registration Successful");
         window.location.href = "signin.html";
     } else {
-        alert("❌ Registration Failed!");
+        alert("❌ Registration Failed! Please check your input.");
     }
 });
