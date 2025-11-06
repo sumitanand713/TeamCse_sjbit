@@ -6,19 +6,19 @@ const resourcesByExam = {
         title: "Class 10 Boards",
         subjects: {
             "Science": [
-                { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", url: "#" },
-                { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", url: "#" },
-                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "#" }
+                { title: "Life Processes - One Shot", channel: "Physics Wallah", duration: "3:45:20", difficulty: "Medium", url: "https://www.youtube.com/watch?v=a3klf9QIUg8" },
+                { title: "Light Reflection & Refraction - Full Chapter", channel: "Vedantu", duration: "2:10:05", difficulty: "Medium", url: "https://www.youtube.com/watch?v=UTwnriP1Npk" },
+                { title: "Acids, Bases & Salts - 20 Min Revision", channel: "Dear Sir", duration: "0:22:15", difficulty: "Easy", url: "#https://www.youtube.com/watch?v=7k2rs5yGOFM" }
             ],
             "Maths": [
-                { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", url: "#" },
-                { title: "Trigonometry - All Concepts", channel: "Magnet Brains", duration: "2:50:00", difficulty: "Medium", url: "#" },
-                { title: "Circles - All Theorems", channel: "Vedantu", duration: "1:05:10", difficulty: "Hard", url: "#" }
+                { title: "Real Numbers - Full Chapter", channel: "Dear Sir", duration: "1:15:30", difficulty: "Easy", url: "https://www.youtube.com/watch?v=-UdHmSTmQtw" },
+                { title: "Trigonometry - All Concepts", channel: "Magnet Brains", duration: "2:50:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=sRZbjNtOflY" },
+                { title: "Circles - All Theorems", channel: "Vedantu", duration: "1:05:10", difficulty: "Hard", url: "https://www.youtube.com/watch?v=76aQMXcjF4o" }
             ],
             "Social Science": [
-                { title: "Nationalism in India - One Shot", channel: "Digraj Singh Rajput", duration: "1:30:00", difficulty: "Medium", url: "#" },
-                { title: "Power Sharing - Full Chapter", channel: "Magnet Brains", duration: "0:45:10", difficulty: "Easy", url: "#" },
-                { title: "Sectors of Indian Economy - One Shot", channel: "Padhle", duration: "1:12:00", difficulty: "Medium", url: "#" }
+                { title: "Nationalism in India - One Shot", channel: "Digraj Singh Rajput", duration: "1:30:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=HP1kdhvZGzc" },
+                { title: "Power Sharing - Full Chapter", channel: "Magnet Brains", duration: "0:45:10", difficulty: "Easy", url: "https://www.youtube.com/watch?v=UWYT7KitauA" },
+                { title: "Sectors of Indian Economy - One Shot", channel: "Padhle", duration: "1:12:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=y7QdyRP-jwQ" }
             ]
         },
         pyqs: [
@@ -31,19 +31,19 @@ const resourcesByExam = {
         title: "Class 12 Boards",
         subjects: {
             "Physics": [
-                { title: "Electric Charges & Fields - One Shot", channel: "Physics Wallah", duration: "4:30:10", difficulty: "Medium", url: "#" },
-                { title: "Ray Optics - Full Chapter", channel: "Vedantu", duration: "3:15:00", difficulty: "Medium", url: "#" },
-                { title: "Semiconductors - 1 Hour Revision", channel: "Apni Kaksha", duration: "1:05:00", difficulty: "Hard", url: "#" }
+                { title: "Electric Charges & Fields - One Shot", channel: "Physics Wallah", duration: "4:30:10", difficulty: "Medium", url: "https://www.youtube.com/watch?v=WOjaDkFOq3E" },
+                { title: "Ray Optics - Full Chapter", channel: "Vedantu", duration: "3:15:00", difficulty: "Medium", url: "https://www.youtube.com/watch?v=KZMf5XiuvcE" },
+                { title: "Semiconductors - 1 Hour Revision", channel: "Apni Kaksha", duration: "1:05:00", difficulty: "Hard", url: "https://www.youtube.com/watch?v=oOY5g4RtKPM" }
             ],
             "Chemistry": [
-                { title: "Solutions - One Shot", channel: "Unacademy", duration: "2:40:00", difficulty: "Medium", url: "#" },
-                { title: "Electrochemistry - Full Chapter", channel: "Physics Wallah", duration: "3:10:20", difficulty: "Medium", url: "#" },
-                { title: "Haloalkanes & Haloarenes - One Shot", channel: "Vedantu", duration: "2:55:00", difficulty: "Hard", url: "#" }
+                { title: "Solutions - One Shot", channel: "Unacademy", duration: "2:40:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=wONsfq3rw1w" },
+                { title: "Electrochemistry - Full Chapter", channel: "Physics Wallah", duration: "3:10:20", difficulty: "Medium", url : "https://www.youtube.com/watch?v=ZRSDAkjXR8c" },
+                { title: "Haloalkanes & Haloarenes - One Shot", channel: "Vedantu", duration: "2:55:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=SUOBNBE-wBI" }
             ],
             "Maths": [
-                { title: "Matrices & Determinants - One Shot", channel: "Neha Agrawal", duration: "2:18:00", difficulty: "Easy", url: "#" },
-                { title: "Integration - Full Chapter", channel: "Apni Kaksha", duration: "5:30:00", difficulty: "Hard", url: "#" },
-                { title: "3D Geometry - Complete Chapter", channel: "Vedantu", duration: "2:45:00", difficulty: "Medium", url: "#" }
+                { title: "Matrices & Determinants - One Shot", channel: "Neha Agrawal", duration: "2:18:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=qjKCgq2KYIY" },
+                { title: "Integration - Full Chapter", channel: "Apni Kaksha", duration: "5:30:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=yY2oUKVAkdY" },
+                { title: "3D Geometry - Complete Chapter", channel: "Vedantu", duration: "2:45:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=jCluGlqH70M" }
             ]
         },
         pyqs: [
@@ -58,19 +58,19 @@ const resourcesByExam = {
         title: "IIT-JEE",
         subjects: {
             "Physics": [
-                { title: "Rotation - JEE Advanced", channel: "Physics Galaxy", duration: "5:10:45", difficulty: "Hard", url: "#" },
-                { title: "Modern Physics - JEE Mains One Shot", channel: "Unacademy JEE", duration: "3:20:00", difficulty: "Medium", url: "#" },
-                { title: "Units & Dimensions - Full Chapter", channel: "Physics Wallah", duration: "1:30:00", difficulty: "Easy", url: "#" }
+                { title: "Rotation - JEE Advanced", channel: "Physics Galaxy", duration: "5:10:45", difficulty: "Hard", url : "https://www.youtube.com/watch?v=WwoNNUG_rFg" },
+                { title: "Modern Physics - JEE Mains One Shot", channel: "Unacademy JEE", duration: "3:20:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=V76QPpoWVwA" },
+                { title: "Units & Dimensions - Full Chapter", channel: "Physics Wallah", duration: "1:30:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=Xmjx910G0WI" }
             ],
             "Chemistry": [
-                { title: "Chemical Bonding - One Shot", channel: "Physics Wallah", duration: "4:05:10", difficulty: "Medium", url: "#" },
-                { title: "GOC - General Organic Chemistry", channel: "Unacademy JEE", duration: "6:15:00", difficulty: "Hard", url: "#" },
-                { title: "Mole Concept - Basic to Advanced", channel: "Apni Kaksha", duration: "3:00:00", difficulty: "Easy", url: "#" }
+                { title: "Chemical Bonding - One Shot", channel: "Physics Wallah", duration: "4:05:10", difficulty: "Medium", url : "https://www.youtube.com/watch?v=gcx8-VOoegg" },
+                { title: "GOC - General Organic Chemistry", channel: "Unacademy JEE", duration: "6:15:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=3EuZ17E_-5c" },
+                { title: "Mole Concept - Basic to Advanced", channel: "Apni Kaksha", duration: "3:00:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=tMHrpmJH5I8" }
             ],
             "Maths": [
-                { title: "Calculus - Full Marathon", channel: "Vedantu JEE", duration: "8:30:00", difficulty: "Hard", url: "#" },
-                { title: "Conic Sections - One Shot", channel: "Unacademy JEE", duration: "4:12:00", difficulty: "Medium", url: "#" },
-                { title: "Permutations & Combinations", channel: "Apni Kaksha", duration: "2:45:00", difficulty: "Medium", url: "#" }
+                { title: "Calculus - Full Marathon", channel: "Vedantu JEE", duration: "8:30:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=RE1qFUEq3hg" },
+                { title: "Conic Sections - One Shot", channel: "Unacademy JEE", duration: "4:12:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=XNXhkDDId8U" },
+                { title: "Permutations & Combinations", channel: "Apni Kaksha", duration: "2:45:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=CGgyPMkMm50" }
             ]
         },
         pyqs: [
@@ -83,19 +83,19 @@ const resourcesByExam = {
         title: "NEET (Medical)",
         subjects: {
             "Biology": [
-                { title: "Human Physiology - One Shot", channel: "Unacademy NEET", duration: "10:15:30", difficulty: "Hard", url: "#" },
-                { title: "Genetics & Evolution - Full Unit", channel: "Physics Wallah", duration: "7:45:00", difficulty: "Medium", url: "#" },
-                { title: "Plant Kingdom - 30 Min Revision", channel: "Vedantu", duration: "0:30:00", difficulty: "Easy", url: "#" }
+                { title: "Human Physiology - One Shot", channel: "Unacademy NEET", duration: "10:15:30", difficulty: "Hard", url : "https://www.youtube.com/watch?v=8qMEmWjt7zg" },
+                { title: "Genetics & Evolution - Full Unit", channel: "Physics Wallah", duration: "7:45:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=F4x_isMvxT0" },
+                { title: "Plant Kingdom - 30 Min Revision", channel: "Vedantu", duration: "0:30:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=XdjmqIZ1wp0" }
             ],
             "Physics": [
-                { title: "NEET Physics - Full Syllabus Marathon", channel: "Physics Wallah", duration: "12:00:00", difficulty: "Medium", url: "#" },
-                { title: "Current Electricity - NEET", channel: "Unacademy NEET", duration: "3:10:00", difficulty: "Medium", url: "#" },
-                { title: "Laws of Motion - Concepts", channel: "Physics Galaxy", duration: "2:20:00", difficulty: "Easy", url: "#" }
+                { title: "NEET Physics - Full Syllabus Marathon", channel: "Physics Wallah", duration: "12:00:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=01CQR6uDEEU" },
+                { title: "Current Electricity - NEET", channel: "Unacademy NEET", duration: "3:10:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=MuUhx3Ghd2Y" },
+                { title: "Laws of Motion - Concepts", channel: "Physics Galaxy", duration: "2:20:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=5QXTj_MqmcY" }
             ],
             "Chemistry": [
-                { title: "Organic Chemistry - Name Reactions", channel: "Physics Wallah", duration: "4:00:00", difficulty: "Hard", url: "#" },
-                { title: "p-Block Elements - One Shot", channel: "Unacademy NEET", duration: "3:30:00", difficulty: "Medium", url: "#" },
-                { title: "Atomic Structure - Full Chapter", channel: "Vedantu NEET", duration: "2:40:00", difficulty: "Easy", url: "#" }
+                { title: "Organic Chemistry - Name Reactions", channel: "Physics Wallah", duration: "4:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=4-aEKLNkVXo" },
+                { title: "p-Block Elements - One Shot", channel: "Unacademy NEET", duration: "3:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=KRRnFab66Gs" },
+                { title: "Atomic Structure - Full Chapter", channel: "Vedantu NEET", duration: "2:40:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=ke_kmMUoGnw" }
             ]
         },
         pyqs: [
@@ -109,19 +109,19 @@ const resourcesByExam = {
         title: "CLAT (Law)",
         subjects: {
             "Legal Reasoning": [
-                { title: "Introduction to Legal Reasoning", channel: "LegalEdge", duration: "1:05:00", difficulty: "Easy", url: "#" },
-                { title: "Law of Torts - Full Basics", channel: "Unacademy Law", duration: "2:15:00", difficulty: "Medium", url: "#" },
-                { title: "How to Read Legal Passages", channel: "LegalEdge", duration: "0:45:00", difficulty: "Medium", url: "#" }
+                { title: "Introduction to Legal Reasoning", channel: "LegalEdge", duration: "1:05:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=w8EpSJHvLw4" },
+                { title: "Law of Torts - Full Basics", channel: "Unacademy Law", duration: "2:15:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=Bk6vRJNgqPs" },
+                { title: "How to Read Legal Passages", channel: "LegalEdge", duration: "0:45:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=jiYsOgpH4JI" }
             ],
             "Logical Reasoning": [
-                { title: "Critical Reasoning - Assumptions", channel: "Unacademy Law", duration: "1:30:00", difficulty: "Medium", url: "#" },
-                { title: "Syllogisms - Tricks", channel: "LegalEdge", duration: "0:50:00", difficulty: "Easy", url: "#" },
-                { title: "Para-Jumbles - Full Strategy", channel: "CLAT Gurukul", duration: "1:10:00", difficulty: "Hard", url: "#" }
+                { title: "Critical Reasoning - Assumptions", channel: "Unacademy Law", duration: "1:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=cidG0Wi61B0" },
+                { title: "Syllogisms - Tricks", channel: "LegalEdge", duration: "0:50:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=YhQbZMK58VU" },
+                { title: "Para-Jumbles - Full Strategy", channel: "CLAT Gurukul", duration: "1:10:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=ZmmtRT8aVGg" }
             ],
             "Quantitative Techniques": [
-                { title: "Data Interpretation for CLAT", channel: "LegalEdge", duration: "1:25:00", difficulty: "Medium", url: "#" },
-                { title: "Percentage & Ratios", channel: "Unacademy Law", duration: "2:00:00", difficulty: "Easy", url: "#" },
-                { title: "Averages & Mixtures", channel: "CLAT Gurukul", duration: "1:15:00", difficulty: "Medium", url: "#" }
+                { title: "Data Interpretation for CLAT", channel: "LegalEdge", duration: "1:25:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=tqko0MOHZFg" },
+                { title: "Percentage & Ratios", channel: "Unacademy Law", duration: "2:00:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=lB8n8YNPvRM" },
+                { title: "Averages & Mixtures", channel: "CLAT Gurukul", duration: "1:15:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=OKSJDDAyqP0" }
             ]
         },
         pyqs: [
@@ -137,19 +137,19 @@ const resourcesByExam = {
         title: "CAT (MBA)",
         subjects: {
             "Quantitative Aptitude": [
-                { title: "Arithmetic - One Shot Marathon", channel: "Unacademy CAT", duration: "6:30:00", difficulty: "Medium", url: "#" },
-                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", url: "#" },
-                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", url: "#" }
+                { title: "Arithmetic - One Shot Marathon", channel: "Unacademy CAT", duration: "6:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=tP4bU-oTbQM" },
+                { title: "Algebra - Complete Basics", channel: "Rodha", duration: "3:10:00", difficulty: "Medium", query: "https://www.youtube.com/watch?v=TV9rQm15sWo" },
+                { title: "Geometry & Mensuration", channel: "Elites Grid", duration: "4:05:00", difficulty: "Hard", query: "https://www.youtube.com/watch?v=utY-EIvE2Dg" }
             ],
             "LRDI": [
-                { title: "Arrangements - Complete Set", channel: "Elites Grid", duration: "2:45:00", difficulty: "Hard", url: "#" },
-                { title: "Games & Tournaments", channel: "Rodha", duration: "1:50:00", difficulty: "Hard", url: "#" },
-                { title: "Venn Diagrams - 3 Sets", channel: "Unacademy CAT", duration: "1:30:00", difficulty: "Easy", url: "#" }
+                { title: "Arrangements - Complete Set", channel: "Elites Grid", duration: "2:45:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=GYe98jwCn7g" },
+                { title: "Games & Tournaments", channel: "Rodha", duration: "1:50:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=tCWJMtunG_s" },
+                { title: "Venn Diagrams - 3 Sets", channel: "Unacademy CAT", duration: "1:30:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=nCyXygt7RzU" }
             ],
             "VARC": [
-                { title: "Reading Comprehension Strategy", channel: "VARC 100", duration: "0:55:00", difficulty: "Medium", url: "#" },
-                { title: "Para Jumbles - 5 Easy Tricks", channel: "Elites Grid", duration: "1:10:00", difficulty: "Easy", url: "#" },
-                { title: "Summary of Passages", channel: "Unacademy CAT", duration: "1:20:00", difficulty: "Medium", url: "#" }
+                { title: "Reading Comprehension Strategy", channel: "VARC 100", duration: "0:55:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=bhT_aAYK29o" },
+                { title: "Para Jumbles - 5 Easy Tricks", channel: "Elites Grid", duration: "1:10:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=0hUxmEPPa7s" },
+                { title: "Summary of Passages", channel: "Unacademy CAT", duration: "1:20:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=K77dQAOf_Vg" }
             ]
         },
         pyqs: [
@@ -164,14 +164,14 @@ const resourcesByExam = {
         title: "GATE (M.Tech)",
         subjects: {
             "Computer Science": [
-                { title: "Theory of Computation - Full Course", channel: "Unacademy", duration: "10:30:00", difficulty: "Hard", url: "#" },
-                { title: "Database Management (DBMS) - One Shot", channel: "Gate Smashers", duration: "5:15:00", difficulty: "Medium", url: "#" },
-                { title: "Data Structures - Full Course", channel: "Jenny's Lectures", duration: "8:00:00", difficulty: "Medium", url: "#" }
+                { title: "Theory of Computation - Full Course", channel: "Unacademy", duration: "10:30:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=9kuynHcM3UA" },
+                { title: "Database Management (DBMS) - One Shot", channel: "Gate Smashers", duration: "5:15:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=9kuynHcM3UA" },
+                { title: "Data Structures - Full Course", channel: "Jenny's Lectures", duration: "8:00:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=9kuynHcM3UA" }
             ],
             "General Aptitude": [
-                { title: "Quantitative Aptitude - Full Course", channel: "Unacademy", duration: "6:45:00", difficulty: "Easy", url: "#" },
-                { title: "Verbal Ability for GATE", channel: "Gate Smashers", duration: "2:10:00", difficulty: "Easy", url: "#" },
-                { title: "Logical Reasoning - Full", channel: "Jenny's Lectures", duration: "3:00:00", difficulty: "Medium", url: "#" }
+                { title: "Quantitative Aptitude - Full Course", channel: "Unacademy", duration: "6:45:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=XyhGv2ak-CI" },
+                { title: "Verbal Ability for GATE", channel: "Gate Smashers", duration: "2:10:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=cFirO5wWHyU" },
+                { title: "Logical Reasoning - Full", channel: "Jenny's Lectures", duration: "3:00:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=K5yPCgdLrCk" }
             ]
         },
         pyqs: [
@@ -186,19 +186,19 @@ const resourcesByExam = {
         title: "UPSC (Civil Services)",
         subjects: {
             "Polity": [
-                { title: "Laxmikanth - Full Marathon", channel: "Study IQ", duration: "11:00:00", difficulty: "Medium", url: "#" },
-                { title: "Parliament of India - All Details", channel: "Drishti IAS", duration: "1:45:00", difficulty: "Medium", url: "#" },
-                { title: "Fundamental Rights - In-Depth", channel: "Unacademy", duration: "2:10:00", difficulty: "Easy", url: "#" }
+                { title: "Laxmikanth - Full Marathon", channel: "Study IQ", duration: "11:00:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=oIN7FBZjqGI" },
+                { title: "Parliament of India - All Details", channel: "Drishti IAS", duration: "1:45:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=oizSsLhlcIw" },
+                { title: "Fundamental Rights - In-Depth", channel: "Unacademy", duration: "2:10:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=tRemoWJ1UBw" }
             ],
             "History": [
-                { title: "Modern History - Spectrum One Shot", channel: "Study IQ", duration: "9:30:00", difficulty: "Medium", url: "#" },
-                { title: "Ancient History - Full", channel: "Drishti IAS", duration: "6:15:00", difficulty: "Medium", url: "#" },
-                { title: "Art & Culture - Nitin Singhania", channel: "Unacademy", duration: "4:00:00", difficulty: "Hard", url: "#" }
+                { title: "Modern History - Spectrum One Shot", channel: "Study IQ", duration: "9:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=IIR3FRCyO-s" },
+                { title: "Ancient History - Full", channel: "Drishti IAS", duration: "6:15:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=eHEv5aF5td8" },
+                { title: "Art & Culture - Nitin Singhania", channel: "Unacademy", duration: "4:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=VxG4MgN7P7k" }
             ],
             "Economy": [
-                { title: "Indian Economy - Full Syllabus", channel: "Mrunal Patel", duration: "15:00:00", difficulty: "Hard", url: "#" },
-                { title: "Budget 2025 Analysis", channel: "Drishti IAS", duration: "1:30:00", difficulty: "Easy", url: "#" },
-                { title: "Banking & Monetary Policy", channel: "Study IQ", duration: "2:20:00", difficulty: "Medium", url: "#" }
+                { title: "Indian Economy - Full Syllabus", channel: "Mrunal Patel", duration: "15:00:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=IRMepGlN3so" },
+                { title: "Budget 2025 Analysis", channel: "Drishti IAS", duration: "1:30:00", difficulty: "Easy", url : "Drishti IAS Budget Analysis" },
+                { title: "Banking & Monetary Policy", channel: "Study IQ", duration: "2:20:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=GQ5N51lxE88" }
             ]
         },
         pyqs: [
@@ -212,19 +212,19 @@ const resourcesByExam = {
         title: "UGC-NET (Professor)",
         subjects: {
             "Paper 1 - Teaching Aptitude": [
-                { title: "Teaching Aptitude - Full Course", channel: "Unacademy", duration: "5:30:00", difficulty: "Medium", url: "#" },
-                { title: "Methods of Teaching", channel: "BYJU's", duration: "1:10:00", difficulty: "Easy", url: "#" },
-                { title: "Evaluation Systems", channel: "GradeUp", duration: "0:45:00", difficulty: "Medium", url: "#" }
+                { title: "Teaching Aptitude - Full Course", channel: "Unacademy", duration: "5:30:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=oCqqZ_qq_ag" },
+                { title: "Methods of Teaching", channel: "BYJU's", duration: "1:10:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=r7RT6pHKh7M" },
+                { title: "Evaluation Systems", channel: "GradeUp", duration: "0:45:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=oiiLmYHoCnM" }
             ],
             "Paper 1 - Research Aptitude": [
-                { title: "Research Aptitude - One Shot", channel: "Unacademy", duration: "3:15:00", difficulty: "Medium", url: "#" },
-                { title: "Types of Research", channel: "BYJU's", duration: "1:00:00", difficulty: "Easy", url: "#" },
-                { title: "Hypothesis Testing", channel: "GradeUp", duration: "0:50:00", difficulty: "Hard", url: "#" }
+                { title: "Research Aptitude - One Shot", channel: "Unacademy", duration: "3:15:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=jlavtfeX9To" },
+                { title: "Types of Research", channel: "BYJU's", duration: "1:00:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=x99cKChf3HY" },
+                { title: "Hypothesis Testing", channel: "GradeUp", duration: "0:50:00", difficulty: "Hard", url : "https://www.youtube.com/watch?v=x99cKChf3HY" }
             ],
             "Paper 1 - Communication": [
-                { title: "Communication - Full Unit", channel: "Unacademy", duration: "2:40:00", difficulty: "Medium", url: "#" },
-                { title: "Barriers to Communication", channel: "BYJU's", duration: "0:40:00", difficulty: "Easy", url: "#" },
-                { title: "Mass Media & Society", channel: "GradeUp", duration: "1:05:00", difficulty: "Medium", url: "#" }
+                { title: "Communication - Full Unit", channel: "Unacademy", duration: "2:40:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=HAnw168huqA" },
+                { title: "Barriers to Communication", channel: "BYJU's", duration: "0:40:00", difficulty: "Easy", url : "https://www.youtube.com/watch?v=FxIwXNmijJw" },
+                { title: "Mass Media & Society", channel: "GradeUp", duration: "1:05:00", difficulty: "Medium", url : "https://www.youtube.com/watch?v=CYodcVbcS7A" }
             ]
         },
         pyqs: [
