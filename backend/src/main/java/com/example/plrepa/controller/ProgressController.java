@@ -1,8 +1,9 @@
 package com.example.plrepa.controller;
 
 import com.example.plrepa.model.Progress;
+import com.example.plrepa.model.User;
 import com.example.plrepa.repository.ProgressRepository;
-import org.springframework.http.ResponseEntity;
+import com.example.plrepa.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,48 +12,33 @@ import org.springframework.web.bind.annotation.*;
 public class ProgressController {
 
     private final ProgressRepository progressRepository;
+    private final UserRepository userRepository;
 
-    public ProgressController(ProgressRepository progressRepository) {
+    public ProgressController(ProgressRepository progressRepository, UserRepository userRepository) {
         this.progressRepository = progressRepository;
+        this.userRepository = userRepository;
     }
 
-    // GET endpoint to retrieve user progress
-    @GetMapping("/{userId}")
-    public ResponseEntity<Progress> getProgress(@PathVariable Long userId) {
-        Progress progress = progressRepository.findByUserId(userId);
-        if (progress == null) {
-            // Create a default entry if none exists
-            progress = new Progress();
-            progress.setUserId(userId);
-            progress = progressRepository.save(progress);
-        }
-        return ResponseEntity.ok(progress);
+    @GetMapping("/{email}")
+    public Progress getProgress(@PathVariable String email) {
+        User user = userRepository.findByEmail(email);
+        return progressRepository.findByUser(user);
     }
 
-    // POST endpoint to update progress
-    @PostMapping("/update/{userId}")
-    public ResponseEntity<Progress> updateProgress(
-            @PathVariable Long userId,
-            @RequestParam(required = false) String type,
-            @RequestParam(required = false) Integer totalVideos) {
+    @PostMapping("/update/{email}")
+    public Progress updateProgress(@PathVariable String email, @RequestBody Progress newProgressData) {
+        User user = userRepository.findByEmail(email);
+        Progress progress = progressRepository.findByUser(user);
 
-        Progress progress = progressRepository.findByUserId(userId);
         if (progress == null) {
             progress = new Progress();
-            progress.setUserId(userId);
+            progress.setUser(user);
         }
 
-        if ("video".equals(type)) {
-            progress.setVideosWatched(progress.getVideosWatched() + 1);
-        } else if ("quiz".equals(type)) {
-            progress.setQuizzesTaken(progress.getQuizzesTaken() + 1);
-        }
+        progress.setProgressPercent(newProgressData.getProgressPercent());
+        progress.setQuizzesTaken(newProgressData.getQuizzesTaken());
+        progress.setStudyPlanWeek(newProgressData.getStudyPlanWeek());
 
-        if (totalVideos != null) {
-            progress.setTotalVideosAvailable(totalVideos);
-        }
-
-        Progress updatedProgress = progressRepository.save(progress);
-        return ResponseEntity.ok(updatedProgress);
+        return progressRepository.save(progress);
     }
 }

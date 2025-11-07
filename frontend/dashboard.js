@@ -533,6 +533,37 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'flex';
     }
 
+    const loggedInEmail = localStorage.getItem("userEmail"); // Make sure login stores this
+
+async function loadProgress() {
+    const res = await fetch(`http://localhost:8080/api/progress/${loggedInEmail}`);
+    if (!res.ok) return;
+    const data = await res.json();
+
+    document.getElementById("progressValue").innerText = data.progressPercent + "%";
+    document.getElementById("quizStats").innerText = data.quizzesTaken + " Quizzes";
+    document.getElementById("studyPlanStatus").innerText = data.studyPlanWeek;
+}
+loadProgress();
+
+// ===========================
+// UPDATE PROGRESS TO BACKEND
+// ===========================
+async function updateProgress(newProgress) {
+    const loggedInEmail = localStorage.getItem("userEmail"); // must be stored on login
+
+    await fetch(`http://localhost:8080/api/progress/update/${loggedInEmail}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newProgress)
+    });
+
+    // Refresh UI after update
+    loadProgress();
+}
+
+
+
     setupForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const userName = document.getElementById('user-name').value;
@@ -951,5 +982,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ✅ Auto scroll to latest message
         chatbotMainContent.scrollTop = chatbotMainContent.scrollHeight;
     }
+
+
 
 });
