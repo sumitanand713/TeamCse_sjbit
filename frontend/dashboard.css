@@ -5,8 +5,10 @@
 html {
     --primary-color: #007bff;
     --primary-hover: #0056b3;
-    --light-bg: #f8f9fa;      /* Page background */
-    --card-bg: #ffffff;       /* Card/header background */
+    --light-bg: #f8f9fa;
+    /* Page background */
+    --card-bg: #ffffff;
+    /* Card/header background */
     --border-color: #dee2e6;
     --text-color: #333;
     --text-light: #666;
@@ -22,8 +24,10 @@ html {
 html.dark-mode {
     --primary-color: #0d6efd;
     --primary-hover: #3b8bff;
-    --light-bg: #121212;      /* Dark page background */
-    --card-bg: #1e1e1e;       /* Dark card/header background */
+    --light-bg: #121212;
+    /* Dark page background */
+    --card-bg: #1e1e1e;
+    /* Dark card/header background */
     --border-color: #444;
     --text-color: #f8f9fa;
     --text-light: #aaa;
@@ -36,13 +40,18 @@ body {
     color: var(--text-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin-top: 0;
 }
 
 /* --- 1. POP-UP MODAL STYLES --- */
 .modal-overlay {
-    display: none; 
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -60,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid var(--border-color);
     padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 450px;
     text-align: center;
@@ -116,7 +125,8 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid var(--border-color);
     border-radius: 8px;
     background-color: var(--card-bg);
-    box-sizing: border-box; /* Ensures padding works correctly */
+    box-sizing: border-box;
+    /* Ensures padding works correctly */
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     color: var(--text-color);
 }
@@ -143,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* --- Common Button Style --- */
-.login-button { 
+.login-button {
     display: inline-block;
     width: 100%;
     padding: 0.85rem;
@@ -170,7 +180,8 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* --header-height */
+    height: 60px;
+    /* --header-height */
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
     display: flex;
@@ -207,18 +218,21 @@ h1, h2, h3, h4, h5, h6 {
 /* --- 3. DASHBOARD MAIN CONTENT --- */
 .dashboard-main-content {
     display: flex;
-    padding-top: 60px; /* --header-height */
+    padding-top: 60px;
+    /* --header-height */
 }
 
 /* --- 3a. Vertical Tab Navigation --- */
 .dashboard-nav {
     width: 240px;
-    flex-shrink: 0; 
+    flex-shrink: 0;
     background-color: var(--card-bg);
     border-right: 1px solid var(--border-color);
-    height: calc(100vh - 60px); /* --header-height */
+    height: calc(100vh - 60px);
+    /* --header-height */
     position: fixed;
-    top: 60px; /* --header-height */
+    top: 60px;
+    /* --header-height */
     left: 0;
     padding: 1.5rem 0;
 }
@@ -253,14 +267,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- 3b. Tab Content Area --- */
 .dashboard-tab-content {
-    flex-grow: 1; 
-    margin-left: 240px; 
+    flex-grow: 1;
+    margin-left: 240px;
     padding: 2rem;
 }
 
 .tab-pane {
     display: none;
 }
+
 .tab-pane.active {
     display: block;
 }
@@ -280,7 +295,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
 }
@@ -293,7 +308,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* This targets the "Week 2" text */
-.stat-card > span {
+.stat-card>span {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary-color);
@@ -312,12 +327,10 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1rem auto 0;
     position: relative;
     --progress-angle: calc(var(--progress, 0) * 3.6deg);
-    
-    background: conic-gradient(
-        var(--primary-color) var(--progress-angle),
-        var(--border-color) var(--progress-angle) 360deg
-    );
-    
+
+    background: conic-gradient(var(--primary-color) var(--progress-angle),
+            var(--border-color) var(--progress-angle) 360deg);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -330,7 +343,8 @@ h1, h2, h3, h4, h5, h6 {
     left: 10px;
     right: 10px;
     bottom: 10px;
-    background: var(--card-bg); /* Use variable for dark mode */
+    background: var(--card-bg);
+    /* Use variable for dark mode */
     border-radius: 50%;
 }
 
@@ -345,7 +359,8 @@ h1, h2, h3, h4, h5, h6 {
 .progress-bar-container {
     width: 100%;
     height: 16px;
-    background-color: var(--border-color); /* Use variable for dark mode */
+    background-color: var(--border-color);
+    /* Use variable for dark mode */
     border-radius: 20px;
     margin: 2.2rem 0 0.75rem;
     overflow: hidden;
@@ -371,7 +386,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .weightage-chart-container {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 2.5rem;
@@ -398,17 +413,19 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 60%;
     height: 60%;
-    background: var(--card-bg); /* Use variable for dark mode */
+    background: var(--card-bg);
+    /* Use variable for dark mode */
     border-radius: 50%;
 }
 
 .doughnut-center-text {
-    position: relative; 
+    position: relative;
     text-align: center;
     font-weight: 600;
     font-size: 1.1rem;
     color: var(--text-color);
 }
+
 .doughnut-center-text br {
     line-height: 0.5rem;
 }
@@ -435,7 +452,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 16px;
     border-radius: 4px;
     margin-right: 0.75rem;
-    background-color: var(--subject-color); /* Set by JS */
+    background-color: var(--subject-color);
+    /* Set by JS */
 }
 
 .chart-legend li span {
@@ -452,7 +470,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- 7. UPGRADED QUIZ UI STYLES --- */
 
 .quiz-container {
-    max-width: 768px; 
+    max-width: 768px;
     margin: 0 auto;
     padding: 1rem;
 }
@@ -465,11 +483,11 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--card-bg);
     padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .quiz-form .input-group {
-    flex-grow: 1; 
+    flex-grow: 1;
     margin-bottom: 0;
 }
 
@@ -488,7 +506,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 12px;
     padding: 1.5rem 2rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 }
 
 .question-block h3 {
@@ -540,7 +558,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #fff;
 }
 
-.option-label input[type="radio"]:checked + span::before {
+.option-label input[type="radio"]:checked+span::before {
     border-color: var(--primary-color);
     background-color: var(--primary-color);
     box-shadow: 0 0 0 3px var(--card-bg) inset;
@@ -583,8 +601,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* --- 9. VIDEO CARD UI STYLES (Resources) --- */
@@ -608,7 +633,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -617,7 +642,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .video-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .video-title {
@@ -626,9 +651,8 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    min-height: 2.5em; 
+    min-height: 2.5em;
 }
 
 .video-channel {
@@ -641,7 +665,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; 
+    margin-top: auto;
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
 }
@@ -660,9 +684,18 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
-.difficulty-easy { background-color: #28a745; }
-.difficulty-medium { background-color: #ffc107; color: #333; }
-.difficulty-hard { background-color: #dc3545; }
+.difficulty-easy {
+    background-color: #28a745;
+}
+
+.difficulty-medium {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.difficulty-hard {
+    background-color: #dc3545;
+}
 
 .video-link {
     display: block;
@@ -694,7 +727,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .pyq-year-block h3 {
@@ -797,11 +830,11 @@ h1, h2, h3, h4, h5, h6 {
     transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: var(--primary-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(22px);
 }
 
@@ -870,11 +903,13 @@ input:checked + .slider:before {
 html.dark-mode #chat-main-content {
     background-color: #0f0f0f;
 }
+
 html.dark-mode .bot-message {
     background-color: #1e1e1e;
     border-color: #444;
     color: #fff;
 }
+
 html.dark-mode .user-message {
     background-color: #3b8bff;
 }
