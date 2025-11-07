@@ -533,6 +533,37 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'flex';
     }
 
+    const loggedInEmail = localStorage.getItem("userEmail"); // Make sure login stores this
+
+async function loadProgress() {
+    const res = await fetch(`http://localhost:8080/api/progress/${loggedInEmail}`);
+    if (!res.ok) return;
+    const data = await res.json();
+
+    document.getElementById("progressValue").innerText = data.progressPercent + "%";
+    document.getElementById("quizStats").innerText = data.quizzesTaken + " Quizzes";
+    document.getElementById("studyPlanStatus").innerText = data.studyPlanWeek;
+}
+loadProgress();
+
+// ===========================
+// UPDATE PROGRESS TO BACKEND
+// ===========================
+async function updateProgress(newProgress) {
+    const loggedInEmail = localStorage.getItem("userEmail"); // must be stored on login
+
+    await fetch(`http://localhost:8080/api/progress/update/${loggedInEmail}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newProgress)
+    });
+
+    // Refresh UI after update
+    loadProgress();
+}
+
+
+
     setupForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const userName = document.getElementById('user-name').value;
@@ -926,30 +957,5 @@ document.addEventListener('DOMContentLoaded', () => {
         chatbotWelcomeScreen.style.display = 'none';
     }
 
-    const isUser = sender === 'user';
-    const bubbleClass = isUser ? 'user-message' : 'bot-message';
-
-    const messageWrapper = document.createElement('div');
-    messageWrapper.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-2`;
-
-    const messageBubble = document.createElement('div');
-    messageBubble.className = `max-w-xs sm:max-w-md p-3 rounded-xl shadow-md ${bubbleClass}`;
-
-    let formattedText = text
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/\n/g, '<br>');
-
-    messageBubble.innerHTML = formattedText;
-
-    // ✅ This line was missing
-    messageWrapper.appendChild(messageBubble);
-
-    // ✅ Now add wrapper into message list
-    chatbotMessageList.appendChild(messageWrapper);
-
-    // ✅ Auto scroll down
-    chatbotMainContent.scrollTop = chatbotMainContent.scrollHeight;
-}
 
 });

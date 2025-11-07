@@ -1,22 +1,23 @@
 package com.example.plrepa.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
-@NoArgsConstructor
+@Getter
+@Setter
 public class Progress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Links progress to the User ID (placeholder in frontend is '1')
-    private Long userId; 
+    private int progressPercent;   // Example: 42%
+    private int quizzesTaken;      // Example: 8 out of 10
+    private String studyPlanWeek;  // Example: Week 2
 
-    private int videosWatched = 0;
-    private int quizzesTaken = 0;
-    private int totalVideosAvailable = 0;
+    @OneToOne
+    @JoinColumn(name = "user_id", unique = true) // One progress record per user
+    private User user;
 }
