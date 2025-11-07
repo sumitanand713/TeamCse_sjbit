@@ -275,8 +275,8 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2025, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] },
-            { year: 2024, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] }
+            { year: 2025, papers: [{ subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" }] },
+            { year: 2024, papers: [{ subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" }] }
         ]
     },
     "upsc": {
@@ -334,40 +334,28 @@ const resourcesByExam = {
 };
 
 // =========================================================
-// 2. GLOBAL HELPER FUNCTIONS (MUST be in global scope)
+// 2. GLOBAL HELPER FUNCTIONS
 // =========================================================
 
 /* --- DYNAMIC RESOURCE LOADING FUNCTION (Reads Video URLs + PYQs) --- */
 function loadDynamicResources() {
-    // 1. Find the resources tab
     const resourcesTab = document.getElementById('resources');
-
-    // 2. Get the user's SELECTED EXAM
-    const userExam = localStorage.getItem('userExam');
-
-    // 3. Find the resources for that exam from our new database
+    const userExam = localStorage.getItem('userExam'); // Using localStorage
     const examData = resourcesByExam[userExam];
 
-    // 4. Check if we have resources for this user's exam
     if (examData) {
-        // --- (Start of HTML Building) ---
         let html = `<h1>Resources for ${examData.title}</h1>`;
         html += '<p>Curated materials to help you prepare.</p>';
 
-        // --- (A) Build Video Section ---
+        // Build Video Section
         html += `<h2 class="subject-header">Video Lessons</h2>`;
         html += '<div class="video-card-container">';
-
         for (const subjectName in examData.subjects) {
             const videos = examData.subjects[subjectName];
-
             videos.forEach(video => {
                 let difficultyClass = `difficulty-${video.difficulty.toLowerCase()}`;
-
-                // This is the logic to read the 'url'
                 let videoLink = video.url;
-
-                // Use a simple anchor tag for now
+                // (NEW) Add 'video-link' class to track clicks
                 html += `
                     <div class="video-card">
                         <h3 class="video-title">${video.title}</h3>
@@ -385,33 +373,23 @@ function loadDynamicResources() {
         }
         html += '</div>'; // Close video-card-container
 
-        // --- (B) Build NEW PYQ Section ---
+        // Build NEW PYQ Section
         if (examData.pyqs && examData.pyqs.length > 0) {
             html += `<h2 class="subject-header">Previous Year Questions (PYQs)</h2>`;
-            html += '<div class="pyq-container">'; // A container for all year blocks
-
-            // Loop over each year object (e.g., { year: 2025, ... })
+            html += '<div class="pyq-container">';
             examData.pyqs.forEach(yearData => {
                 html += `<div class="pyq-year-block">`;
                 html += `<h3>${yearData.year} Papers</h3>`;
                 html += `<ul class="pyq-paper-list">`;
-
-                // Loop over each paper in that year
                 yearData.papers.forEach(paper => {
                     html += `<li><a href="${paper.url}" target="_blank">${paper.subject}</a></li>`;
                 });
-
-                html += `</ul></div>`; // Close pyq-year-block
+                html += `</ul></div>`;
             });
-
-            html += `</div>`; // Close pyq-container
+            html += `</div>`;
         }
-
-        // --- (End of HTML Building) ---
         resourcesTab.innerHTML = html;
-
     } else {
-        // We don't have data for this user's exam.
         resourcesTab.innerHTML = `
             <h1>Learning Resources</h1>
             <p>Please select your <strong>target exam</strong> from your profile settings to see personalized video resources.</p>
@@ -421,65 +399,45 @@ function loadDynamicResources() {
 
 /* --- DYNAMIC WEIGHTAGE CHART FUNCTION --- */
 function loadDynamicWeightage() {
-    // 1. Find the weightage tab
     const weightageTab = document.getElementById('weightage');
-
-    // 2. Get the user's SELECTED EXAM
-    const userExam = localStorage.getItem('userExam');
-
-    // 3. Find the data for that exam
+    const userExam = localStorage.getItem('userExam'); // Using localStorage
     const examData = weightageByExam[userExam];
 
-    // 4. Check if we have data for this exam
     if (examData && examData.subjects) {
-
         let legendHtml = '';
         let gradientString = 'conic-gradient(';
         let currentPercent = 0;
 
-        // Build the legend and gradient string
         examData.subjects.forEach(subject => {
-            // 1. Build Legend HTML
             legendHtml += `
                 <li style="--subject-color: ${subject.color};">
                     <span>${subject.name}</span>
                     <strong>${subject.percentage}%</strong>
                 </li>
             `;
-
-            // 2. Build Gradient String
             const startPercent = currentPercent;
             const endPercent = currentPercent + subject.percentage;
             gradientString += `${subject.color} ${startPercent}% ${endPercent}%, `;
             currentPercent = endPercent;
         });
 
-        // Finalize gradient string
-        gradientString = gradientString.slice(0, -2) + ')'; // Remove last ", " and add ")"
-
-        // 5. Build the final HTML for the tab
+        gradientString = gradientString.slice(0, -2) + ')';
         const html = `
             <h1>Exam Subject Weightage for ${examData.title}</h1>
             <p>Subject-wise breakdown for your selected exam.</p>
             <div class="weightage-chart-container">
-                
                 <div class="doughnut-chart" style="background: ${gradientString};">
                     <div class="doughnut-center-text">
                         Total<br>100%
                     </div>
                 </div>
-
                 <ul class="chart-legend">
                     ${legendHtml}
                 </ul>
-
             </div>
         `;
-
         weightageTab.innerHTML = html;
-
     } else {
-        // We don't have data for this user's exam.
         weightageTab.innerHTML = `
             <h1>Exam Subject Weightage</h1>
             <p>Please select your <strong>target exam</strong> from your profile settings to see a personalized weightage chart.</p>
@@ -487,22 +445,69 @@ function loadDynamicWeightage() {
     }
 }
 
-
 /* --- GREETING FUNCTIONALITY --- */
 function loadGreeting() {
-    const userName = localStorage.getItem('userName');
+    const userName = localStorage.getItem('userName'); // Using localStorage
     const greetingElement = document.getElementById('greeting-message');
-    
+
     if (greetingElement && userName) {
         greetingElement.textContent = `Welcome, ${userName}!`;
     } else if (greetingElement) {
-        // Fallback if name isn't set
         greetingElement.textContent = 'Welcome, Student!';
     }
 }
 
+/* --- (UPGRADED) PROGRESS FUNCTIONALITY --- */
+function loadProgress() {
+    // 1. Get Progress (Videos)
+    const videosWatched = parseInt(localStorage.getItem('videosWatched') || '0');
+    // We'll set a static goal of 20 videos for the progress chart
+    const totalVideosGoal = 20;
+    const progressPercentage = Math.min(100, Math.round((videosWatched / totalVideosGoal) * 100));
+
+    const progressValueElement = document.getElementById('progressValue');
+    const progressPieElement = document.querySelector('.progress-pie');
+
+    if (progressPieElement && progressValueElement) {
+        progressPieElement.style.setProperty('--progress', progressPercentage);
+        progressValueElement.innerText = `${progressPercentage}%`;
+    }
+
+    // 2. Get Quizzes Taken
+    const quizzesTaken = parseInt(localStorage.getItem('quizzesTaken') || '0');
+    // We'll use the static 10 quizzes goal from your HTML
+    const totalQuizzesGoal = 10;
+    const quizBarPercentage = Math.min(100, Math.round((quizzesTaken / totalQuizzesGoal) * 100));
+
+    const quizBarFill = document.querySelector('#quizBar');
+    const quizStatsLabel = document.getElementById('quizStats');
+
+    if (quizBarFill && quizStatsLabel) {
+        quizBarFill.style.setProperty('--progress', quizBarPercentage);
+        quizStatsLabel.innerText = `${quizzesTaken} / ${totalQuizzesGoal} Quizzes`;
+    }
+
+    // 3. Get Study Plan Status
+    const planStatus = localStorage.getItem('studyPlanStatus') || 'Not Started';
+    const studyPlanElement = document.getElementById('studyPlanStatus');
+    if (studyPlanElement) {
+        studyPlanElement.innerText = planStatus;
+    }
+
+    console.log("Progress updated:", { videos: videosWatched, quizzes: quizzesTaken, plan: planStatus });
+}
+
+/* --- SETTINGS FORM POPULATOR --- */
+function populateSettingsForm() {
+    // Using localStorage
+    if (document.getElementById('settings-name')) {
+        document.getElementById('settings-name').value = localStorage.getItem('userName') || '';
+        document.getElementById('settings-grade').value = localStorage.getItem('userGrade') || '10';
+        document.getElementById('settings-exam').value = localStorage.getItem('userExam') || '10th_boards';
+    }
+}
+
 /* --- THEME-SETTING FUNCTION --- */
-// This runs immediately to prevent the page from "flashing"
 (function applyTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     if (savedTheme === 'dark') {
@@ -520,7 +525,6 @@ function loadGreeting() {
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. PROFILE SETUP MODAL LOGIC ---
-
     const modal = document.getElementById('profile-setup-modal');
     const setupForm = document.getElementById('profile-setup-form');
     const profileIsSet = localStorage.getItem('profileSetupComplete');
@@ -529,36 +533,30 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'flex';
     }
 
-    // Add listener for when the setup form is submitted
     setupForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
+        const userName = document.getElementById('user-name').value;
         const grade = document.getElementById('grade').value;
         const exam = document.getElementById('target-exam').value;
-        const userName = document.getElementById('user-name').value;
 
-
-        // Save data
+        // Save data to localStorage
+        localStorage.setItem('userName', userName);
         localStorage.setItem('userGrade', grade);
         localStorage.setItem('userExam', exam);
-        localStorage.setItem('userName', userName);
         localStorage.setItem('profileSetupComplete', 'true');
 
-        console.log('Profile Saved:', { grade, exam, userName });
-
-        // Hide the modal
+        console.log('Profile Saved:', { userName, grade, exam });
         modal.style.display = 'none';
 
-        // Load resources *immediately* after user saves profile
+        // Refresh all dynamic content
         loadDynamicResources();
-        loadDynamicWeightage(); 
-        loadGreeting(); // Load greeting after setup
-        populateSettingsForm(); // Populate settings tab
+        loadDynamicWeightage();
+        loadGreeting();
+        loadProgress(); // (NEW) Load progress after setup
+        populateSettingsForm();
     });
 
-
     // --- 2. DASHBOARD TAB NAVIGATION LOGIC ---
-
     const navLinks = document.querySelectorAll('.dashboard-nav a');
     const tabPanes = document.querySelectorAll('.dashboard-tab-content .tab-pane');
 
@@ -568,11 +566,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetTabId = link.getAttribute('data-tab');
             const targetPane = document.getElementById(targetTabId);
 
-            // 1. Update Nav Links
             navLinks.forEach(navLink => navLink.classList.remove('active'));
             link.classList.add('active');
 
-            // 2. Update Tab Panes
             tabPanes.forEach(pane => pane.classList.remove('active'));
             if (targetPane) {
                 targetPane.classList.add('active');
@@ -586,26 +582,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = document.getElementById('reset-profile-btn');
     const saveSuccessMsg = document.getElementById('save-success-message');
 
-    // Function to fill in the settings form with saved data
-    function populateSettingsForm() {
-        if (document.getElementById('settings-name')) {
-            document.getElementById('settings-name').value = localStorage.getItem('userName') || '';
-            document.getElementById('settings-grade').value = localStorage.getItem('userGrade') || '10';
-            document.getElementById('settings-exam').value = localStorage.getItem('userExam') || '10th_boards';
-        }
-    }
-
-    // Listener for the "Update Profile" form
     if (updateForm) {
         updateForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // Get values from settings form
+
             const userName = document.getElementById('settings-name').value;
             const grade = document.getElementById('settings-grade').value;
             const exam = document.getElementById('settings-exam').value;
 
-            // Save new data
+            // Save new data to localStorage
             localStorage.setItem('userName', userName);
             localStorage.setItem('userGrade', grade);
             localStorage.setItem('userExam', exam);
@@ -627,20 +612,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Listener for the "Reset Profile" button
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-            // No confirm() modal as per instructions, just reset
-            localStorage.clear();
+            // (NEW) Reset progress counters as well
+            localStorage.removeItem('videosWatched');
+            localStorage.removeItem('quizzesTaken');
+            localStorage.removeItem('studyPlanStatus');
+            localStorage.clear(); // Clear everything
             location.reload();
         });
     }
 
-    // Listener for the "Dark Mode" toggle
     if (themeToggle) {
-        // Set toggle to correct initial state
         themeToggle.checked = (localStorage.getItem('theme') === 'dark');
-
         themeToggle.addEventListener('change', () => {
             if (themeToggle.checked) {
                 document.documentElement.classList.add('dark-mode');
@@ -653,22 +637,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 4. INITIAL PAGE LOAD ---
-    // Load all dynamic content
     loadDynamicResources();
-    loadDynamicWeightage(); 
-    loadGreeting(); // Load greeting on page load
-    populateSettingsForm(); // Populate settings tab on load
+    loadDynamicWeightage();
+    loadGreeting();
+    loadProgress(); // (NEW) Load progress on page load
+    populateSettingsForm();
 
-
-    // --- 5. AI STUDY PLAN LOGIC ---
+    // --- 5. AI STUDY PLAN LOGIC (Uses server.js) ---
     const generateBtn = document.getElementById('generate-plan-btn');
     const planContent = document.getElementById('plan-content');
     const planLoading = document.getElementById('plan-loading');
 
-    // Check if the button exists before adding listener
     if (generateBtn) {
         generateBtn.addEventListener('click', async () => {
-            // Clear old plan and show loading spinner
             planContent.innerHTML = '';
             planLoading.style.display = 'block';
             generateBtn.disabled = true;
@@ -690,9 +671,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) { throw new Error('Network response was not ok'); }
-
                 const data = await response.json();
-                planContent.innerHTML = data.planHtml; // Put AI HTML onto page
+                planContent.innerHTML = data.planHtml;
+
+                // (NEW) Update plan status in localStorage
+                localStorage.setItem('studyPlanStatus', 'In Progress');
+                // (NEW) Update homepage stats immediately
+                loadProgress();
 
             } catch (error) {
                 console.error('Error generating plan:', error);
@@ -704,35 +689,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    
-    // --- 6. AI QUIZ GENERATION LOGIC ---
-
+    // --- 6. AI QUIZ GENERATION LOGIC (Uses server.js) ---
     const quizForm = document.getElementById('quiz-setup-form');
     const quizContent = document.getElementById('quiz-content');
     const quizLoading = document.getElementById('quiz-loading');
     const quizResults = document.getElementById('quiz-results');
     const quizTopicInput = document.getElementById('quiz-topic');
 
-    let currentQuizData = []; // Holds the correct answers
+    let currentQuizData = [];
 
-    // Check if the form exists
     if (quizForm) {
         quizForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-
             const topic = quizTopicInput.value;
             if (!topic) return;
 
             const exam = localStorage.getItem('userExam') || 'general';
 
-            // Reset the UI
             quizContent.innerHTML = '';
             quizResults.innerHTML = '';
             quizLoading.style.display = 'block';
             quizForm.querySelector('button').disabled = true;
 
             try {
-                // 1. Call your back-end to get the quiz
+                // Call your back-end server
                 const response = await fetch('http://localhost:3000/api/generate-quiz', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -740,11 +720,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) { throw new Error('Server returned an error'); }
-
                 const quizData = await response.json();
-                currentQuizData = quizData; // Save answers
-
-                // 2. Build the quiz HTML
+                currentQuizData = quizData;
                 buildQuiz(quizData);
 
             } catch (error) {
@@ -757,7 +734,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // This function builds the HTML for the quiz
     function buildQuiz(quizData) {
         quizData.forEach((questionData, index) => {
             const questionElement = document.createElement('div');
@@ -778,13 +754,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 radio.type = 'radio';
                 radio.name = `question-${index}`;
                 radio.value = option;
-                
-                // (THIS IS THE FIX for the UI)
+
                 const optionText = document.createElement('span');
                 optionText.textContent = option;
 
                 label.appendChild(radio);
-                label.appendChild(optionText); // Use the new span
+                label.appendChild(optionText);
                 optionsContainer.appendChild(label);
             });
 
@@ -792,7 +767,6 @@ document.addEventListener('DOMContentLoaded', () => {
             quizContent.appendChild(questionElement);
         });
 
-        // Add the "Submit Quiz" button at the end
         const submitButton = document.createElement('button');
         submitButton.id = 'submit-quiz-btn';
         submitButton.textContent = 'Submit Quiz';
@@ -800,11 +774,9 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.style.marginTop = '1.5rem';
         quizContent.appendChild(submitButton);
 
-        // Add listener to the new submit button
         submitButton.addEventListener('click', checkAnswers);
     }
 
-    // This function checks the answers
     function checkAnswers() {
         let score = 0;
         const totalQuestions = currentQuizData.length;
@@ -816,14 +788,168 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Display the results
         quizResults.innerHTML = `
             <h3>Quiz Complete!</h3>
             <p>You scored <strong>${score} out of ${totalQuestions}</strong>.</p>
         `;
-
-        // Hide the quiz
         quizContent.innerHTML = '';
+
+        // (NEW) Increment quiz counter in localStorage
+        let quizzesTaken = parseInt(localStorage.getItem('quizzesTaken') || '0');
+        quizzesTaken++;
+        localStorage.setItem('quizzesTaken', quizzesTaken);
+
+        // (NEW) Update homepage stats immediately
+        loadProgress();
+    }
+
+    // --- 7. (NEW) ADD CLICK LISTENER FOR VIDEO TRACKING ---
+    const resourcesTab = document.getElementById('resources');
+    if (resourcesTab) {
+        resourcesTab.addEventListener('click', (e) => {
+            // Check if the clicked element is a video link
+            if (e.target.classList.contains('video-link')) {
+                // 1. Get current count
+                let videosWatched = parseInt(localStorage.getItem('videosWatched') || '0');
+                // 2. Increment count
+                videosWatched++;
+                // 3. Save new count
+                localStorage.setItem('videosWatched', videosWatched);
+
+                // 4. Update the homepage stats immediately
+                loadProgress();
+
+                // 5. The link will open naturally because it's an <a> tag
+            }
+        });
+    }
+
+    // --- 8. (NEW) STANDALONE CHATBOT LOGIC ---
+
+    // --- PASTE YOUR CHATBOT API KEY HERE ---
+    // This key is *separate* from your server.js key
+    const chatbotApiKey = "AIzaSyCBp2VyWJSIAf4L_9SrsrwuzmZ7MeD-WbI"; // <--- YOUR KEY IS HERE
+    // ---
+
+    const chatbotApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${chatbotApiKey}`;
+
+    // Chatbot UI elements
+    const chatbotForm = document.getElementById('chatbot-form');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotSendButton = document.getElementById('chatbot-send-button');
+    const chatbotMessageList = document.getElementById('message-list');
+    const chatbotMainContent = document.getElementById('chat-main-content');
+    const chatbotWelcomeScreen = document.getElementById('welcome-screen');
+
+    // Chatbot state
+    let chatbotHistory = [];
+    let isChatbotGenerating = false;
+    const chatbotOriginalPlaceholder = "Ask a question...";
+
+    if (chatbotForm) {
+        chatbotForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (isChatbotGenerating) return;
+
+            const query = chatbotInput.value.trim();
+            if (!query) return;
+
+            // 1. Update UI
+            isChatbotGenerating = true;
+            chatbotSendButton.disabled = false;
+            chatbotInput.placeholder = "Thinking...";
+            chatbotInput.blur(); // Optional: remove focus but keep enabled
+
+            chatbotInput.value = '';
+
+            chatbotHistory.push({ role: "user", parts: [{ text: query }] });
+            renderChatbotMessage(query, 'user');
+
+            try {
+                // 2. Call Gemini API (standalone)
+                const payload = {
+                    contents: chatbotHistory,
+                    // Add a simple system prompt
+                    systemInstruction: {
+                        parts: [{ text: "You are a helpful study assistant. Be concise and friendly." }]
+                    }
+                };
+
+                const response = await fetch(chatbotApiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    // Check for specific 400 error
+                    if (response.status === 400) {
+                        const errorData = await response.json();
+                        if (errorData.error.message.includes("API key not valid")) {
+                            throw new Error("API_KEY_INVALID");
+                        }
+                    }
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                const botResponseText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (botResponseText) {
+                    renderChatbotMessage(botResponseText, 'bot');
+                    chatbotHistory.push({ role: "model", parts: [{ text: botResponseText }] });
+                } else {
+                    renderChatbotMessage("Sorry, I received an empty response.", 'bot');
+                    chatbotHistory.pop(); // Remove user query if AI fails
+                }
+
+            } catch (error) {
+                console.error("Chatbot API Error:", error);
+                if (error.message === "API_KEY_INVALID") {
+                    renderChatbotMessage("❌ Error: The Chatbot API key is invalid. Please update it in `dashboard.js`.", 'bot');
+                } else {
+                    renderChatbotMessage("❌ Error connecting to the AI. Please try again.", 'bot');
+                }
+                chatbotHistory.pop();
+            } finally {
+                // 5. Reset State
+                isChatbotGenerating = false;
+                chatbotSendButton.disabled = false;
+                chatbotInput.placeholder = chatbotOriginalPlaceholder;
+                chatbotInput.focus();
+            }
+        });
+    }
+
+    function renderChatbotMessage(text, sender) {
+        if (chatbotWelcomeScreen && chatbotWelcomeScreen.style.display !== 'none') {
+            chatbotWelcomeScreen.style.display = 'none';
+        }
+
+        const isUser = sender === 'user';
+        const bubbleClass = isUser ? 'user-message' : 'bot-message';
+
+        const messageWrapper = document.createElement('div');
+        messageWrapper.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
+
+        const messageBubble = document.createElement('div');
+        messageBubble.className = `max-w-xs sm:max-w-md p-3 rounded-xl shadow-md ${bubbleClass}`;
+
+        let formattedText = text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/\n/g, '<br>');
+
+        messageBubble.innerHTML = formattedText;
+
+        // ✅ THIS WAS MISSING
+        messageWrapper.appendChild(messageBubble);
+
+        // ✅ Append to chat list
+        chatbotMessageList.appendChild(messageWrapper);
+
+        // ✅ Auto scroll to latest message
+        chatbotMainContent.scrollTop = chatbotMainContent.scrollHeight;
     }
 
 });
