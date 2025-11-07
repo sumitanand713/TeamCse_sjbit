@@ -878,6 +878,3 @@ html.dark-mode .bot-message {
 html.dark-mode .user-message {
     background-color: #3b8bff;
 }
-#welcome-screen {
-    pointer-events: none; /* So it never blocks input clicks */
-}

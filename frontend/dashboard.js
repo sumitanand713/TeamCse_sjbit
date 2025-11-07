@@ -275,8 +275,8 @@ const resourcesByExam = {
             ]
         },
         pyqs: [
-            { year: 2025, papers: [{ subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" }] },
-            { year: 2024, papers: [{ subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" }] }
+            { year: 2025, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] },
+            { year: 2024, papers: [ { subject: "Practice Test 1", url: "#" }, { subject: "Practice Test 2", url: "#" } ] }
         ]
     },
     "upsc": {
@@ -372,7 +372,7 @@ function loadDynamicResources() {
             });
         }
         html += '</div>'; // Close video-card-container
-
+        
         // Build NEW PYQ Section
         if (examData.pyqs && examData.pyqs.length > 0) {
             html += `<h2 class="subject-header">Previous Year Questions (PYQs)</h2>`;
@@ -421,7 +421,7 @@ function loadDynamicWeightage() {
             currentPercent = endPercent;
         });
 
-        gradientString = gradientString.slice(0, -2) + ')';
+        gradientString = gradientString.slice(0, -2) + ')'; 
         const html = `
             <h1>Exam Subject Weightage for ${examData.title}</h1>
             <p>Subject-wise breakdown for your selected exam.</p>
@@ -449,7 +449,7 @@ function loadDynamicWeightage() {
 function loadGreeting() {
     const userName = localStorage.getItem('userName'); // Using localStorage
     const greetingElement = document.getElementById('greeting-message');
-
+    
     if (greetingElement && userName) {
         greetingElement.textContent = `Welcome, ${userName}!`;
     } else if (greetingElement) {
@@ -462,9 +462,9 @@ function loadProgress() {
     // 1. Get Progress (Videos)
     const videosWatched = parseInt(localStorage.getItem('videosWatched') || '0');
     // We'll set a static goal of 20 videos for the progress chart
-    const totalVideosGoal = 20;
+    const totalVideosGoal = 20; 
     const progressPercentage = Math.min(100, Math.round((videosWatched / totalVideosGoal) * 100));
-
+    
     const progressValueElement = document.getElementById('progressValue');
     const progressPieElement = document.querySelector('.progress-pie');
 
@@ -493,7 +493,7 @@ function loadProgress() {
     if (studyPlanElement) {
         studyPlanElement.innerText = planStatus;
     }
-
+    
     console.log("Progress updated:", { videos: videosWatched, quizzes: quizzesTaken, plan: planStatus });
 }
 
@@ -550,10 +550,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Refresh all dynamic content
         loadDynamicResources();
-        loadDynamicWeightage();
+        loadDynamicWeightage(); 
         loadGreeting();
         loadProgress(); // (NEW) Load progress after setup
-        populateSettingsForm();
+        populateSettingsForm(); 
     });
 
     // --- 2. DASHBOARD TAB NAVIGATION LOGIC ---
@@ -585,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (updateForm) {
         updateForm.addEventListener('submit', (e) => {
             e.preventDefault();
-
+            
             const userName = document.getElementById('settings-name').value;
             const grade = document.getElementById('settings-grade').value;
             const exam = document.getElementById('settings-exam').value;
@@ -638,10 +638,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4. INITIAL PAGE LOAD ---
     loadDynamicResources();
-    loadDynamicWeightage();
+    loadDynamicWeightage(); 
     loadGreeting();
     loadProgress(); // (NEW) Load progress on page load
-    populateSettingsForm();
+    populateSettingsForm(); 
 
     // --- 5. AI STUDY PLAN LOGIC (Uses server.js) ---
     const generateBtn = document.getElementById('generate-plan-btn');
@@ -688,7 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+    
     // --- 6. AI QUIZ GENERATION LOGIC (Uses server.js) ---
     const quizForm = document.getElementById('quiz-setup-form');
     const quizContent = document.getElementById('quiz-content');
@@ -696,7 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const quizResults = document.getElementById('quiz-results');
     const quizTopicInput = document.getElementById('quiz-topic');
 
-    let currentQuizData = [];
+    let currentQuizData = []; 
 
     if (quizForm) {
         quizForm.addEventListener('submit', async (e) => {
@@ -754,12 +754,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 radio.type = 'radio';
                 radio.name = `question-${index}`;
                 radio.value = option;
-
+                
                 const optionText = document.createElement('span');
                 optionText.textContent = option;
 
                 label.appendChild(radio);
-                label.appendChild(optionText);
+                label.appendChild(optionText); 
                 optionsContainer.appendChild(label);
             });
 
@@ -798,7 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let quizzesTaken = parseInt(localStorage.getItem('quizzesTaken') || '0');
         quizzesTaken++;
         localStorage.setItem('quizzesTaken', quizzesTaken);
-
+        
         // (NEW) Update homepage stats immediately
         loadProgress();
     }
@@ -815,10 +815,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 videosWatched++;
                 // 3. Save new count
                 localStorage.setItem('videosWatched', videosWatched);
-
+                
                 // 4. Update the homepage stats immediately
                 loadProgress();
-
+                
                 // 5. The link will open naturally because it's an <a> tag
             }
         });
@@ -830,9 +830,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // This key is *separate* from your server.js key
     const chatbotApiKey = "AIzaSyCBp2VyWJSIAf4L_9SrsrwuzmZ7MeD-WbI"; // <--- YOUR KEY IS HERE
     // ---
-
+    
     const chatbotApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${chatbotApiKey}`;
-
+    
     // Chatbot UI elements
     const chatbotForm = document.getElementById('chatbot-form');
     const chatbotInput = document.getElementById('chatbot-input');
@@ -840,13 +840,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatbotMessageList = document.getElementById('message-list');
     const chatbotMainContent = document.getElementById('chat-main-content');
     const chatbotWelcomeScreen = document.getElementById('welcome-screen');
-
+    
     // Chatbot state
     let chatbotHistory = [];
     let isChatbotGenerating = false;
     const chatbotOriginalPlaceholder = "Ask a question...";
 
-    if (chatbotForm) {
+    if(chatbotForm) {
         chatbotForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             if (isChatbotGenerating) return;
@@ -856,10 +856,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 1. Update UI
             isChatbotGenerating = true;
-            chatbotSendButton.disabled = false;
+            chatbotSendButton.disabled = true;
+            chatbotInput.disabled = true;
             chatbotInput.placeholder = "Thinking...";
-            chatbotInput.blur(); // Optional: remove focus but keep enabled
-
             chatbotInput.value = '';
 
             chatbotHistory.push({ role: "user", parts: [{ text: query }] });
@@ -884,10 +883,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!response.ok) {
                     // Check for specific 400 error
                     if (response.status === 400) {
-                        const errorData = await response.json();
-                        if (errorData.error.message.includes("API key not valid")) {
-                            throw new Error("API_KEY_INVALID");
-                        }
+                         const errorData = await response.json();
+                         if (errorData.error.message.includes("API key not valid")) {
+                             throw new Error("API_KEY_INVALID");
+                         }
                     }
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -908,13 +907,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (error.message === "API_KEY_INVALID") {
                     renderChatbotMessage("❌ Error: The Chatbot API key is invalid. Please update it in `dashboard.js`.", 'bot');
                 } else {
-                    renderChatbotMessage("❌ Error connecting to the AI. Please try again.", 'bot');
+                     renderChatbotMessage("❌ Error connecting to the AI. Please try again.", 'bot');
                 }
                 chatbotHistory.pop();
             } finally {
                 // 5. Reset State
                 isChatbotGenerating = false;
                 chatbotSendButton.disabled = false;
+                chatbotInput.disabled = false;
                 chatbotInput.placeholder = chatbotOriginalPlaceholder;
                 chatbotInput.focus();
             }
@@ -922,34 +922,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderChatbotMessage(text, sender) {
-        if (chatbotWelcomeScreen && chatbotWelcomeScreen.style.display !== 'none') {
-            chatbotWelcomeScreen.style.display = 'none';
-        }
-
-        const isUser = sender === 'user';
-        const bubbleClass = isUser ? 'user-message' : 'bot-message';
-
-        const messageWrapper = document.createElement('div');
-        messageWrapper.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
-
-        const messageBubble = document.createElement('div');
-        messageBubble.className = `max-w-xs sm:max-w-md p-3 rounded-xl shadow-md ${bubbleClass}`;
-
-        let formattedText = text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            .replace(/\n/g, '<br>');
-
-        messageBubble.innerHTML = formattedText;
-
-        // ✅ THIS WAS MISSING
-        messageWrapper.appendChild(messageBubble);
-
-        // ✅ Append to chat list
-        chatbotMessageList.appendChild(messageWrapper);
-
-        // ✅ Auto scroll to latest message
-        chatbotMainContent.scrollTop = chatbotMainContent.scrollHeight;
+    if (chatbotWelcomeScreen && chatbotWelcomeScreen.style.display !== 'none') { 
+        chatbotWelcomeScreen.style.display = 'none';
     }
+
+    const isUser = sender === 'user';
+    const bubbleClass = isUser ? 'user-message' : 'bot-message';
+
+    const messageWrapper = document.createElement('div');
+    messageWrapper.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-2`;
+
+    const messageBubble = document.createElement('div');
+    messageBubble.className = `max-w-xs sm:max-w-md p-3 rounded-xl shadow-md ${bubbleClass}`;
+
+    let formattedText = text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/\n/g, '<br>');
+
+    messageBubble.innerHTML = formattedText;
+
+    // ✅ This line was missing
+    messageWrapper.appendChild(messageBubble);
+
+    // ✅ Now add wrapper into message list
+    chatbotMessageList.appendChild(messageWrapper);
+
+    // ✅ Auto scroll down
+    chatbotMainContent.scrollTop = chatbotMainContent.scrollHeight;
+}
 
 });
