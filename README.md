@@ -29,6 +29,8 @@ PLREPA is a Spring Boot + Node.js hackathon project for student study planning, 
 - `frontend/` - Node.js AI helper server and static frontend pages
 - `target/` - Maven build output
 
+The root `pom.xml` is the main Maven build file for the Spring Boot app. A second Maven project also exists under `backend/` because the repository contains a duplicated backend layout.
+
 ## Requirements
 
 - Java 17 or later
