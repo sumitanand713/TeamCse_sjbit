@@ -1,5 +1,6 @@
 package com.example.plrepa.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,7 @@ public class User {
     private String username;
     private String email;
     private String phone;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     public User() {}

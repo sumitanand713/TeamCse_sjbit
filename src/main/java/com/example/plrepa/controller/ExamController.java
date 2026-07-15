@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/exams")
-@CrossOrigin(origins = "*") // allow frontend access
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"}) // allow local frontend access
 public class ExamController {
 
     private final ExamRepository repo;

@@ -869,9 +869,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 8. (NEW) STANDALONE CHATBOT LOGIC ---
-    // Do NOT store real API keys in client-side code. Use server-side proxy instead.
-    const chatbotApiKey = "AIzaSyCBp2VyWJSIAf4L_9SrsrwuzmZ7MeD-WbI"; // replace via server or environment
-    const chatbotApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${chatbotApiKey}`;
+    const chatbotApiUrl = 'http://localhost:3000/api/chat';
 
     const chatbotForm = document.getElementById('chatbot-form');
     const chatbotInput = document.getElementById('chatbot-input');
@@ -905,31 +903,18 @@ document.addEventListener('DOMContentLoaded', () => {
             renderChatbotMessage(query, 'user');
 
             try {
-                const payload = {
-                    contents: chatbotHistory,
-                    systemInstruction: {
-                        parts: [{ text: "You are a helpful study assistant. Be concise and friendly." }]
-                    }
-                };
-
                 const response = await fetch(chatbotApiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({ contents: chatbotHistory })
                 });
 
                 if (!response.ok) {
-                    if (response.status === 400) {
-                        const errorData = await response.json();
-                        if (errorData?.error?.message?.includes("API key not valid")) {
-                            throw new Error("API_KEY_INVALID");
-                        }
-                    }
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
                 const result = await response.json();
-                const botResponseText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                const botResponseText = result.text;
 
                 if (botResponseText) {
                     renderChatbotMessage(botResponseText, 'bot');
@@ -941,11 +926,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (error) {
                 console.error("Chatbot API Error:", error);
-                if (error?.message === "API_KEY_INVALID") {
-                    renderChatbotMessage("❌ Error: The Chatbot API key is invalid. Please update it in dashboard.js (or better: use a server-side proxy).", 'bot');
-                } else {
-                    renderChatbotMessage("❌ Error connecting to the AI. Please try again.", 'bot');
-                }
+                renderChatbotMessage("❌ Error connecting to the AI service. Please try again.", 'bot');
                 chatbotHistory.pop();
             } finally {
                 isChatbotGenerating = false;

@@ -2,6 +2,7 @@ package com.example.plrepa.controller;
 
 import com.example.plrepa.model.User;
 import com.example.plrepa.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public AuthController(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -17,17 +19,17 @@ public class AuthController {
 
     @PostMapping("/register")
     public User register(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
     @PostMapping("/login")
-public User login(@RequestBody User user) {
-    User u = userRepository.findByEmail(user.getEmail());
-    if (u != null && u.getPassword().equals(user.getPassword())) {
-        return u; // ✅ RETURN USER FULL OBJECT
-    } else {
+    public User login(@RequestBody User user) {
+        User u = userRepository.findByEmail(user.getEmail());
+        if (u != null && passwordEncoder.matches(user.getPassword(), u.getPassword())) {
+            return u;
+        }
         return null;
     }
-}
 
 }

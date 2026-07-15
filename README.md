@@ -1,6 +1,6 @@
 # PLREPA
 
-PLREPA is a Spring Boot + Node.js hackathon project for student study planning, exam tracking, and progress management. The main backend is the root Maven app, and the AI helper server lives in `frontend/`.
+PLREPA is a Spring Boot + Node.js project for student study planning, exam tracking, and progress management. The main backend is the root Maven app, and the AI helper server lives in `frontend/`.
 
 ## Features
 
@@ -29,7 +29,7 @@ PLREPA is a Spring Boot + Node.js hackathon project for student study planning, 
 - `frontend/` - Node.js AI helper server and static frontend pages
 - `target/` - Maven build output
 
-The root `pom.xml` is the main Maven build file for the Spring Boot app. A second Maven project also exists under `backend/` because the repository contains a duplicated backend layout.
+The root `pom.xml` is the main Maven build file for the Spring Boot app. The `backend/` folder is kept for the Node.js helper server and related frontend files.
 
 ## Requirements
 
@@ -67,7 +67,7 @@ npm start
 
 The AI helper server runs on `http://localhost:3000` by default.
 
-Before starting it, update the Gemini API key in `frontend/server.js`.
+Before starting it, set `GEMINI_API_KEY` in your environment.
 
 ## Backend Configuration
 

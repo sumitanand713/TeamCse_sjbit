@@ -11,19 +11,27 @@ app.use(express.json()); // Middleware to read JSON from the request
 app.use(cors());         // Middleware to allow cross-origin requests (from your HTML file)
 
 // 3. Initialize the AI
-// IMPORTANT: Get your API key from Google AI Studio and paste it here
-// (Keep this secret and do not share it publicly)
-const API_KEY = 'AIzaSyCBp2VyWJSIAf4L_9SrsrwuzmZ7MeD-WbI';
-const genAI = new GoogleGenerativeAI(API_KEY);
+const API_KEY = process.env.GEMINI_API_KEY;
+const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
+
+function getModel() {
+    if (!genAI) {
+        throw new Error('GEMINI_API_KEY is not configured');
+    }
+    return genAI.getGenerativeModel({ model: 'gemini-2.5-flash-preview-09-2025' });
+}
 
 /* --- API ENDPOINT 1: AI Study Plan --- */
 app.post('/api/generate-plan', async (req, res) => {
     try {
+        if (!genAI) {
+            return res.status(500).json({ error: 'AI service is not configured.' });
+        }
         // 1. Get user data from your dashboard.js
         const { grade, exam, topics } = req.body;
 
         // 2. "Prompt Engineering": Tell the AI what you want
-        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-preview-09-2025' });
+        const model = getModel();
         const prompt = `
             You are an expert tutor for the EduPath platform.
             A student needs a personalized 1-week study plan.
@@ -54,11 +62,14 @@ app.post('/api/generate-plan', async (req, res) => {
 /* --- API ENDPOINT 2: AI Quiz --- */
 app.post('/api/generate-quiz', async (req, res) => {
     try {
+        if (!genAI) {
+            return res.status(500).json({ error: 'AI service is not configured.' });
+        }
         // 1. Get the topic from the front-end
         const { topic, exam } = req.body;
 
         // 2. "Prompt Engineering" for a JSON response
-        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-preview-09-2025' });
+        const model = getModel();
         const prompt = `
             You are a quiz generation API. Your sole function is to return valid JSON.
             Generate 5 multiple-choice questions for a student studying for the ${exam} exam.
@@ -88,6 +99,28 @@ app.post('/api/generate-quiz', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Failed to generate quiz. The AI may have returned invalid JSON.' });
+    }
+});
+
+app.post('/api/chat', async (req, res) => {
+    try {
+        if (!genAI) {
+            return res.status(500).json({ error: 'AI service is not configured.' });
+        }
+
+        const { contents } = req.body;
+        const model = getModel();
+        const result = await model.generateContent({
+            contents,
+            systemInstruction: {
+                parts: [{ text: 'You are a helpful study assistant. Be concise and friendly.' }]
+            }
+        });
+        const response = await result.response;
+        res.json({ text: response.text() });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to generate chat response.' });
     }
 });
 
